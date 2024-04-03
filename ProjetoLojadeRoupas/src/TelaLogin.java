@@ -6,7 +6,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
    Login_Senha login_atendente = new Login_Senha("atendente","atendente");
    Login_Senha login_gerente = new Login_Senha("gerente","gerente");
-   Login_Senha login_administrador = new Login_Senha("administrador","administrador");
+   Login_Senha login_administrador = new Login_Senha("adm","123");
    Login_Senha login_novo_user = new Login_Senha("novo","novo");
     
     public TelaLogin() {
@@ -209,9 +209,9 @@ public class TelaLogin extends javax.swing.JFrame {
     }
     else if(jrbAdministrador.isSelected() && (login.equals(login_administrador.getLogin())) && senha.equals(login_administrador.getSenha())){
         
-        TelaGerente telagerente = new TelaGerente();
+        TelaAdministrador TLD = new TelaAdministrador();
         this.dispose();
-        telagerente.setVisible(true);    
+        TLD.setVisible(true);    
     }
     else if(jrbNovoUser.isSelected() && (login.equals(login_novo_user.getLogin())) && senha.equals(login_novo_user.getSenha())){
         
