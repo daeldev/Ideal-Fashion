@@ -202,7 +202,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }
     else if(jrbAtendente.isSelected() && (login.equals(login_atendente.getLogin())) && senha.equals(login_atendente.getSenha())){
         
-        TelaAtendente telagerente = new TelaAtendente();
+        TelaAtendenteNova telagerente = new TelaAtendenteNova();
         this.dispose();
         telagerente.setVisible(true);    
     }
