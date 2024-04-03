@@ -67,6 +67,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="&#xc1;rea de Trabalho Gerente"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -99,6 +100,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="&#xc0;rea de Trabalho Gerente"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

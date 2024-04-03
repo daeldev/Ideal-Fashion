@@ -49,15 +49,14 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Clientes");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Telefone", "E-mail"

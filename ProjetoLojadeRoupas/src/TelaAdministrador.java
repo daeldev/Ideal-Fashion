@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -33,6 +36,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Área de Trabalho Administrador");
 
         jLabel1.setText("ADMINISTRADOR");
 
@@ -97,13 +101,22 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+         
         TelaLogin telalogin1 = new TelaLogin();
         this.dispose();
         telalogin1.setVisible(true); 
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        int desligar = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
+        if(desligar == JOptionPane.YES_OPTION){   
         System.exit(0);
+            
+            }
+            
+            else if(desligar == JOptionPane.NO_OPTION){
+                
+            }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

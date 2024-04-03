@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -39,6 +42,9 @@ public class TelaGerente extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Área de Trabalho Gerente");
+
+        jDesktopPane1.setToolTipText("Àrea de Trabalho Gerente");
 
         jLabel1.setText("GERENTE");
 
@@ -130,7 +136,16 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        
+        int desligar = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
+        if(desligar == JOptionPane.YES_OPTION){   
         System.exit(0);
+            
+        }
+            
+        else if(desligar == JOptionPane.NO_OPTION){
+                
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
