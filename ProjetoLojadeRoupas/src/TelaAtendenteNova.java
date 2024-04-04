@@ -17,6 +17,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
      */
     public TelaAtendenteNova() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -78,6 +79,11 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         jMenu2.setText("Vendas");
 
         jMenuItem3.setText("Efetuar Venda");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Verificar Estoque");
@@ -141,15 +147,6 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
     
-       int desligar = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-       if(desligar == JOptionPane.YES_OPTION){   
-        System.exit(0);
-            
-    }
-            
-         else if(desligar == JOptionPane.NO_OPTION){
-                
-    }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -159,6 +156,14 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         this.dispose();
         telalogin.setVisible(true); 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        Tela_de_Vendas telavenda= new Tela_de_Vendas();
+        jDesktopPane1.add(telavenda);
+        telavenda.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +201,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

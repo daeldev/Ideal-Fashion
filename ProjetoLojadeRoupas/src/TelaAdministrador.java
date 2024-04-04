@@ -145,17 +145,10 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-      
+        
         TelaEstoque Teladm = new TelaEstoque();
         jDesktopPane1.add(Teladm);
-        Teladm.setVisible(true);
-        
-        
-        
-        
-        
-        
-        
+        Teladm.setVisible(true); 
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
