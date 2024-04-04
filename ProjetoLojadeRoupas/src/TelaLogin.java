@@ -40,11 +40,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Login");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Senha");
 
         jLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -59,10 +57,14 @@ public class TelaLogin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         buttonGroup3.add(jrbAdministrador);
         jrbAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jrbAdministrador.setForeground(new java.awt.Color(0, 0, 0));
         jrbAdministrador.setText("Administrador");
         jrbAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +74,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         buttonGroup2.add(jrbAtendente);
         jrbAtendente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jrbAtendente.setForeground(new java.awt.Color(0, 0, 0));
         jrbAtendente.setText("Atendente");
         jrbAtendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +83,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         buttonGroup1.add(jrbGerente);
         jrbGerente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jrbGerente.setForeground(new java.awt.Color(0, 0, 0));
         jrbGerente.setText("Gerente");
         jrbGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         buttonGroup4.add(jrbNovoUser);
         jrbNovoUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jrbNovoUser.setForeground(new java.awt.Color(0, 0, 0));
         jrbNovoUser.setText("Novo Usuário");
         jrbNovoUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +100,6 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Usuários");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -190,42 +188,35 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    String login = jLogin.getText();
-    String senha = String.valueOf(jSenha.getPassword());
-    String msg = "Login ou senha incorreto! Por favor tente novamente.";
+        String login = jLogin.getText();
+        String senha = String.valueOf(jSenha.getPassword());
     
-    if(jrbGerente.isSelected() && (login.equals(login_gerente.getLogin())) && senha.equals(login_gerente.getSenha())){
+        if(jrbGerente.isSelected() && (login.equals(login_gerente.getLogin())) && senha.equals(login_gerente.getSenha())){
         
-        TelaGerente telagerente = new TelaGerente();
-        this.dispose();
-        telagerente.setVisible(true);    
-    }
-    else if(jrbAtendente.isSelected() && (login.equals(login_atendente.getLogin())) && senha.equals(login_atendente.getSenha())){
-        
-        TelaAtendenteNova telagerente = new TelaAtendenteNova();
-        this.dispose();
-        telagerente.setVisible(true);    
-    }
-    else if(jrbAdministrador.isSelected() && (login.equals(login_administrador.getLogin())) && senha.equals(login_administrador.getSenha())){
-        
-        TelaAdministrador TLD = new TelaAdministrador();
-        this.dispose();
-        TLD.setVisible(true);    
-    }
-    else if(jrbNovoUser.isSelected() && (login.equals(login_novo_user.getLogin())) && senha.equals(login_novo_user.getSenha())){
-        
-        TelaGerente telagerente = new TelaGerente();
-        this.dispose();
-        telagerente.setVisible(true);    
-    }
-    else{
-         JOptionPane.showMessageDialog(null, msg);
-         jLogin.setText("");
-         jSenha.setText("");    
-    }
-         
-
+            TelaGerente telagerente = new TelaGerente();
+            this.dispose();
+            telagerente.setVisible(true);    
+        }
+        else if(jrbAtendente.isSelected() && (login.equals(login_atendente.getLogin())) && senha.equals(login_atendente.getSenha())){       
+            TelaAtendenteNova telagerente = new TelaAtendenteNova();
+            this.dispose();
+            telagerente.setVisible(true);    
+        }
+        else if(jrbAdministrador.isSelected() && (login.equals(login_administrador.getLogin())) && senha.equals(login_administrador.getSenha())){        
+            TelaAdministrador TLD = new TelaAdministrador();
+            this.dispose();
+            TLD.setVisible(true);    
+        }
+        else if(jrbNovoUser.isSelected() && (login.equals(login_novo_user.getLogin())) && senha.equals(login_novo_user.getSenha())){        
+            TelaGerente telagerente = new TelaGerente();
+            this.dispose();
+            telagerente.setVisible(true);    
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Login ou senha incorreto! Por favor tente novamente.");
+            jLogin.setText("");
+            jSenha.setText("");    
+        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jrbGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbGerenteActionPerformed
@@ -251,6 +242,10 @@ public class TelaLogin extends javax.swing.JFrame {
            buttonGroup2.clearSelection(); 
            buttonGroup3.clearSelection();     
     }//GEN-LAST:event_jrbNovoUserActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments

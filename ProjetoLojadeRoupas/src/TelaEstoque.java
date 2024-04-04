@@ -160,6 +160,9 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
@@ -187,9 +190,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
                             .addComponent(jButton2))
                         .addGap(29, 29, 29)
                         .addComponent(jButton3)
-                        .addGap(0, 73, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addGap(48, 79, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

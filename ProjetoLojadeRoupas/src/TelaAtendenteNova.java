@@ -92,7 +92,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
 
         jMenu3.setText("Clientes");
 
-        jMenuItem5.setText("Pesquisar");
+        jMenuItem5.setText("Cadastrar");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -105,7 +105,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Sobre");
+        jMenu4.setText("Ajuda");
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
