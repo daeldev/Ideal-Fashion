@@ -12,12 +12,12 @@ import javax.swing.table.TableRowSorter;
  *
  * @author aaa20
  */
-public class TabelaCliente extends javax.swing.JInternalFrame {
+public class TabelaCliente1 extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TabelaCliente
      */
-    public TabelaCliente() {
+    public TabelaCliente1() {
         initComponents();
    
     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
@@ -276,6 +276,8 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         Object[] dados = {camponome.getText(), campotelefone.getText(), campoemail.getText(), campocpf.getText(), camporesidencia.getText()};
         modelo.addRow(dados);
+        
+    
     }//GEN-LAST:event_jButton1ActionPerformed
   
     

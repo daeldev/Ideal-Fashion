@@ -254,11 +254,9 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
            
            JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
        
+        
           }
-        
-        
-
-        
+     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -315,7 +313,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private static javax.swing.JTable jTable1;
     private javax.swing.JFormattedTextField jTcdp;
     private javax.swing.JTextField jTnome;
     private javax.swing.JFormattedTextField jTp;
