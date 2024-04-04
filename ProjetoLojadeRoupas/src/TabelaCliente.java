@@ -31,9 +31,8 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         Limpar = new javax.swing.JMenuItem();
-        Atualizar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -59,15 +58,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
                 LimparActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(Limpar);
-
-        Atualizar.setText("Atualizar");
-        Atualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtualizarActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(Atualizar);
+        jPopupMenu2.add(Limpar);
 
         setClosable(true);
         setIconifiable(true);
@@ -375,39 +366,27 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         // TODO add your handling code here:
         if (evt.isPopupTrigger()){
-            jPopupMenu1.show(this, evt.getX(), evt.getY());
+            jPopupMenu2.show(this, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jPanel1MouseReleased
-
-    private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        // TODO add your handling code here:
-        if(jTable1.getSelectedRow() != -1){
-             
-             camponome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-             campotelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-             campotelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-         }else{
-            JOptionPane.showMessageDialog(null, "Selecione uma linha para Atualizar!");
-        }
-    }//GEN-LAST:event_AtualizarActionPerformed
-
-    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
-        // TODO add your handling code here:
-        if(jTable1.getSelectedRow() != -1){  
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.removeRow(jTable1.getSelectedRow());
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
-        }
-    }//GEN-LAST:event_LimparActionPerformed
 
     private void campotelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campotelefoneActionPerformed
+
+    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRow() != -1){
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.removeRow(jTable1.getSelectedRow());     
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+        }
+    }//GEN-LAST:event_LimparActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Atualizar;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JFormattedTextField campocpf;
     private javax.swing.JTextField campoemail;
@@ -425,7 +404,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
