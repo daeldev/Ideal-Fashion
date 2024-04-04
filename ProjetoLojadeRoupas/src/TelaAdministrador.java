@@ -163,13 +163,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         
-        TabelaCliente1 telagerente2 = new TabelaCliente1();
-            jDesktopPane1.add(telagerente2);
-            telagerente2.setVisible(true);
-        
-        
-        
-        
+      
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
