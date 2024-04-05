@@ -332,7 +332,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-           String FilePath = "C:\\fbi\\Estoque";
+           String FilePath = "/home/Aluno.Tarde/dadosestoque";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);
@@ -367,7 +367,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         
          
         
-         String FilePath = "C:\\fbi\\dados";
+         String FilePath = "/home/Aluno.Tarde/dadosestoque";
              File file = new File(FilePath) ;  
         
         try {
