@@ -101,7 +101,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setText("Gerenciar Cadastro Clientes");
+        jMenuItem5.setText("Relatorio TabelaCliente");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -162,6 +162,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        
         
       
     }//GEN-LAST:event_jMenuItem5ActionPerformed
