@@ -411,9 +411,12 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
             
             for (int i = 0; i < jTable1.getRowCount(); i ++){ // rows
                 for(int j = 0; j <  jTable1.getColumnCount(); j ++){ // colunas
-                    bw.write(jTable1.getValueAt (i, j).toString() );
+                    bw.write(jTable1.getValueAt (i, j).toString() + "     ");
                     
-                }}            
+                }
+           bw.newLine();
+           
+            }            
             
             bw.close();
             fw.close();
