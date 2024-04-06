@@ -4,7 +4,6 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Tela_de_Vendas extends javax.swing.JInternalFrame {
-
    
     public Tela_de_Vendas() {
         initComponents();
@@ -165,15 +164,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
             new String [] {
                 "Nome", "Quantidade", "Preço", "Código", "Subtotal"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(carrinho);
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
@@ -182,7 +173,6 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jLabel11.setText("TOTAL");
 
         campototal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        campototal.setForeground(new java.awt.Color(0, 0, 0));
         campototal.setEnabled(false);
         campototal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +276,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,21 +336,22 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Double acumulador = 0.00;
-        Double quantidade = Double.parseDouble(campoquantidade.getText());
-        Double preco = Double.valueOf(campopreco.getText());
-        Double subtotal = quantidade * preco;
-        
-        acumulador += subtotal;
-        
-        campototal.setText("R$" + acumulador);        
-       
         
         DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
-        Object[] dados = {camponomeproduto.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), campototal.getText()};
+        try{
+            double preco = Double.valueOf(campopreco.getText());
+            double quantidade = Double.valueOf(campoquantidade.getText());
+            double subtotal = preco*quantidade;
+            double acumulador = 0;
+        Object[] dados = {camponomeproduto.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), subtotal};
+        for (int i = 0; i < carrinho.getRowCount(); i++){           
+            acumulador += Double.valueOf(carrinho.getValueAt(i, 4).toString());      
+        }
+        campototal.setText(Double.toString(acumulador+subtotal));  
         modelo.addRow(dados);
-        
-      
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: informação inválida");
+        } 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -407,6 +398,8 @@ int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOp
 
     private void campototalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campototalActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_campototalActionPerformed
 
 
