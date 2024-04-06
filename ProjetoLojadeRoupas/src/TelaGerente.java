@@ -110,6 +110,11 @@ public class TelaGerente extends javax.swing.JFrame {
         jMenu4.setText("Funcionários");
 
         jMenuItem5.setText("Alterar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
@@ -161,6 +166,14 @@ public class TelaGerente extends javax.swing.JFrame {
         this.dispose();
         telalogin.setVisible(true); 
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        
+         TelaFuncionarios Telaf = new TelaFuncionarios();
+        jDesktopPane1.add(Telaf);
+        Telaf.setVisible(true); 
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

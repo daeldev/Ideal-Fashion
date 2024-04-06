@@ -153,6 +153,11 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campocpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocpfActionPerformed(evt);
+            }
+        });
 
         try {
             campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
@@ -475,6 +480,10 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
      
         
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void campocpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocpfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
