@@ -3,11 +3,11 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
-public class TelaLogin extends javax.swing.JFrame {
+public class TelaLoginGerente extends javax.swing.JFrame {
 
-   Login_Senha login_atendente = new Login_Senha("atendente","123");
+   Login_Senha login_gerente = new Login_Senha("gerente","123");
     
-    public TelaLogin() {
+    public TelaLoginGerente() {
         initComponents();
     }
 
@@ -23,7 +23,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         CorrigeOTracoNoInicio = new javax.swing.JTextField();
-        Atendente = new javax.swing.JLabel();
+        Gerente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pc = new javax.swing.JLabel();
@@ -76,8 +76,8 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 40, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 102, 255)));
+        jPanel4.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 102, 51)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -90,7 +90,7 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 60, 70, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 60, 70, -1));
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,8 +99,8 @@ public class TelaLogin extends javax.swing.JFrame {
         CorrigeOTracoNoInicio.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(CorrigeOTracoNoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1284, 0, 0, 0));
 
-        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.1.png"))); // NOI18N
-        jPanel2.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        Gerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.2.png"))); // NOI18N
+        jPanel2.add(Gerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 70, -1));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -216,7 +216,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 400, 420));
 
-        Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/2.2.png"))); // NOI18N
+        Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/2.3.png"))); // NOI18N
         jPanel1.add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,10 +248,10 @@ public class TelaLogin extends javax.swing.JFrame {
         String login = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
 
-        if(login.equals(login_atendente.getLogin()) && senha.equals(login_atendente.getSenha())){       
-            TelaAtendenteNova AtendenteDesktop = new TelaAtendenteNova();
+        if(login.equals(login_gerente.getLogin()) && senha.equals(login_gerente.getSenha())){       
+            TelaGerente GerenteDesktop = new TelaGerente();
             this.dispose();
-            AtendenteDesktop.setVisible(true);    
+            GerenteDesktop.setVisible(true);    
         }else{
             JOptionPane.showMessageDialog(null, "Login ou senha incorreto! Por favor tente novamente.");
             JTUsuario.setText("Insira o seu nome de usuário");
@@ -312,10 +312,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_JCMostrarSenhaActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
-        TelaLoginGerente LoginGerente = new TelaLoginGerente();
-        this.dispose();
-        LoginGerente.setVisible(true);
+        // TODO add your handling code here:       
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
@@ -327,6 +324,9 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
+        TelaLogin LoginAtendente = new TelaLogin();
+        this.dispose();
+        LoginAtendente.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
@@ -359,15 +359,15 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                new TelaLoginGerente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Atendente;
     private javax.swing.JTextField CorrigeOTracoNoInicio;
     private javax.swing.JLabel Fundo;
+    private javax.swing.JLabel Gerente;
     private javax.swing.JCheckBox JCMostrarSenha;
     private javax.swing.JPasswordField JTSenha;
     private javax.swing.JTextField JTUsuario;
