@@ -195,12 +195,32 @@
                   <Color blue="f2" green="f2" red="f6" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
-                    <Column editable="false" title="Nome" type="java.lang.Object"/>
-                    <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                    <Column editable="false" title="E-mail" type="java.lang.Object"/>
-                    <Column editable="false" title="CPF" type="java.lang.Object"/>
-                    <Column editable="true" title="Resid&#xea;ncia" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="3">
+                    <Column editable="true" title="Nome" type="java.lang.Object">
+                      <Data value="Alex"/>
+                      <Data value="Daniel"/>
+                      <Data value="Eduardo"/>
+                    </Column>
+                    <Column editable="true" title="Telefone" type="java.lang.Object">
+                      <Data value="(21)00000-0000"/>
+                      <Data value="(21)11111-1111"/>
+                      <Data value="(21)22222-2222"/>
+                    </Column>
+                    <Column editable="true" title="E-mail" type="java.lang.Object">
+                      <Data value="gmail"/>
+                      <Data value="gmail"/>
+                      <Data value="gmail"/>
+                    </Column>
+                    <Column editable="true" title="CPF" type="java.lang.Object">
+                      <Data value="000.000.000-00"/>
+                      <Data value="111.111.111-11"/>
+                      <Data value="222.222.222-22"/>
+                    </Column>
+                    <Column editable="true" title="Resid&#xea;ncia" type="java.lang.Object">
+                      <Data value="Anchieta"/>
+                      <Data value="Belford Roxo"/>
+                      <Data value="Anchieta"/>
+                    </Column>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -348,7 +368,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="(##) #####-####" subtype="-1" type="5"/>
+              <Format format="(21)#####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
           <Events>

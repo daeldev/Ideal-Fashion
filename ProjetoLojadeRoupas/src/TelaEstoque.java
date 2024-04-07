@@ -76,7 +76,9 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         jTable1.setBackground(new java.awt.Color(246, 242, 242));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"a", "Blusa", "50", "15,00", "1"},
+                {"b", "Calça", "50", "20,00", "2"},
+                {"c", "Regata", "50", "22,00", "3"}
             },
             new String [] {
                 "Nome", "Tipo", "Quantidade", "Preço", "Código"
@@ -180,6 +182,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6)
                         .addGap(62, 62, 62))
@@ -217,6 +220,46 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
+=======
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTprod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                        .addComponent(jTqtd, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTp, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTnome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTcdp, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+>>>>>>> origin/main
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +381,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-           String FilePath = "/home/Aluno.Tarde/dadosestoque";
+           String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadosestoque\\";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);
@@ -346,7 +389,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
             
             for (int i = 0; i < jTable1.getRowCount(); i ++){ // rows
                 for(int j = 0; j <  jTable1.getColumnCount(); j ++){ // colunas
-                    bwe.write(jTable1.getValueAt (i, j).toString() + "     ");
+                    bwe.write(jTable1.getValueAt (i, j).toString() + " ");
                     
                 }
            bwe.newLine();
@@ -373,7 +416,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         
          
         
-         String FilePath = "/home/Aluno.Tarde/dadosestoque";
+         String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadosestoque\\";
              File file = new File(FilePath) ;  
         
         try {

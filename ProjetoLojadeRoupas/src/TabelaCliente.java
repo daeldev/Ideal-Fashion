@@ -90,20 +90,14 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         jTable1.setBackground(new java.awt.Color(246, 242, 242));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Alex", "(21)00000-0000", "gmail", "000.000.000-00", "Anchieta"},
+                {"Daniel", "(21)11111-1111", "gmail", "111.111.111-11", "Belford Roxo"},
+                {"Eduardo", "(21)22222-2222", "gmail", "222.222.222-22", "Anchieta"}
             },
             new String [] {
                 "Nome", "Telefone", "E-mail", "CPF", "Residência"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -177,7 +171,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         campotelefone.setBackground(new java.awt.Color(51, 51, 51));
         campotelefone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(21)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -446,7 +440,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-      String FilePath = "/home/Aluno.Tarde/dadoscadastro";
+      String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\build\\classes\\Dados Tabelas\\dadoscadastro\\";
       File file = new File(FilePath) ;
         try {
             FileWriter fw = new FileWriter(file);
@@ -454,7 +448,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
             
             for (int i = 0; i < jTable1.getRowCount(); i ++){ // rows
                 for(int j = 0; j <  jTable1.getColumnCount(); j ++){ // colunas
-                    bw.write(jTable1.getValueAt (i, j).toString() + "     ");
+                    bw.write(jTable1.getValueAt (i, j).toString() + " ");
                     
                 }
            bw.newLine();
@@ -478,7 +472,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
      
         
-         String FilePath = "/home/Aluno.Tarde/dadoscadastro";
+         String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\build\\classes\\Dados Tabelas\\dadoscadastro\\";
              File file = new File(FilePath) ;  
         
         try {
