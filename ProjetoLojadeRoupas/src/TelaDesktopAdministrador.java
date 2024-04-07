@@ -1,4 +1,3 @@
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Aluno.Tarde
  */
-public class TelaAtendenteNova extends javax.swing.JFrame {
+public class TelaDesktopAdministrador extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaAtendenteNova
      */
-    public TelaAtendenteNova() {
+    public TelaDesktopAdministrador() {
         initComponents();
     }
 
@@ -52,7 +51,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         JBClientes.setBackground(new java.awt.Color(51, 51, 51));
         JBClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBClientes.setForeground(new java.awt.Color(255, 255, 255));
-        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 9.png"))); // NOI18N
+        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 17.png"))); // NOI18N
         JBClientes.setText("Clientes");
         JBClientes.setBorder(null);
         JBClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +77,8 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         JBVendas.setBackground(new java.awt.Color(51, 51, 51));
         JBVendas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBVendas.setForeground(new java.awt.Color(255, 255, 255));
-        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 8.png"))); // NOI18N
-        JBVendas.setText("Vendas");
+        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 14.png"))); // NOI18N
+        JBVendas.setText("Estoque");
         JBVendas.setBorder(null);
         JBVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,13 +120,13 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         Status.setText("Conectado");
         jPanel1.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 30));
 
-        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.1.png"))); // NOI18N
+        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.3.png"))); // NOI18N
         jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Preenchimento Gradiente 1.png"))); // NOI18N
+        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/4.2.png"))); // NOI18N
         jPanel1.add(Quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, -1));
 
-        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Preenchimento Gradiente 2.png"))); // NOI18N
+        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/5.2.png"))); // NOI18N
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 0, 1040, -1));
 
         Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 6.png"))); // NOI18N
@@ -165,14 +164,10 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
 
     private void JBVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVendasActionPerformed
         // TODO add your handling code here:
-        DadosCompra TelaDadosCliente = new DadosCompra();
-        jDesktopPane1.add(TelaDadosCliente);     
-        TelaDadosCliente.setVisible(true);  
-
-        Tela_de_Vendas TelaVenda = new Tela_de_Vendas();
-        jDesktopPane1.add(TelaVenda);     
-        TelaVenda.setVisible(true);
-        TelaVenda.setBounds(247, 97, 1035, 620);
+        TelaEstoque Estoque = new TelaEstoque();
+        jDesktopPane1.add(Estoque);     
+        Estoque.setVisible(true);
+        Estoque.setBounds(247, 97, 1035, 620);
     }//GEN-LAST:event_JBVendasActionPerformed
 
     private void JBClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBClientesActionPerformed
@@ -228,7 +223,7 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAtendenteNova().setVisible(true);
+                new TelaDesktopAdministrador().setVisible(true);
             }
         });
     }

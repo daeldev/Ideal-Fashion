@@ -75,7 +75,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 9.png"/>
+                  <Image iconType="3" name="/Design/Camada 17.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -131,9 +131,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 8.png"/>
+                  <Image iconType="3" name="/Design/Camada 14.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Vendas"/>
+                <Property name="text" type="java.lang.String" value="Estoque"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -219,7 +219,7 @@
             <Component class="javax.swing.JLabel" name="Atendente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/3.1.png"/>
+                  <Image iconType="3" name="/Design/3.3.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -231,7 +231,7 @@
             <Component class="javax.swing.JLabel" name="Quadrado">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Preenchimento Gradiente 1.png"/>
+                  <Image iconType="3" name="/Design/4.2.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -243,7 +243,7 @@
             <Component class="javax.swing.JLabel" name="Barra">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Preenchimento Gradiente 2.png"/>
+                  <Image iconType="3" name="/Design/5.2.png"/>
                 </Property>
               </Properties>
               <Constraints>

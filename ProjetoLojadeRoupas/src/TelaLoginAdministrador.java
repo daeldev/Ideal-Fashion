@@ -250,7 +250,7 @@ public class TelaLoginAdministrador extends javax.swing.JFrame {
         String senha = String.valueOf(JTSenha.getPassword());
 
         if(login.equals(login_administrador.getLogin()) && senha.equals(login_administrador.getSenha())){       
-            TelaAdministrador AdministradorDesktop = new TelaAdministrador();
+            TelaDesktopAdministrador AdministradorDesktop = new TelaDesktopAdministrador();
             this.dispose();
             AdministradorDesktop.setVisible(true);    
         }else{
