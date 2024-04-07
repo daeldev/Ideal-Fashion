@@ -327,11 +327,14 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        Forma_de_Pagamento telatipopagamento = new Forma_de_Pagamento();
-        TelaAtendenteNova.jDesktopPane1.add(telatipopagamento);
-        telatipopagamento.toFront();
-        telatipopagamento.setVisible(true);
         
+        TipoPagamento formaPagamento = new TipoPagamento();
+        formaPagamento.setPagamento(campototal.getText());
+        var fp = new Forma_de_Pagamento();
+        fp.Pegarpagamento(formaPagamento);
+        fp.setVisible(true);
+        TelaAtendenteNova.jDesktopPane1.add(fp);
+        fp.toFront();
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -339,8 +342,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
         try{
-            double preco = Double.valueOf(campopreco.getText());
-            double quantidade = Double.valueOf(campoquantidade.getText());
+            double preco = Double.parseDouble(campopreco.getText().replaceAll(",", "."));
+            double quantidade = Double.parseDouble(campoquantidade.getText());
             double subtotal = preco*quantidade;
             double acumulador = 0;
         Object[] dados = {camponomeproduto.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), subtotal};
