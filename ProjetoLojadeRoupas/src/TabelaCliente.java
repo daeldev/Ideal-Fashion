@@ -422,7 +422,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-      String FilePath = "/home/Aluno.Tarde/dadoscadastro";
+      String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadoscadastro\\";
       File file = new File(FilePath) ;
         try {
             FileWriter fw = new FileWriter(file);
@@ -454,7 +454,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
      
         
-         String FilePath = "/home/Aluno.Tarde/dadoscadastro";
+         String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadoscadastro\\";
              File file = new File(FilePath) ;  
         
         try {
