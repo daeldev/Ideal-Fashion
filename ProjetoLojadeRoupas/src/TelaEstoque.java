@@ -78,7 +78,9 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"a", "Blusa", "50", "15,00", "1"},
+                {"b", "Calça", "50", "20,00", "2"},
+                {"c", "Regata", "50", "22,00", "3"}
             },
             new String [] {
                 "Nome", "Tipo", "Quantidade", "Preço", "Código"
@@ -203,7 +205,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -340,7 +342,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
             
             for (int i = 0; i < jTable1.getRowCount(); i ++){ // rows
                 for(int j = 0; j <  jTable1.getColumnCount(); j ++){ // colunas
-                    bwe.write(jTable1.getValueAt (i, j).toString() + "     ");
+                    bwe.write(jTable1.getValueAt (i, j).toString() + " ");
                     
                 }
            bwe.newLine();

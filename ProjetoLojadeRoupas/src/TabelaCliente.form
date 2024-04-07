@@ -192,12 +192,32 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
-                    <Column editable="false" title="Nome" type="java.lang.Object"/>
-                    <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                    <Column editable="false" title="E-mail" type="java.lang.Object"/>
-                    <Column editable="false" title="CPF" type="java.lang.Object"/>
-                    <Column editable="true" title="Resid&#xea;ncia" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="3">
+                    <Column editable="true" title="Nome" type="java.lang.Object">
+                      <Data value="Alex"/>
+                      <Data value="Daniel"/>
+                      <Data value="Eduardo"/>
+                    </Column>
+                    <Column editable="true" title="Telefone" type="java.lang.Object">
+                      <Data value="1"/>
+                      <Data value="2"/>
+                      <Data value="3"/>
+                    </Column>
+                    <Column editable="true" title="E-mail" type="java.lang.Object">
+                      <Data value="gmail"/>
+                      <Data value="gmail"/>
+                      <Data value="gmail"/>
+                    </Column>
+                    <Column editable="true" title="CPF" type="java.lang.Object">
+                      <Data value="cpf"/>
+                      <Data value="fpf"/>
+                      <Data value="pfp"/>
+                    </Column>
+                    <Column editable="true" title="Resid&#xea;ncia" type="java.lang.Object">
+                      <Data value="Anchieta"/>
+                      <Data value="Belford Roxo"/>
+                      <Data value="Anchieta"/>
+                    </Column>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

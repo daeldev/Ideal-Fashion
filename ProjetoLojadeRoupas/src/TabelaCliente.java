@@ -91,20 +91,14 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"Alex", "1", "gmail", "cpf", "Anchieta"},
+                {"Daniel", "2", "gmail", "fpf", "Belford Roxo"},
+                {"Eduardo", "3", "gmail", "pfp", "Anchieta"}
             },
             new String [] {
                 "Nome", "Telefone", "E-mail", "CPF", "Residência"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -422,7 +416,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-      String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadoscadastro\\";
+      String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\build\\classes\\Dados Tabelas\\dadoscadastro\\";
       File file = new File(FilePath) ;
         try {
             FileWriter fw = new FileWriter(file);
@@ -454,7 +448,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
      
         
-         String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\src\\Dados Tabelas\\dadoscadastro\\";
+         String FilePath = "C:\\Users\\Oruam\\Eduardo\\Ideal-Fashionn\\ProjetoLojadeRoupas\\build\\classes\\Dados Tabelas\\dadoscadastro\\";
              File file = new File(FilePath) ;  
         
         try {
