@@ -199,9 +199,9 @@
                       <Data value="Eduardo"/>
                     </Column>
                     <Column editable="true" title="Telefone" type="java.lang.Object">
-                      <Data value="1"/>
-                      <Data value="2"/>
-                      <Data value="3"/>
+                      <Data value="(21)00000-0000"/>
+                      <Data value="(21)11111-1111"/>
+                      <Data value="(21)22222-2222"/>
                     </Column>
                     <Column editable="true" title="E-mail" type="java.lang.Object">
                       <Data value="gmail"/>
@@ -209,9 +209,9 @@
                       <Data value="gmail"/>
                     </Column>
                     <Column editable="true" title="CPF" type="java.lang.Object">
-                      <Data value="cpf"/>
-                      <Data value="fpf"/>
-                      <Data value="pfp"/>
+                      <Data value="000.000.000-00"/>
+                      <Data value="111.111.111-11"/>
+                      <Data value="222.222.222-22"/>
                     </Column>
                     <Column editable="true" title="Resid&#xea;ncia" type="java.lang.Object">
                       <Data value="Anchieta"/>
@@ -313,7 +313,7 @@
         <Component class="javax.swing.JFormattedTextField" name="campotelefone">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="(##) #####-####" subtype="-1" type="5"/>
+              <Format format="(21)#####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
           <Events>

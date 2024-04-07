@@ -91,9 +91,9 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Alex", "1", "gmail", "cpf", "Anchieta"},
-                {"Daniel", "2", "gmail", "fpf", "Belford Roxo"},
-                {"Eduardo", "3", "gmail", "pfp", "Anchieta"}
+                {"Alex", "(21)00000-0000", "gmail", "000.000.000-00", "Anchieta"},
+                {"Daniel", "(21)11111-1111", "gmail", "111.111.111-11", "Belford Roxo"},
+                {"Eduardo", "(21)22222-2222", "gmail", "222.222.222-22", "Anchieta"}
             },
             new String [] {
                 "Nome", "Telefone", "E-mail", "CPF", "Residência"
@@ -154,7 +154,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         });
 
         try {
-            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(21)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -424,7 +424,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
             
             for (int i = 0; i < jTable1.getRowCount(); i ++){ // rows
                 for(int j = 0; j <  jTable1.getColumnCount(); j ++){ // colunas
-                    bw.write(jTable1.getValueAt (i, j).toString() + "     ");
+                    bw.write(jTable1.getValueAt (i, j).toString() + " ");
                     
                 }
            bw.newLine();
