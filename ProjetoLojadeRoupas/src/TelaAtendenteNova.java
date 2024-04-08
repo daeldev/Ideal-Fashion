@@ -124,13 +124,13 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
         Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.1.png"))); // NOI18N
         jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Preenchimento Gradiente 1.png"))); // NOI18N
+        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/4.1.png"))); // NOI18N
         jPanel1.add(Quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, -1));
 
-        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Preenchimento Gradiente 2.png"))); // NOI18N
+        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/5.1.png"))); // NOI18N
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 0, 1040, -1));
 
-        Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 6.png"))); // NOI18N
+        Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/6.1.png"))); // NOI18N
         jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/FundoWork.png"))); // NOI18N
