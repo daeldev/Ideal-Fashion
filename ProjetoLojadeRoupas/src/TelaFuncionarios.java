@@ -31,6 +31,8 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jButton6 = new javax.swing.JButton();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        Limpar = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -54,6 +56,14 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
 
         jButton6.setText("jButton6");
+
+        Limpar.setText("jMenuItem1");
+        Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimparActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(Limpar);
 
         setBorder(null);
         setClosable(true);
@@ -356,8 +366,20 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jdataActionPerformed
 
+    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRow() != -1){
+
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.removeRow(jTable1.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+        }
+    }//GEN-LAST:event_LimparActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Limpar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -371,6 +393,7 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JFormattedTextField jcpf;

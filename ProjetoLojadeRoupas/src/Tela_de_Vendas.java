@@ -29,6 +29,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         Fundo = new javax.swing.JLabel();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        Limpar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -174,6 +176,14 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/2.2.png"))); // NOI18N
+
+        Limpar.setText("jMenuItem1");
+        Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimparActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(Limpar);
 
         setBorder(null);
         setClosable(true);
@@ -483,6 +493,17 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+        // TODO add your handling code here:
+        if(carrinho.getSelectedRow() != -1){
+
+            DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
+            modelo.removeRow(carrinho.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+        }
+    }//GEN-LAST:event_LimparActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Atendente;
@@ -491,6 +512,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox JCMostrarSenha;
     private javax.swing.JPasswordField JTSenha;
     private javax.swing.JTextField JTUsuario;
+    private javax.swing.JMenuItem Limpar;
     private javax.swing.JFormattedTextField campocodigo;
     private javax.swing.JTextField camponomeproduto;
     private javax.swing.JTextField campopreco;
@@ -518,6 +540,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel pc;
