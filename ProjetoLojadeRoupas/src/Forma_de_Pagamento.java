@@ -9,7 +9,7 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
         initComponents();
     }
     public void Pegarpagamento(TipoPagamento pagamento){
-        jtfSubtotal.setText(pagamento.getPagamento().replaceAll("\\.", ","));
+        jtfSubtotal.setText(pagamento.getPagamento());//.replaceAll("\\.", ","));
     }
     
     @SuppressWarnings("unchecked")
@@ -34,6 +34,7 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jbFinalizarVenda = new javax.swing.JButton();
         jbCancelarVenda = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBorder(null);
         setClosable(true);
@@ -118,6 +119,13 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
         jbCancelarVenda.setBackground(new java.awt.Color(255, 51, 51));
         jbCancelarVenda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbCancelarVenda.setText("CANCELAR COMPRA");
+        jbCancelarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarVendaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,11 +173,16 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jtfParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(212, 212, 212))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addComponent(jLabel2)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -217,23 +230,7 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfAVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAVistaActionPerformed
-        
-         if(jrbAVista.isSelected ()){
-         Double dinheiroDoCliente = Double.valueOf(jtfAVista.getText());
-         Double total = Double.valueOf(jtfSubtotal.getText());
-         Double troco = dinheiroDoCliente - total;
-         
-
-                if(dinheiroDoCliente < 0 || troco < 0){
-                JOptionPane.showMessageDialog(null, "Valor Inválido! Tente Novamente.");
-                jtfAVista.setText("");
-                jtfTroco.setText("");
-            }   
-                else{
-                jtfTroco.setText(""+troco); 
-            
-            }
-         }
+     
     }//GEN-LAST:event_jtfAVistaActionPerformed
 
     private void jtfAVistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfAVistaMouseClicked
@@ -255,81 +252,210 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jrbCartaoActionPerformed
 
     private void jbFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarVendaActionPerformed
-      
-        JOptionPane.showMessageDialog(null, "Venda realizada com Sucesso");
-        Tela_de_Vendas telavenda= new Tela_de_Vendas();
-        TelaAtendenteNova.jDesktopPane1.add(telavenda);
-        telavenda.setVisible(true);
-     
-    }//GEN-LAST:event_jbFinalizarVendaActionPerformed
 
-    private void jcbCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCartaoActionPerformed
-      
+          try {
+            
+              if(jrbAVista.isSelected ()){
+         Double dinheiroDoCliente = Double.valueOf(jtfAVista.getText());
+         Double total = Double.valueOf(jtfSubtotal.getText());
+         Double troco = dinheiroDoCliente - total;
+         
+
+                if(dinheiroDoCliente < 0 || troco < 0){
+                JOptionPane.showMessageDialog(null, "Valor Inválido! Tente Novamente.");
+                jtfAVista.setText("");
+                jtfTroco.setText("");
+            }   
+                else{
+                jtfTroco.setText(""+troco);    
+                JOptionPane.showMessageDialog(null, "Venda Confirmada");
+                JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
+                }
+         }
+         
          if(jrbCartao.isSelected()){
          jTextField1.setText(jcbCartao.getSelectedItem().toString());
-         Double totalReal = Double.valueOf(jtfSubtotal.getText().replaceAll(",", "."));
+         Double totalReal = Double.valueOf(jtfSubtotal.getText());//.replaceAll(",", "."));
          String parcelas = String.valueOf((String) jcbCartao.getSelectedItem());
       
                switch (parcelas) {
                  case "1x Sem Juros" -> {
                      Double calculo = totalReal / 1;
                      jtfParcelas.setText(String.format("1x de R$ %.2f Sem Juros",calculo));
-                     }
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
+                 }
                  case "2x Sem Juros" -> {
                      Double calculo = totalReal / 2;
                      jtfParcelas.setText(String.format("2x de R$ %.2f Sem Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "3x Sem Juros" -> {
                      Double calculo = totalReal / 3;
                      jtfParcelas.setText(String.format("3x de R$ %.2f Sem Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "4x Sem Juros" -> {
                      Double calculo = totalReal / 4;
                      jtfParcelas.setText(String.format("4x de R$ %.2f Sem Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                  }
                  case "5x Sem Juros" -> {
                      Double calculo = totalReal / 5;
                      jtfParcelas.setText(String.format("5x de R$ %.2f Sem Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                  }
                  case "6x Com Juros 5,00" -> {
                      Double juros = totalReal * 0.05;
                      Double jurosSoma = totalReal + juros;
                      Double calculo = jurosSoma / 6;
                      jtfParcelas.setText(String.format("6x de R$ %.2f Com Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "7x Com Juros 5,00" -> {
                      Double juros = totalReal * 0.05;
                      Double jurosSoma = totalReal + juros;
                      Double calculo = jurosSoma / 7;
                      jtfParcelas.setText(String.format("7x de R$ %.2f Com Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "8x Com Juros 7,00" -> {
                      Double juros = totalReal * 0.07;
                      Double jurosSoma = totalReal + juros;
                      Double calculo = jurosSoma / 8;
                      jtfParcelas.setText(String.format("8x de R$ %.2f Com Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "9x Com Juros 7,50" -> {
                      Double juros = totalReal * 0.075;
                      Double jurosSoma = totalReal + juros;
                      Double calculo = jurosSoma / 9;
                      jtfParcelas.setText(String.format("9x de R$ %.2f Com Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  case "10x Com Juros 9,00" -> {
                      Double juros = totalReal * 0.09;
                      Double jurosSoma = totalReal + juros;
                      Double calculo = jurosSoma / 10;
                      jtfParcelas.setText(String.format("10x de R$ %.2f Com Juros",calculo));
+                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
+                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+                     telavenda.setVisible(true);
+                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
+                     telavenda.toFront();
+                     this.dispose();
                      }
                  default -> {
                  }
                }
          }
+        } catch (Exception e) {
+                    
+            JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
+            jtfAVista.setText("");
+            jtfTroco.setText("");
+            jtfParcelas.setText("");
+        }
+          
+        
+    }//GEN-LAST:event_jbFinalizarVendaActionPerformed
+
+    private void jcbCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCartaoActionPerformed
+      
+         
     }//GEN-LAST:event_jcbCartaoActionPerformed
+
+    private void jbCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarVendaActionPerformed
+        
+         int resposta = JOptionPane.showConfirmDialog(null, "Deseja Cancelar a Venda?","Atenção",JOptionPane.YES_NO_OPTION);
+         
+         if(resposta == JOptionPane.YES_NO_OPTION){
+         JOptionPane.showMessageDialog(null, "Venda Cancelada");
+         Tela_de_Vendas telavenda = new Tela_de_Vendas ();
+         telavenda.setVisible(true);
+         TelaAtendenteNova.jDesktopPane1.add(telavenda);
+         telavenda.toFront();
+         this.dispose();
+         }
+         else if(resposta == JOptionPane.NO_OPTION){
+             
+         }
+    }//GEN-LAST:event_jbCancelarVendaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

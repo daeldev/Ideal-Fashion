@@ -8,8 +8,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     public Tela_de_Vendas() {
         initComponents();  
     }
-
-   
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -412,21 +411,19 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         else if(q == JOptionPane.NO_OPTION){
 
         }
-
-        //         DefaultTableModel modelo = (DefaultTableModel)carrinho.getModel();
-        //         modelo.setNumRows(0);
-
+    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         TipoPagamento formaPagamento = new TipoPagamento();
         formaPagamento.setPagamento(campototal.getText());
-        var fp = new Forma_de_Pagamento();
+        Forma_de_Pagamento fp = new Forma_de_Pagamento();
         fp.Pegarpagamento(formaPagamento);
         fp.setVisible(true);
         TelaAtendenteNova.jDesktopPane1.add(fp);
         fp.toFront();
+        this.dispose();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -436,22 +433,34 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_campototalActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //        double ValorLinha = 0;
-        //        ValorLinha = Double.valueOf(carrinho.getValueAt(carrinho.getSelectedRow(), 4).toString());
 
-        if(carrinho.getSelectedRow() != -1){
+     DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
 
-            DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
-            modelo.removeRow(carrinho.getSelectedRow());
+     // Verifica se alguma linha está selecionada no carrinho
+    if (carrinho.getSelectedRow() != -1) {
+    // Obtém o subtotal do produto selecionado
+    double subtotalRemovido = Double.parseDouble(modelo.getValueAt(carrinho.getSelectedRow(), 4).toString());
 
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
-        }
+    // Remove a linha do produto selecionado do modelo da tabela
+    modelo.removeRow(carrinho.getSelectedRow());
+
+    // Recalcula o total acumulado após a remoção do produto
+    double novoTotal = 0;
+    for (int i = 0; i < modelo.getRowCount(); i++) {
+        novoTotal += Double.parseDouble(modelo.getValueAt(i, 4).toString());
+    }
+
+    // Atualiza o campo campototal com o novo total acumulado
+    campototal.setText(Double.toString(novoTotal));
+} else {
+    JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+}
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+                
+                
         DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
         try{
             double preco = Double.parseDouble(campopreco.getText().replaceAll(",", "."));
@@ -460,11 +469,11 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
             double acumulador = 0;
             Object[] dados = {camponomeproduto.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), subtotal};
             for (int i = 0; i < carrinho.getRowCount(); i++){
-                acumulador += Double.valueOf(carrinho.getValueAt(i, 4).toString());
+               acumulador += Double.valueOf(carrinho.getValueAt(i, 4).toString());
             }
             campototal.setText(Double.toString(acumulador+subtotal));
             modelo.addRow(dados);
-        }catch(Exception e){
+            }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "ERRO: informação inválida");
         }
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -12,30 +12,18 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 
-/**
- *
- * @author aaa20
- */
 public class TabelaCliente extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TabelaCliente
-     */
+    
     public TabelaCliente() {
         initComponents();
    
     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
     jTable1.setRowSorter(new TableRowSorter(modelo));
-    
-    
+       
     }
-
-    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -329,18 +317,16 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
   
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-//        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-//        modelo.setNumRows(0);
+
         
         if(jTable1.getSelectedRow() != -1){
         
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.removeRow(jTable1.getSelectedRow());
+        DefaultTableModel modelop = (DefaultTableModel) jTable1.getModel();
+        modelop.removeRow(jTable1.getSelectedRow());
         
-//        camponome.setText("");
-//        campotelefone.setText("");
-//        campoemail.setText("");
+        camponome.setText("");
+        campotelefone.setText("");
+        campoemail.setText("");
         
         }else{
             JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
