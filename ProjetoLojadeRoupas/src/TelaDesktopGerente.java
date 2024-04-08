@@ -172,7 +172,9 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_JBVendasActionPerformed
 
     private void JBClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBClientesActionPerformed
-        // TODO add your handling code here: 
+        TelaMetas metas = new TelaMetas();
+        jDesktopPane1.add(metas);     
+        metas.setVisible(true);
     }//GEN-LAST:event_JBClientesActionPerformed
 
     private void JBAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAjudaActionPerformed
