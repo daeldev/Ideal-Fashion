@@ -175,6 +175,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         TelaMetas metas = new TelaMetas();
         jDesktopPane1.add(metas);     
         metas.setVisible(true);
+         metas.setBounds(247, 97, 750, 620);
     }//GEN-LAST:event_JBClientesActionPerformed
 
     private void JBAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAjudaActionPerformed
