@@ -134,7 +134,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/FundoWork.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 720));
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -175,7 +175,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         TelaMetas metas = new TelaMetas();
         jDesktopPane1.add(metas);     
         metas.setVisible(true);
-         metas.setBounds(247, 97, 750, 620);
+        metas.setBounds(247, 97, 1035, 620);
     }//GEN-LAST:event_JBClientesActionPerformed
 
     private void JBAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAjudaActionPerformed
