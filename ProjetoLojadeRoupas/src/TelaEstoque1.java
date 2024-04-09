@@ -176,11 +176,18 @@ public class TelaEstoque1 extends javax.swing.JInternalFrame {
         jPanel1.add(jTp, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 346, 179, -1));
         jTp.getAccessibleContext().setAccessibleName("");
 
+        jTcdp.setBackground(new java.awt.Color(51, 51, 51));
+        jTcdp.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jTcdp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
+            jTcdp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jTcdp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTcdpActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTcdp, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 281, 255, -1));
 
         jButton5.setBackground(new java.awt.Color(51, 102, 255));
@@ -352,6 +359,10 @@ public class TelaEstoque1 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
         }
     }//GEN-LAST:event_LimparActionPerformed
+
+    private void jTcdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTcdpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTcdpActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

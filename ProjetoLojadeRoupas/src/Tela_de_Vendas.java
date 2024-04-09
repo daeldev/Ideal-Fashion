@@ -33,7 +33,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        camponomeproduto = new javax.swing.JTextField();
+        camponome = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -195,8 +195,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Nome");
 
-        camponomeproduto.setBackground(new java.awt.Color(51, 51, 51));
-        camponomeproduto.setForeground(new java.awt.Color(255, 255, 255));
+        camponome.setBackground(new java.awt.Color(51, 51, 51));
+        camponome.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setText("Quantidade");
 
@@ -210,10 +210,15 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         campocodigo.setBackground(new java.awt.Color(51, 51, 51));
         campocodigo.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            campocodigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
+            campocodigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        campocodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocodigoActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,7 +254,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(camponomeproduto)
+                    .addComponent(camponome)
                     .addComponent(campoquantidade)
                     .addComponent(campocodigo)
                     .addComponent(campopreco, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
@@ -267,7 +272,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(camponomeproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(camponome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -402,7 +407,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
             DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
             modelo.setNumRows(0);
             campocodigo.setText("");
-            camponomeproduto.setText("");
+            camponome.setText("");
             campopreco.setText("");
             campoquantidade.setText("");
             campototal.setText("");
@@ -415,16 +420,18 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        TipoPagamento formaPagamento = new TipoPagamento();
-        formaPagamento.setPagamento(campototal.getText());
-        Forma_de_Pagamento fp = new Forma_de_Pagamento();
-        fp.Pegarpagamento(formaPagamento);
-        fp.setVisible(true);
-        TelaAtendenteNova.jDesktopPane1.add(fp);
-        fp.toFront();
-        this.dispose();
-
+        if(campototal.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.");
+        }else{
+            TipoPagamento formaPagamento = new TipoPagamento();
+            formaPagamento.setPagamento(campototal.getText());
+            Forma_de_Pagamento fp = new Forma_de_Pagamento();
+            fp.Pegarpagamento(formaPagamento);
+            fp.setVisible(true);
+            TelaAtendenteNova.jDesktopPane1.add(fp);
+            fp.toFront();
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void campototalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campototalActionPerformed
@@ -462,19 +469,23 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                 
                 
         DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
+        double preco, quantidade, subtotal, acumulador = 0;
         try{
-            double preco = Double.parseDouble(campopreco.getText().replaceAll(",", "."));
-            double quantidade = Double.parseDouble(campoquantidade.getText());
-            double subtotal = preco*quantidade;
-            double acumulador = 0;
-            Object[] dados = {camponomeproduto.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), subtotal};
+            preco = Double.parseDouble(campopreco.getText().replaceAll(",", "."));
+            quantidade = Double.parseDouble(campoquantidade.getText());
+            subtotal = preco*quantidade;
+            acumulador = 0;
+            Object[] dados = {camponome.getText(), campoquantidade.getText(), campopreco.getText(), campocodigo.getText(), subtotal};
             for (int i = 0; i < carrinho.getRowCount(); i++){
                acumulador += Double.valueOf(carrinho.getValueAt(i, 4).toString());
             }
             campototal.setText(Double.toString(acumulador+subtotal));
             modelo.addRow(dados);
             }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: informação inválida");
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Dados do produto inválido");
+            campocodigo.setText("");
+            campopreco.setText("");
+            campoquantidade.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -513,6 +524,10 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_LimparActionPerformed
 
+    private void campocodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocodigoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Atendente;
@@ -523,7 +538,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JTUsuario;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JFormattedTextField campocodigo;
-    private javax.swing.JTextField camponomeproduto;
+    private javax.swing.JTextField camponome;
     private javax.swing.JTextField campopreco;
     private javax.swing.JTextField campoquantidade;
     private javax.swing.JTextField campototal;

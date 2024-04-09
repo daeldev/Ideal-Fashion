@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 
 
@@ -18,7 +19,6 @@ public class DadosCompra extends javax.swing.JInternalFrame {
 
         Atendente = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        JTCPF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         JTUsuario = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -29,7 +29,8 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         CorrigeBug = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        JTData = new javax.swing.JTextField();
+        JTCPF = new javax.swing.JFormattedTextField();
+        JTData = new javax.swing.JFormattedTextField();
 
         setBorder(null);
         setClosable(true);
@@ -43,30 +44,12 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         jLabel4.setText("CPF");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        JTCPF.setBackground(new java.awt.Color(246, 242, 242));
-        JTCPF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        JTCPF.setForeground(new java.awt.Color(204, 204, 204));
-        JTCPF.setText("Insira o CPF do cliente");
-        JTCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
-        JTCPF.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                JTCPFMousePressed(evt);
-            }
-        });
-        JTCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTCPFActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JTCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 334, 30));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Cliente");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         JTUsuario.setBackground(new java.awt.Color(246, 242, 242));
-        JTUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JTUsuario.setForeground(new java.awt.Color(204, 204, 204));
         JTUsuario.setText("Insira o nome do cliente");
         JTUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
@@ -125,19 +108,32 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Data");
 
+        JTCPF.setBackground(new java.awt.Color(246, 242, 242));
+        JTCPF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        JTCPF.setForeground(new java.awt.Color(204, 204, 204));
+        try {
+            JTCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        JTCPF.setToolTipText("");
+        JTCPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTCPFMousePressed(evt);
+            }
+        });
+
         JTData.setBackground(new java.awt.Color(246, 242, 242));
-        JTData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JTData.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         JTData.setForeground(new java.awt.Color(204, 204, 204));
-        JTData.setText("Insira a data de compra");
-        JTData.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
+        try {
+            JTData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         JTData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 JTDataMousePressed(evt);
-            }
-        });
-        JTData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTDataActionPerformed(evt);
             }
         });
 
@@ -151,9 +147,11 @@ public class DadosCompra extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTData, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(JTData, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,11 +159,13 @@ public class DadosCompra extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addComponent(JTCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JTData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -175,31 +175,14 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTCPFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTCPFMousePressed
-        // TODO add your handling code here:
-        if (String.valueOf(JTCPF.getText()).equals(("Insira o CPF do cliente"))){
-            JTCPF.setText("");
-            JTCPF.setForeground(Color.black);
-        }
-        if (JTUsuario.getText().isEmpty()){
-            JTUsuario.setText("Insira o nome do cliente");
-            JTUsuario.setForeground(Color.gray);
-        }
-        if (String.valueOf(JTData.getText()).isEmpty()){
-            JTData.setText("Insira a data de compra");
-            JTData.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_JTCPFMousePressed
-
-    private void JTCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTCPFActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
+        if(JTUsuario.getText().equals("Insira o nome do cliente") || JTCPF.getText().equals("   .   .   -  ") || JTData.getText().equals("  /  /    ")){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados da venda.");
+        }else{
             Tela_de_Vendas Venda = new Tela_de_Vendas();
             this.dispose(); 
-            Venda.setVisible(true);  
+            Venda.setVisible(true); 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTUsuarioMousePressed
@@ -208,12 +191,12 @@ public class DadosCompra extends javax.swing.JInternalFrame {
             JTUsuario.setText("");
             JTUsuario.setForeground(Color.black);
         }
-        if (String.valueOf(JTCPF.getText()).isEmpty()){
-            JTCPF.setText("Insira o CPF do cliente");
-            JTCPF.setForeground(Color.gray);
+        if (String.valueOf(JTData.getText()).isEmpty()){
+            JTData.setText("   .   .   -  ");
+            JTData.setForeground(Color.gray);
         }
         if (String.valueOf(JTData.getText()).isEmpty()){
-            JTData.setText("Insira a data de compra");
+            JTData.setText("  /  /    ");
             JTData.setForeground(Color.gray);
         }  
     }//GEN-LAST:event_JTUsuarioMousePressed
@@ -222,9 +205,29 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTUsuarioActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void JTCPFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTCPFMousePressed
+        // TODO add your handling code here:
+        if (String.valueOf(JTCPF.getText()).equals(("   .   .   -  "))){
+            JTCPF.setText("");
+            JTCPF.setForeground(Color.black);
+        }
+        if (JTUsuario.getText().isEmpty()){
+            JTUsuario.setText("Insira o nome do cliente");
+            JTUsuario.setForeground(Color.gray);
+        }
+        if (String.valueOf(JTData.getText()).isEmpty()){
+            JTData.setText("  /  /    ");
+            JTData.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_JTCPFMousePressed
+
     private void JTDataMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTDataMousePressed
         // TODO add your handling code here:
-        if (String.valueOf(JTData.getText()).equals(("Insira a data de compra"))){
+        if (String.valueOf(JTData.getText()).equals(("  /  /    "))){
             JTData.setText("");
             JTData.setForeground(Color.black);
         }
@@ -233,25 +236,17 @@ public class DadosCompra extends javax.swing.JInternalFrame {
             JTUsuario.setForeground(Color.gray);
         }
         if (String.valueOf(JTCPF.getText()).isEmpty()){
-            JTCPF.setText("Insira o CPF do cliente");
+            JTCPF.setText("   .   .   -  ");
             JTCPF.setForeground(Color.gray);
-        }  
+        }
     }//GEN-LAST:event_JTDataMousePressed
-
-    private void JTDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTDataActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Atendente;
     private javax.swing.JTextField CorrigeBug;
-    private javax.swing.JTextField JTCPF;
-    private javax.swing.JTextField JTData;
+    private javax.swing.JFormattedTextField JTCPF;
+    private javax.swing.JFormattedTextField JTData;
     private javax.swing.JTextField JTUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

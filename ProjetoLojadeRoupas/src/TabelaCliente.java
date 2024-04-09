@@ -163,7 +163,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
         campotelefone.setBackground(new java.awt.Color(51, 51, 51));
         campotelefone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(21)#####-####")));
+            campotelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(21) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -309,10 +309,13 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        Object[] dados = {camponome.getText(), campotelefone.getText(), campoemail.getText(), campocpf.getText(), camporesidencia.getText()};
-        modelo.addRow(dados);
+        if(camponome.getText().equals("") || campocpf.getText().equals("") || campoemail.getText().equals("") || camporesidencia.getText().equals("") || campotelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados do cliente.");
+        }else{
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            Object[] dados = {camponome.getText(), campotelefone.getText(), campoemail.getText(), campocpf.getText(), camporesidencia.getText()};
+            modelo.addRow(dados);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
   
     
@@ -342,7 +345,9 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
              
              camponome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
              campotelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-             campotelefone.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+             campoemail.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+             campocpf.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+             camporesidencia.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
          }
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -360,8 +365,10 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1KeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-         if(jTable1.getSelectedRow() != -1){
+        if(camponome.getText().equals("") || campocpf.getText().equals("   .   .   -  ") || campoemail.getText().equals("") || camporesidencia.getText().equals("") || campotelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados do cliente para atualizar.");
+        }else{
+            if(jTable1.getSelectedRow() != -1){
              
              jTable1.setValueAt(camponome.getText(), jTable1.getSelectedRow(), 0);
              jTable1.setValueAt(campotelefone.getText(), jTable1.getSelectedRow(), 1);
@@ -369,7 +376,7 @@ public class TabelaCliente extends javax.swing.JInternalFrame {
              jTable1.setValueAt(campocpf.getText(), jTable1.getSelectedRow(), 3);
              jTable1.setValueAt(camporesidencia.getText(), jTable1.getSelectedRow(), 4);
          }
-        
+        }    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

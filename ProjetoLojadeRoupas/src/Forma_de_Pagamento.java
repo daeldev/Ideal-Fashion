@@ -60,6 +60,11 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
         jtfTroco.setEditable(false);
         jtfTroco.setBackground(new java.awt.Color(51, 51, 51));
         jtfTroco.setForeground(new java.awt.Color(255, 255, 255));
+        jtfTroco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfTrocoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Troco");
@@ -451,6 +456,10 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
              
          }
     }//GEN-LAST:event_jbCancelarVendaActionPerformed
+
+    private void jtfTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTrocoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfTrocoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
