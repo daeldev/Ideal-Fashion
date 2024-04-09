@@ -52,7 +52,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         JBClientes.setBackground(new java.awt.Color(51, 51, 51));
         JBClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBClientes.setForeground(new java.awt.Color(255, 255, 255));
-        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 16.png"))); // NOI18N
+        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.6.png"))); // NOI18N
         JBClientes.setText("Metas");
         JBClientes.setBorder(null);
         JBClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         JBSair.setBackground(new java.awt.Color(51, 51, 51));
         JBSair.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBSair.setForeground(new java.awt.Color(255, 255, 255));
-        JBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 11.png"))); // NOI18N
+        JBSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.4.png"))); // NOI18N
         JBSair.setText("Logout");
         JBSair.setBorder(null);
         JBSair.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +78,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         JBVendas.setBackground(new java.awt.Color(51, 51, 51));
         JBVendas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         JBVendas.setForeground(new java.awt.Color(255, 255, 255));
-        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 9.png"))); // NOI18N
+        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.2.png"))); // NOI18N
         JBVendas.setText("Funcionários");
         JBVendas.setBorder(null);
         JBVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +91,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         JBAjuda.setBackground(new java.awt.Color(51, 51, 51));
         JBAjuda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBAjuda.setForeground(new java.awt.Color(255, 255, 255));
-        JBAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Camada 10.png"))); // NOI18N
+        JBAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.3.png"))); // NOI18N
         JBAjuda.setText("Ajuda");
         JBAjuda.setBorder(null);
         JBAjuda.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class TelaDesktopGerente extends javax.swing.JFrame {
         Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/6.1.png"))); // NOI18N
         jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/FundoWork.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/9.1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 720));
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);

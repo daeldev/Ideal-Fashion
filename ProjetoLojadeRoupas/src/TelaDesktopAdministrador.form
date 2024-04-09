@@ -75,7 +75,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 17.png"/>
+                  <Image iconType="3" name="/Design/8.7.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -103,7 +103,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 11.png"/>
+                  <Image iconType="3" name="/Design/8.4.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -131,7 +131,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 14.png"/>
+                  <Image iconType="3" name="/Design/8.5.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Estoque"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -159,7 +159,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/Camada 10.png"/>
+                  <Image iconType="3" name="/Design/8.3.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -267,7 +267,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/FundoWork.png"/>
+                  <Image iconType="3" name="/Design/9.1.png"/>
                 </Property>
               </Properties>
               <Constraints>

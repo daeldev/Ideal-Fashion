@@ -180,9 +180,9 @@ public class DadosCompra extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados da venda.");
         }else{
             Tela_de_Vendas Venda = new Tela_de_Vendas();
-            this.dispose(); 
-            Venda.setVisible(true); 
-        }
+            this.dispose();
+            Venda.setVisible(true);
+        }                      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTUsuarioMousePressed

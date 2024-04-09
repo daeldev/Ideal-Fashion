@@ -421,7 +421,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(campototal.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.");
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.")
+            ;
         }else{
             TipoPagamento formaPagamento = new TipoPagamento();
             formaPagamento.setPagamento(campototal.getText());

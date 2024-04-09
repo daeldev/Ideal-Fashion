@@ -34,7 +34,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jbFinalizarVenda = new javax.swing.JButton();
         jbCancelarVenda = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setBorder(null);
         setClosable(true);
@@ -130,8 +129,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,9 +148,9 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                         .addComponent(jLabel7)
                         .addGap(179, 179, 179))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -178,16 +175,11 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jtfParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(212, 212, 212))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(22, 22, 22)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -275,12 +267,7 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                 jtfTroco.setText(""+troco);    
                 JOptionPane.showMessageDialog(null, "Venda Confirmada");
                 JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
+                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");  
                 }
          }
          
@@ -296,11 +283,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                  }
                  case "2x Sem Juros" -> {
                      Double calculo = totalReal / 2;
@@ -308,11 +290,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "3x Sem Juros" -> {
                      Double calculo = totalReal / 3;
@@ -320,11 +297,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "4x Sem Juros" -> {
                      Double calculo = totalReal / 4;
@@ -332,11 +304,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                  }
                  case "5x Sem Juros" -> {
                      Double calculo = totalReal / 5;
@@ -344,11 +311,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                  }
                  case "6x Com Juros 5,00" -> {
                      Double juros = totalReal * 0.05;
@@ -358,11 +320,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "7x Com Juros 5,00" -> {
                      Double juros = totalReal * 0.05;
@@ -372,11 +329,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "8x Com Juros 7,00" -> {
                      Double juros = totalReal * 0.07;
@@ -386,11 +338,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "9x Com Juros 7,50" -> {
                      Double juros = totalReal * 0.075;
@@ -400,11 +347,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  case "10x Com Juros 9,00" -> {
                      Double juros = totalReal * 0.09;
@@ -414,11 +356,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
                      JOptionPane.showMessageDialog(null, "Venda Confirmada!");
                      JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
                      JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-                     telavenda.setVisible(true);
-                     TelaAtendenteNova.jDesktopPane1.add(telavenda);
-                     telavenda.toFront();
-                     this.dispose();
                      }
                  default -> {
                  }
@@ -464,7 +401,6 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
