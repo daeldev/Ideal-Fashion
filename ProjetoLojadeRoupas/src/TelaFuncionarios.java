@@ -38,19 +38,19 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jnome = new javax.swing.JTextField();
+        camponome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jfuncao = new javax.swing.JTextField();
+        campofuncao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jsexo = new javax.swing.JTextField();
+        camposexo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jnomesocial = new javax.swing.JTextField();
-        jdata = new javax.swing.JFormattedTextField();
-        jcpf = new javax.swing.JFormattedTextField();
-        jdataad = new javax.swing.JFormattedTextField();
+        camponomesocial = new javax.swing.JTextField();
+        campodata = new javax.swing.JFormattedTextField();
+        campocpf = new javax.swing.JFormattedTextField();
+        campoadmissao = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -82,6 +82,11 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
                 "Nome Funcionário", "Função", "CPF", "Data Nasc", "Data De Admissão", "Sexo", "Nome Social"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,14 +94,14 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nome Do Funcionário");
 
-        jnome.setBackground(new java.awt.Color(51, 51, 51));
-        jnome.setForeground(new java.awt.Color(255, 255, 255));
+        camponome.setBackground(new java.awt.Color(51, 51, 51));
+        camponome.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Função");
 
-        jfuncao.setBackground(new java.awt.Color(51, 51, 51));
-        jfuncao.setForeground(new java.awt.Color(255, 255, 255));
+        campofuncao.setBackground(new java.awt.Color(51, 51, 51));
+        campofuncao.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("CPF");
@@ -110,46 +115,46 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Sexo");
 
-        jsexo.setBackground(new java.awt.Color(51, 51, 51));
-        jsexo.setForeground(new java.awt.Color(255, 255, 255));
+        camposexo.setBackground(new java.awt.Color(51, 51, 51));
+        camposexo.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Nome Social");
 
-        jnomesocial.setBackground(new java.awt.Color(51, 51, 51));
-        jnomesocial.setForeground(new java.awt.Color(255, 255, 255));
+        camponomesocial.setBackground(new java.awt.Color(51, 51, 51));
+        camponomesocial.setForeground(new java.awt.Color(255, 255, 255));
 
-        jdata.setBackground(new java.awt.Color(51, 51, 51));
-        jdata.setForeground(new java.awt.Color(255, 255, 255));
+        campodata.setBackground(new java.awt.Color(51, 51, 51));
+        campodata.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jdata.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            campodata.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jdata.addActionListener(new java.awt.event.ActionListener() {
+        campodata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jdataActionPerformed(evt);
+                campodataActionPerformed(evt);
             }
         });
 
-        jcpf.setBackground(new java.awt.Color(51, 51, 51));
-        jcpf.setForeground(new java.awt.Color(255, 255, 255));
+        campocpf.setBackground(new java.awt.Color(51, 51, 51));
+        campocpf.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            campocpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jdataad.setBackground(new java.awt.Color(51, 51, 51));
-        jdataad.setForeground(new java.awt.Color(255, 255, 255));
+        campoadmissao.setBackground(new java.awt.Color(51, 51, 51));
+        campoadmissao.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            jdataad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            campoadmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jdataad.addActionListener(new java.awt.event.ActionListener() {
+        campoadmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jdataadActionPerformed(evt);
+                campoadmissaoActionPerformed(evt);
             }
         });
 
@@ -159,12 +164,12 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jnome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jfuncao, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcpf)
-                    .addComponent(jdata, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jdataad)
-                    .addComponent(jsexo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(camponome, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campofuncao, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campocpf)
+                    .addComponent(campodata, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campoadmissao)
+                    .addComponent(camposexo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,7 +194,7 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel8)))
                         .addGap(0, 37, Short.MAX_VALUE))
-                    .addComponent(jnomesocial))
+                    .addComponent(camponomesocial))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,31 +203,31 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(camponome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jfuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campofuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campocpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campodata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdataad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoadmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jsexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(camposexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jnomesocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(camponomesocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -272,7 +277,7 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -308,35 +313,29 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-         DefaultTableModel modelot = (DefaultTableModel) jTable1.getModel();
-        Object[] dados = {jnome.getText(), jfuncao.getText(), jcpf.getText() , jdata.getText() , jdataad.getText() , jsexo.getText() , jnomesocial.getText() };
-        modelot.addRow(dados);
-        
-        
+        if (camponome.getText().isEmpty() || campofuncao.getText().isEmpty() || campocpf.getText().isEmpty() || campodata.getText().isEmpty() || campoadmissao.getText().isEmpty() || camposexo.getText().isEmpty() || camponomesocial.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do funcionário");
+        }else{
+            DefaultTableModel modelot = (DefaultTableModel) jTable1.getModel();
+            Object[] dados = {camponome.getText(), campofuncao.getText(), campocpf.getText() , campodata.getText() , campoadmissao.getText() , camposexo.getText() , camponomesocial.getText() };
+            modelot.addRow(dados);
+        }      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
            
-          if(jTable1.getSelectedRow() != -1){
-             
-             jTable1.setValueAt(jnome.getText(), jTable1.getSelectedRow(), 0);
-             jTable1.setValueAt(jfuncao.getText(), jTable1.getSelectedRow(), 1);
-             jTable1.setValueAt(jcpf.getText(), jTable1.getSelectedRow(), 2);
-             jTable1.setValueAt(jdata.getText(), jTable1.getSelectedRow(), 3);
-             jTable1.setValueAt(jdataad.getText(), jTable1.getSelectedRow(), 4);
-              jTable1.setValueAt(jsexo.getText(), jTable1.getSelectedRow(),5);
-              jTable1.setValueAt(jnomesocial.getText(), jTable1.getSelectedRow(),6); 
-              
+          if(jTable1.getSelectedRow() != -1){            
+             jTable1.setValueAt(camponome.getText(), jTable1.getSelectedRow(), 0);
+             jTable1.setValueAt(campofuncao.getText(), jTable1.getSelectedRow(), 1);
+             jTable1.setValueAt(campocpf.getText(), jTable1.getSelectedRow(), 2);
+             jTable1.setValueAt(campodata.getText(), jTable1.getSelectedRow(), 3);
+             jTable1.setValueAt(campoadmissao.getText(), jTable1.getSelectedRow(), 4);
+             jTable1.setValueAt(camposexo.getText(), jTable1.getSelectedRow(),5);
+             jTable1.setValueAt(camponomesocial.getText(), jTable1.getSelectedRow(),6);              
           }else{
-       
-           
-           JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
-       
-        
-          }        
-        
+             JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
+          }              
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -358,13 +357,13 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jdataadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdataadActionPerformed
+    private void campoadmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoadmissaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jdataadActionPerformed
+    }//GEN-LAST:event_campoadmissaoActionPerformed
 
-    private void jdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdataActionPerformed
+    private void campodataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campodataActionPerformed
 
-    }//GEN-LAST:event_jdataActionPerformed
+    }//GEN-LAST:event_campodataActionPerformed
 
     private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
         // TODO add your handling code here:
@@ -377,9 +376,27 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_LimparActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        camponome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+        campofuncao.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+        campocpf.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+        campodata.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+        campoadmissao.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        camposexo.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
+        camponomesocial.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Limpar;
+    private javax.swing.JFormattedTextField campoadmissao;
+    private javax.swing.JFormattedTextField campocpf;
+    private javax.swing.JFormattedTextField campodata;
+    private javax.swing.JTextField campofuncao;
+    private javax.swing.JTextField camponome;
+    private javax.swing.JTextField camponomesocial;
+    private javax.swing.JTextField camposexo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -396,12 +413,5 @@ public class TelaFuncionarios extends javax.swing.JInternalFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JFormattedTextField jcpf;
-    private javax.swing.JFormattedTextField jdata;
-    private javax.swing.JFormattedTextField jdataad;
-    private javax.swing.JTextField jfuncao;
-    private javax.swing.JTextField jnome;
-    private javax.swing.JTextField jnomesocial;
-    private javax.swing.JTextField jsexo;
     // End of variables declaration//GEN-END:variables
 }

@@ -165,27 +165,10 @@ public class TelaAtendenteNova extends javax.swing.JFrame {
 
     private void JBVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVendasActionPerformed
         // TODO add your handling code here:
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja verificar antes o estoque?","Atenção",JOptionPane.YES_NO_OPTION);
-        if(resposta == JOptionPane.YES_OPTION){          
-            TelaEstoque1 Estoque = new TelaEstoque1();
-            jDesktopPane1.add(Estoque);     
-            Estoque.setVisible(true);
-            Estoque.setBounds(247, 97, 1035, 620);
-            
             DadosCompra DadosVenda = new DadosCompra();
             jDesktopPane1.add(DadosVenda);     
             DadosVenda.setVisible(true);
-        }
-        if(resposta == JOptionPane.NO_OPTION){
-            DadosCompra DadosVenda = new DadosCompra();
-            jDesktopPane1.add(DadosVenda);     
-            DadosVenda.setVisible(true);
-        } 
-
-//        Tela_de_Vendas TelaVenda = new Tela_de_Vendas();
-//        jDesktopPane1.add(TelaVenda);     
-//        TelaVenda.setVisible(true);
-//        TelaVenda.setBounds(247, 97, 1035, 620);
+            DadosVenda.setBounds(450, 100, 408, 513);          
     }//GEN-LAST:event_JBVendasActionPerformed
 
     private void JBClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBClientesActionPerformed

@@ -88,7 +88,7 @@
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="554" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
@@ -183,6 +183,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -198,12 +201,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jnome" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jfuncao" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jcpf" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jdata" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jdataad" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jsexo" alignment="1" max="32767" attributes="0"/>
+                          <Component id="camponome" alignment="1" max="32767" attributes="0"/>
+                          <Component id="campofuncao" alignment="1" max="32767" attributes="0"/>
+                          <Component id="campocpf" alignment="0" max="32767" attributes="0"/>
+                          <Component id="campodata" alignment="1" max="32767" attributes="0"/>
+                          <Component id="campoadmissao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="camposexo" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -237,7 +240,7 @@
                               </Group>
                               <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jnomesocial" alignment="0" max="32767" attributes="0"/>
+                          <Component id="camponomesocial" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -249,31 +252,31 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jnome" min="-2" max="-2" attributes="0"/>
+                      <Component id="camponome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jfuncao" min="-2" max="-2" attributes="0"/>
+                      <Component id="campofuncao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jcpf" min="-2" max="-2" attributes="0"/>
+                      <Component id="campocpf" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jdata" min="-2" max="-2" attributes="0"/>
+                      <Component id="campodata" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jdataad" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoadmissao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jsexo" min="-2" max="-2" attributes="0"/>
+                      <Component id="camposexo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jnomesocial" min="-2" max="-2" attributes="0"/>
+                      <Component id="camponomesocial" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -288,7 +291,7 @@
                 <Property name="text" type="java.lang.String" value="Nome Do Funcion&#xe1;rio"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jnome">
+            <Component class="javax.swing.JTextField" name="camponome">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -306,7 +309,7 @@
                 <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jfuncao">
+            <Component class="javax.swing.JTextField" name="campofuncao">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -348,7 +351,7 @@
                 <Property name="text" type="java.lang.String" value="Sexo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jsexo">
+            <Component class="javax.swing.JTextField" name="camposexo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -366,7 +369,7 @@
                 <Property name="text" type="java.lang.String" value="Nome Social"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jnomesocial">
+            <Component class="javax.swing.JTextField" name="camponomesocial">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -376,7 +379,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jdata">
+            <Component class="javax.swing.JFormattedTextField" name="campodata">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -389,10 +392,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jdataActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campodataActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jcpf">
+            <Component class="javax.swing.JFormattedTextField" name="campocpf">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -401,11 +404,11 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="###.###.###-##" subtype="-1" type="5"/>
+                  <Format format="" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jdataad">
+            <Component class="javax.swing.JFormattedTextField" name="campoadmissao">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -418,7 +421,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jdataadActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoadmissaoActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

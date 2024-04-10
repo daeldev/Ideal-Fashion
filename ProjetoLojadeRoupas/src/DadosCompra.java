@@ -179,9 +179,13 @@ public class DadosCompra extends javax.swing.JInternalFrame {
         if(JTUsuario.getText().equals("Insira o nome do cliente") || JTCPF.getText().equals("   .   .   -  ") || JTData.getText().equals("  /  /    ")){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados da venda.");
         }else{
-            Tela_de_Vendas Venda = new Tela_de_Vendas();
-            this.dispose();
+            Tela_de_Vendas Venda;
+            Venda = new Tela_de_Vendas();
+            TelaAtendenteNova.jDesktopPane1.add(Venda);
             Venda.setVisible(true);
+            Venda.toFront();
+            Venda.setBounds(247, 97, 1035, 620);
+            dispose();    
         }                      
     }//GEN-LAST:event_jButton1ActionPerformed
 
