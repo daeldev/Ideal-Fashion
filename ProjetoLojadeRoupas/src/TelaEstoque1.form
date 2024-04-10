@@ -105,9 +105,9 @@
                       <Data value="c"/>
                     </Column>
                     <Column editable="true" title="Tamanho" type="java.lang.Object">
-                      <Data value="Blusa"/>
-                      <Data value="Cal&#xe7;a"/>
-                      <Data value="Regata"/>
+                      <Data value="p"/>
+                      <Data value="m"/>
+                      <Data value="g"/>
                     </Column>
                     <Column editable="true" title="Quantidade" type="java.lang.Object">
                       <Data value="50"/>

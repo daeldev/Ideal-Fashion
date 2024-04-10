@@ -87,9 +87,9 @@ public class TelaEstoque1 extends javax.swing.JInternalFrame {
         jTable1.setBackground(new java.awt.Color(246, 242, 242));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"a", "Blusa", "50", "15,00", "1"},
-                {"b", "Calça", "50", "20,00", "2"},
-                {"c", "Regata", "50", "22,00", "3"}
+                {"a", "p", "50", "15,00", "1"},
+                {"b", "m", "50", "20,00", "2"},
+                {"c", "g", "50", "22,00", "3"}
             },
             new String [] {
                 "Nome", "Tamanho", "Quantidade", "Preço", "Código"
