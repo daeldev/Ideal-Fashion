@@ -53,7 +53,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         campopreco = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        campotamanho = new javax.swing.JFormattedTextField();
+        campotamanho = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         carrinho = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -67,7 +67,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jTqtd = new javax.swing.JTextField();
+        campoqtd = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
@@ -265,12 +265,6 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
         campotamanho.setBackground(new java.awt.Color(51, 51, 51));
         campotamanho.setForeground(new java.awt.Color(255, 255, 255));
-        campotamanho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        campotamanho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotamanhoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -468,8 +462,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel3.setText("Quantidade");
 
-        jTqtd.setBackground(new java.awt.Color(51, 51, 51));
-        jTqtd.setForeground(new java.awt.Color(255, 255, 255));
+        campoqtd.setBackground(new java.awt.Color(51, 51, 51));
+        campoqtd.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton9.setBackground(new java.awt.Color(51, 102, 255));
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -506,7 +500,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(20, 59, Short.MAX_VALUE)
-                        .addComponent(jTqtd, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoqtd, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(123, 123, 123))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -532,7 +526,7 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                         .addGap(136, 136, 136)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTqtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoqtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(jButton9)
                         .addGap(18, 18, 18)
@@ -588,7 +582,8 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
         }else{
             TipoPagamento formaPagamento = new TipoPagamento();
             formaPagamento.setPagamento(campototal.getText());
-            Forma_de_Pagamento fp = new Forma_de_Pagamento();
+            Forma_de_Pagamento fp;
+            fp = new Forma_de_Pagamento();
             fp.Pegarpagamento(formaPagamento);
             fp.setVisible(true);
             TelaAtendenteNova.jDesktopPane1.add(fp);
@@ -630,9 +625,9 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) carrinho.getModel();
-        if(camponome.getText().isEmpty() || !"PpMmGg".contains(campotamanho.getText()) || campocodigo.getText().isEmpty()){                
+        if(camponome.getText().isEmpty() || campotamanho.getText().isEmpty() || campocodigo.getText().isEmpty()){                
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o nome, tamanho ou o código do produto");   
-        }else{
+        }else if("PpMmGg".contains(campotamanho.getText())){
             try{
                 double preco, quantidade, subtotal, acumulador = 0;
                 preco = Double.parseDouble(campopreco.getText().replaceAll(",", "."));
@@ -646,8 +641,10 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
                 campototal.setText(Double.toString(acumulador+subtotal));
                 modelo.addRow(dados);
             }catch(Exception e){
-                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o valor do preço ou da quantidade do produto");      
+                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o preço ou a quantidade do produto");      
             }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o tamanho produto");
         }              
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -692,7 +689,12 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if(jTable1.getSelectedRow() != -1){
-            jTable1.setValueAt(jTqtd.getText(), jTable1.getSelectedRow(), 2);
+            try{
+                int quantidade = Integer.parseInt(campoqtd.getText());
+                jTable1.setValueAt(quantidade, jTable1.getSelectedRow(), 2);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifique a quantidade");
+            }    
         }else{
             JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
         }
@@ -750,14 +752,10 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void campotamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotamanhoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campotamanhoActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         if(jTable1.getSelectedRow() != -1){            
-             campoquantidade.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+             campoqtd.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
          }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -785,8 +783,9 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField campocodigo;
     private javax.swing.JTextField camponome;
     private javax.swing.JTextField campopreco;
+    private javax.swing.JTextField campoqtd;
     private javax.swing.JTextField campoquantidade;
-    private javax.swing.JFormattedTextField campotamanho;
+    private javax.swing.JTextField campotamanho;
     private javax.swing.JTextField campototal;
     private javax.swing.JTable carrinho;
     private javax.swing.JButton jButton1;
@@ -822,7 +821,6 @@ public class Tela_de_Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private static javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTqtd;
     private javax.swing.JLabel pc;
     // End of variables declaration//GEN-END:variables
 }

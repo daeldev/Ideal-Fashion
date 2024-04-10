@@ -370,18 +370,12 @@ public class Forma_de_Pagamento extends javax.swing.JInternalFrame {
 
     private void jbCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarVendaActionPerformed
         
-         int resposta = JOptionPane.showConfirmDialog(null, "Deseja Cancelar a Venda?","Atenção",JOptionPane.YES_NO_OPTION);
-         
+         int resposta = JOptionPane.showConfirmDialog(null, "Deseja Cancelar a Venda?","Atenção",JOptionPane.YES_NO_OPTION);       
          if(resposta == JOptionPane.YES_NO_OPTION){
          JOptionPane.showMessageDialog(null, "Venda Cancelada");
-         Tela_de_Vendas telavenda = new Tela_de_Vendas ();
-         telavenda.setVisible(true);
-         TelaAtendenteNova.jDesktopPane1.add(telavenda);
-         telavenda.toFront();
-         this.dispose();
+         dispose();
          }
-         else if(resposta == JOptionPane.NO_OPTION){
-             
+         else if(resposta == JOptionPane.NO_OPTION){         
          }
     }//GEN-LAST:event_jbCancelarVendaActionPerformed
 
