@@ -33,7 +33,7 @@ public class WorkspaceGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        WorkspaceAtendente = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         JBMetas = new javax.swing.JButton();
         JBLogout = new javax.swing.JButton();
@@ -140,16 +140,16 @@ public class WorkspaceGerente extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/9.1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 720));
 
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        WorkspaceAtendente.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout WorkspaceAtendenteLayout = new javax.swing.GroupLayout(WorkspaceAtendente);
+        WorkspaceAtendente.setLayout(WorkspaceAtendenteLayout);
+        WorkspaceAtendenteLayout.setHorizontalGroup(
+            WorkspaceAtendenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        WorkspaceAtendenteLayout.setVerticalGroup(
+            WorkspaceAtendenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -157,11 +157,11 @@ public class WorkspaceGerente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(WorkspaceAtendente)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(WorkspaceAtendente)
         );
 
         pack();
@@ -169,17 +169,17 @@ public class WorkspaceGerente extends javax.swing.JFrame {
 
     private void JBFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFuncionariosActionPerformed
         // TODO add your handling code here: 
-        Funcionarios Funcionarios = new Funcionarios();
-        jDesktopPane1.add(Funcionarios);     
-        Funcionarios.setVisible(true);
-        Funcionarios.setBounds(247, 97, 1035, 620);
+        Funcionarios GerenciarFuncionários = new Funcionarios();
+        WorkspaceAtendente.add(GerenciarFuncionários);     
+        GerenciarFuncionários.setVisible(true);
+        GerenciarFuncionários.setBounds(247, 97, 1035, 620);
     }//GEN-LAST:event_JBFuncionariosActionPerformed
 
     private void JBMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMetasActionPerformed
-        Metas metas = new Metas();
-        jDesktopPane1.add(metas);     
-        metas.setVisible(true);
-        metas.setBounds(247, 97, 1035, 620);
+        Metas GerenciarMetas = new Metas();
+        WorkspaceAtendente.add(GerenciarMetas);     
+        GerenciarMetas.setVisible(true);
+        GerenciarMetas.setBounds(247, 97, 1035, 620);
     }//GEN-LAST:event_JBMetasActionPerformed
 
     private void JBAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAjudaActionPerformed
@@ -189,11 +189,11 @@ public class WorkspaceGerente extends javax.swing.JFrame {
 
     private void JBLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLogoutActionPerformed
         // TODO add your handling code here:
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-        if(q == JOptionPane.YES_OPTION){
-            Login Login = new Login();
+        int Option = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
+        if(Option == JOptionPane.YES_OPTION){
+            Login Logout = new Login();
             this.dispose();
-            Login.setVisible(true);
+            Logout.setVisible(true);
         }
     }//GEN-LAST:event_JBLogoutActionPerformed
 
@@ -245,8 +245,8 @@ public class WorkspaceGerente extends javax.swing.JFrame {
     private javax.swing.JLabel Opções;
     private javax.swing.JLabel Quadrado;
     private javax.swing.JLabel Status;
+    public static javax.swing.JDesktopPane WorkspaceAtendente;
     private javax.swing.JPanel iconeStatus;
-    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -28,7 +28,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
      */
     public Funcionarios() {
         initComponents();
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Funcionarios";
+        String FilePath = "Coloque aqui o caminho do arquivo Funcionarios da pasta DadosTabelas.";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -349,7 +349,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
         // TODO add your handling code here:
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Funcionarios";
+        String FilePath = "Coloque aqui o caminho do arquivo Funcionarios da pasta DadosTabelas.";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);

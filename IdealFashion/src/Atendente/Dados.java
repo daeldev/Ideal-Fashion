@@ -182,8 +182,9 @@ public class Dados extends javax.swing.JInternalFrame {
         if(JTNomeCliente.getText().equals("Insira o nome do cliente") || JTCpf.getText().equals("   .   .   -  ") || JTData.getText().equals("  /  /    ")){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados da venda.");
         }else{
-            Vendas Venda = new Vendas();
-            WorkspaceAtendente.jDesktopPane1.add(Venda);
+            Vendas Venda;
+            Venda = new Vendas();
+            WorkspaceAtendente.WorkspaceAtendente.add(Venda);
             Venda.setVisible(true);
             Venda.toFront();
             Venda.setBounds(247, 97, 1035, 620);

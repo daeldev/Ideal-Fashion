@@ -33,7 +33,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
         JTEstoque.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Estoque";
+        String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -337,7 +337,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
         
-           String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Estoque";
+           String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);

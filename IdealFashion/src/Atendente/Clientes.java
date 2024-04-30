@@ -21,7 +21,7 @@ public class Clientes extends javax.swing.JInternalFrame {
    
     DefaultTableModel modelo = (DefaultTableModel)JTTabela.getModel();
     JTTabela.setRowSorter(new TableRowSorter(modelo));
-    String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\Dados\\Clientes";
+    String FilePath = "Coloque aqui o caminho do arquivo Clientes da pasta DadosTabelas.";
              File file = new File(FilePath) ;  
         
         try {
@@ -387,7 +387,7 @@ public class Clientes extends javax.swing.JInternalFrame {
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
         
-      String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\Dados\\Clientes";
+      String FilePath = "Coloque aqui o caminho do arquivo Clientes da pasta DadosTabelas.";
       File file = new File(FilePath) ;
         try {
             FileWriter fw = new FileWriter(file);

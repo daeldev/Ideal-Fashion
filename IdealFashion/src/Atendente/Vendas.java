@@ -21,7 +21,7 @@ public class Vendas extends javax.swing.JInternalFrame {
    
     public Vendas() {
         initComponents();  
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Estoque";
+        String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -573,7 +573,7 @@ public class Vendas extends javax.swing.JInternalFrame {
             Pagamento FP = new Pagamento();
             FP.PegarPagamento(TP);
             FP.setVisible(true);
-            WorkspaceAtendente.jDesktopPane1.add(FP);
+            WorkspaceAtendente.WorkspaceAtendente.add(FP);
             FP.toFront();
  
         }
@@ -689,7 +689,7 @@ public class Vendas extends javax.swing.JInternalFrame {
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
 
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Estoque";
+        String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);
