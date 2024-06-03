@@ -75,7 +75,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/8.7.png"/>
+                  <Image iconType="3" name="/Design/&#xcd;cones/8.2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -103,7 +103,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/8.4.png"/>
+                  <Image iconType="3" name="/Design/&#xcd;cones/8.4.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -131,7 +131,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/8.5.png"/>
+                  <Image iconType="3" name="/Design/&#xcd;cones/8.5.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Estoque"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -159,7 +159,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/8.3.png"/>
+                  <Image iconType="3" name="/Design/&#xcd;cones/8.3.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -219,7 +219,7 @@
             <Component class="javax.swing.JLabel" name="Atendente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/3.3.png"/>
+                  <Image iconType="3" name="/Design/Administrador/3.3.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -231,7 +231,7 @@
             <Component class="javax.swing.JLabel" name="Quadrado">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/4.2.png"/>
+                  <Image iconType="3" name="/Design/Administrador/4.2.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -243,19 +243,19 @@
             <Component class="javax.swing.JLabel" name="Barra">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/5.2.png"/>
+                  <Image iconType="3" name="/Design/Administrador/5.2.png"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="242" y="0" width="1040" height="-1"/>
+                  <AbsoluteConstraints x="240" y="0" width="1040" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="Op&#xe7;&#xf5;es">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/6.1.png"/>
+                  <Image iconType="3" name="/Design/Outros/6.1.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -267,7 +267,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/9.1.png"/>
+                  <Image iconType="3" name="/Design/Fundos/9.1.png"/>
                 </Property>
               </Properties>
               <Constraints>

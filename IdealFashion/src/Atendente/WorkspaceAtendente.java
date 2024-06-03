@@ -54,7 +54,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         JBClientes.setBackground(new java.awt.Color(51, 51, 51));
         JBClientes.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBClientes.setForeground(new java.awt.Color(255, 255, 255));
-        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.2.png"))); // NOI18N
+        JBClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Ícones/8.2.png"))); // NOI18N
         JBClientes.setText("Clientes");
         JBClientes.setBorder(null);
         JBClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         JBLogout.setBackground(new java.awt.Color(51, 51, 51));
         JBLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBLogout.setForeground(new java.awt.Color(255, 255, 255));
-        JBLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.4.png"))); // NOI18N
+        JBLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Ícones/8.4.png"))); // NOI18N
         JBLogout.setText("Logout");
         JBLogout.setBorder(null);
         JBLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         JBVendas.setBackground(new java.awt.Color(51, 51, 51));
         JBVendas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBVendas.setForeground(new java.awt.Color(255, 255, 255));
-        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.1.png"))); // NOI18N
+        JBVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Ícones/8.1.png"))); // NOI18N
         JBVendas.setText("Vendas");
         JBVendas.setBorder(null);
         JBVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         JBAjuda.setBackground(new java.awt.Color(51, 51, 51));
         JBAjuda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         JBAjuda.setForeground(new java.awt.Color(255, 255, 255));
-        JBAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/8.3.png"))); // NOI18N
+        JBAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Ícones/8.3.png"))); // NOI18N
         JBAjuda.setText("Ajuda");
         JBAjuda.setBorder(null);
         JBAjuda.addActionListener(new java.awt.event.ActionListener() {
@@ -123,19 +123,19 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         Status.setText("Conectado");
         jPanel1.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 30));
 
-        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.1.png"))); // NOI18N
+        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Atendente/3.1.png"))); // NOI18N
         jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/4.1.png"))); // NOI18N
+        Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Atendente/4.1.png"))); // NOI18N
         jPanel1.add(Quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, -1));
 
-        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/5.1.png"))); // NOI18N
+        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Atendente/5.1.png"))); // NOI18N
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 0, 1040, -1));
 
-        Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/6.1.png"))); // NOI18N
+        Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Outros/6.1.png"))); // NOI18N
         jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/9.1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Fundos/9.1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
 
         WorkspaceAtendente.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);

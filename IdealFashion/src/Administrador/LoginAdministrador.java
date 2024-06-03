@@ -101,7 +101,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Administrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.3.png"))); // NOI18N
+        Administrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Administrador/3.3.png"))); // NOI18N
         jPanel2.add(Administrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         CorrigeOTracoNoInicio.setFont(new java.awt.Font("Segoe UI", 0, 3)); // NOI18N
@@ -116,7 +116,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 153, 255));
         jLabel1.setText("Bem-vindo!");
 
-        pc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/1.png"))); // NOI18N
+        pc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Outros/1.png"))); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -128,7 +128,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -180,6 +180,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         JTSenha.setForeground(new java.awt.Color(204, 204, 204));
         JTSenha.setText("@abcdefghijk");
         JTSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        JTSenha.setEchoChar('\u25cf');
         JTSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 JTSenhaMousePressed(evt);
@@ -221,7 +222,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 400, 420));
 
-        Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/2.1.png"))); // NOI18N
+        Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Administrador/2.1.png"))); // NOI18N
         jPanel1.add(Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

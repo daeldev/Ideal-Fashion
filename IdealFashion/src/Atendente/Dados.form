@@ -31,7 +31,7 @@
     <Component class="javax.swing.JLabel" name="Atendente">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Design/3.1.png"/>
+          <Image iconType="3" name="/Design/Atendente/3.1.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -137,7 +137,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace pref="184" max="32767" attributes="0"/>
+                  <EmptySpace pref="187" max="32767" attributes="0"/>
                   <Component id="JTCpf" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
             <Component class="javax.swing.JLabel" name="pc">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/1.png"/>
+                  <Image iconType="3" name="/Design/Outros/1.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -223,6 +223,9 @@
                   <Font name="Segoe UI" size="3" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CorrigeBugActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="404" y="10" width="10" height="0"/>
@@ -245,7 +248,9 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="JTProsseguirFocusGained"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JTProsseguirMouseClicked"/>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JTProsseguirMouseReleased"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTProsseguirActionPerformed"/>
           </Events>
         </Component>

@@ -64,13 +64,13 @@ public class Clientes extends javax.swing.JInternalFrame {
         JTCpf = new javax.swing.JFormattedTextField();
         JTTelefone = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         JTResidencia = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         JBExportar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         Limpar.setText("Limpar");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +193,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         JTTelefone.setBackground(new java.awt.Color(51, 51, 51));
         JTTelefone.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            JTTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(21)#####-####")));
+            JTTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -208,14 +208,6 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel1.setText("Nome");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Telefone");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Email");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("CPF");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
@@ -223,10 +215,6 @@ public class Clientes extends javax.swing.JInternalFrame {
         JTResidencia.setBackground(new java.awt.Color(51, 51, 51));
         JTResidencia.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(JTResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 220, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Residência");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
 
         JBExportar.setBackground(new java.awt.Color(51, 102, 255));
         JBExportar.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,15 +228,41 @@ public class Clientes extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Telefone");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Email");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Residência");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2))))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel2)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel3)
+                .addGap(123, 123, 123)
+                .addComponent(jLabel6)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 370, 510));

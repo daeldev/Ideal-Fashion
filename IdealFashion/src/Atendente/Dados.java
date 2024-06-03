@@ -39,7 +39,7 @@ public class Dados extends javax.swing.JInternalFrame {
         setTitle("Dados");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/3.1.png"))); // NOI18N
+        Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Atendente/3.1.png"))); // NOI18N
         getContentPane().add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -80,7 +80,7 @@ public class Dados extends javax.swing.JInternalFrame {
         jLabel1.setText("Venda");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 50));
 
-        pc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/1.png"))); // NOI18N
+        pc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Outros/1.png"))); // NOI18N
         jPanel3.add(pc, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 6, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,15 +90,28 @@ public class Dados extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 57, -1, -1));
 
         CorrigeBug.setFont(new java.awt.Font("Segoe UI", 0, 3)); // NOI18N
+        CorrigeBug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorrigeBugActionPerformed(evt);
+            }
+        });
         jPanel3.add(CorrigeBug, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 10, 10, 0));
 
         JTProsseguir.setBackground(new java.awt.Color(51, 153, 255));
         JTProsseguir.setForeground(new java.awt.Color(255, 255, 255));
         JTProsseguir.setText("Prosseguir");
         JTProsseguir.setBorder(null);
+        JTProsseguir.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTProsseguirFocusGained(evt);
+            }
+        });
         JTProsseguir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JTProsseguirMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                JTProsseguirMouseReleased(evt);
             }
         });
         JTProsseguir.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +175,7 @@ public class Dados extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                 .addComponent(JTCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
@@ -247,6 +260,19 @@ public class Dados extends javax.swing.JInternalFrame {
             JTCpf.setForeground(Color.gray);
         }
     }//GEN-LAST:event_JTDataMousePressed
+
+    private void JTProsseguirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTProsseguirMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_JTProsseguirMouseReleased
+
+    private void CorrigeBugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrigeBugActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CorrigeBugActionPerformed
+
+    private void JTProsseguirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JTProsseguirFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTProsseguirFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

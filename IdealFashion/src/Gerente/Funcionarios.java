@@ -2,6 +2,8 @@ package Gerente;
 
 
 import Administrador.Estoque;
+import Utilitários.ConexaoBD;
+import Utilitários.UsuarioDTO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -71,21 +73,21 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         JBExportar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         JTSexo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        JTNomeSocial = new javax.swing.JTextField();
         JTCpf = new javax.swing.JFormattedTextField();
-        JTAdmissao = new javax.swing.JFormattedTextField();
         JTData = new javax.swing.JFormattedTextField();
-        jLabel8 = new javax.swing.JLabel();
-        JTNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         JTFuncao = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         JBRemoverTudo = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        JTNome = new javax.swing.JTextField();
+        JTUsuario = new javax.swing.JTextField();
+        JTSenha = new javax.swing.JTextField();
 
         jButton6.setText("jButton6");
 
@@ -113,7 +115,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome Funcionário", "Função", "CPF", "Data Nasc", "Data De Admissão", "Sexo", "Nome Social"
+                "Nome", "Usuário", "Senha", "CPF", "Data de Nasc", "Função", "Sexo"
             }
         ));
         JTFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,23 +162,19 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
         JTSexo.setBackground(new java.awt.Color(51, 51, 51));
         JTSexo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 200, -1));
+        jPanel3.add(JTSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 200, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("CPF");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Data de Nascimento");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Nome do Funcionário");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Sexo");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
-
-        JTNomeSocial.setBackground(new java.awt.Color(51, 51, 51));
-        JTNomeSocial.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTNomeSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 200, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
 
         JTCpf.setBackground(new java.awt.Color(51, 51, 51));
         JTCpf.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,21 +183,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 200, -1));
-
-        JTAdmissao.setBackground(new java.awt.Color(51, 51, 51));
-        JTAdmissao.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            JTAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        JTAdmissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTAdmissaoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(JTAdmissao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 200, -1));
+        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 200, -1));
 
         JTData.setBackground(new java.awt.Color(51, 51, 51));
         JTData.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,36 +197,19 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JTDataActionPerformed(evt);
             }
         });
-        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 200, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Nome Social");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
-
-        JTNome.setBackground(new java.awt.Color(51, 51, 51));
-        JTNome.setForeground(new java.awt.Color(255, 255, 255));
-        JTNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTNomeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 200, -1));
+        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Função");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         JTFuncao.setBackground(new java.awt.Color(51, 51, 51));
         JTFuncao.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 200, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("CPF");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        jPanel3.add(JTFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 200, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Data de Admissão");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
+        jLabel6.setText("Senha");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
         JBRemoverTudo.setBackground(new java.awt.Color(255, 51, 51));
         JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,6 +231,31 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         });
         jPanel3.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 120, 40));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Usuário");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Nome");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        JTNome.setBackground(new java.awt.Color(51, 51, 51));
+        JTNome.setForeground(new java.awt.Color(255, 255, 255));
+        JTNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTNomeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 200, -1));
+
+        JTUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        JTUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 200, -1));
+
+        JTSenha.setBackground(new java.awt.Color(51, 51, 51));
+        JTSenha.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(JTSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 200, -1));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 360, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,27 +273,54 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTAdmissao.getText().isEmpty() || JTSexo.getText().isEmpty() || JTNomeSocial.getText().isEmpty()){
+        if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty() || JTSenha.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do funcionário");
         }else{
+            
+            String Nome,Usuario,Senha,CPF,DataNascimento,Funcao,Sexo;
+            Nome = JTNome.getText();
+            Usuario = JTUsuario.getText();
+            Senha = JTSenha.getText();
+            CPF = JTCpf.getText();
+            DataNascimento = JTData.getText();
+            Funcao = JTFuncao.getText();
+            Sexo = JTSexo.getText();
+            
+            UsuarioDTO objusuariodto = new UsuarioDTO();
+
+            objusuariodto.setNome(Nome);
+            objusuariodto.setUsuario(Usuario);
+            objusuariodto.setSenha(Senha);
+            objusuariodto.setCPF(CPF);
+            objusuariodto.setDataNascimento(DataNascimento);
+            objusuariodto.setFuncao(Funcao);
+            objusuariodto.setSexo(Sexo);
+
+            ConexaoBD objusuariodao = new ConexaoBD();
+            int Resultado = objusuariodao.autenticarUsuario(objusuariodto);
+
+            if(Resultado > 0){
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null, "Falha no cadastro");
+            }
+        
             DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
-            Object[] dados = {JTNome.getText(), JTFuncao.getText(), JTCpf.getText() , JTData.getText() , JTAdmissao.getText() , JTSexo.getText() , JTNomeSocial.getText() };
+            Object[] dados = {JTNome.getText(), JTFuncao.getText(), JTCpf.getText() , JTData.getText() , JTSenha.getText() , JTSexo.getText() , JTSenha.getText() };
             modelot.addRow(dados);
         }      
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
-        
-           
-          if(JTFuncionarios.getSelectedRow() != -1){            
-             JTFuncionarios.setValueAt(JTNome.getText(), JTFuncionarios.getSelectedRow(), 0);
-             JTFuncionarios.setValueAt(JTFuncao.getText(), JTFuncionarios.getSelectedRow(), 1);
-             JTFuncionarios.setValueAt(JTCpf.getText(), JTFuncionarios.getSelectedRow(), 2);
-             JTFuncionarios.setValueAt(JTData.getText(), JTFuncionarios.getSelectedRow(), 3);
-             JTFuncionarios.setValueAt(JTAdmissao.getText(), JTFuncionarios.getSelectedRow(), 4);
-             JTFuncionarios.setValueAt(JTSexo.getText(), JTFuncionarios.getSelectedRow(),5);
-             JTFuncionarios.setValueAt(JTNomeSocial.getText(), JTFuncionarios.getSelectedRow(),6);              
-          }else{
+        if(JTFuncionarios.getSelectedRow() != -1){                       
+                JTFuncionarios.setValueAt(JTNome.getText(), JTFuncionarios.getSelectedRow(), 0);
+                JTFuncionarios.setValueAt(JTUsuario.getText(), JTFuncionarios.getSelectedRow(),6);
+                JTFuncionarios.setValueAt(JTSenha.getText(), JTFuncionarios.getSelectedRow(), 4);        
+                JTFuncionarios.setValueAt(JTCpf.getText(), JTFuncionarios.getSelectedRow(), 2);
+                JTFuncionarios.setValueAt(JTData.getText(), JTFuncionarios.getSelectedRow(), 3);
+                JTFuncionarios.setValueAt(JTFuncao.getText(), JTFuncionarios.getSelectedRow(), 1);
+                JTFuncionarios.setValueAt(JTSexo.getText(), JTFuncionarios.getSelectedRow(),5);           
+        }else{
              JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
           }              
     }//GEN-LAST:event_JBAtualizarActionPerformed
@@ -339,12 +358,12 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private void JTFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFuncionariosMouseClicked
         // TODO add your handling code here:
         JTNome.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 0).toString());
-        JTFuncao.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 1).toString());
-        JTCpf.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 2).toString());
-        JTData.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 3).toString());
-        JTAdmissao.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 4).toString());
-        JTSexo.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 5).toString());
-        JTNomeSocial.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 6).toString());
+        JTUsuario.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 1).toString());
+        JTSenha.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 2).toString());
+        JTCpf.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 3).toString());
+        JTData.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 4).toString());
+        JTFuncao.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 5).toString());
+        JTSexo.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 6).toString());
     }//GEN-LAST:event_JTFuncionariosMouseClicked
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
@@ -388,10 +407,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_JBRemoverTudoActionPerformed
 
-    private void JTAdmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTAdmissaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTAdmissaoActionPerformed
-
     private void JTDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDataActionPerformed
 
     }//GEN-LAST:event_JTDataActionPerformed
@@ -407,23 +422,23 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBExportar;
     private javax.swing.JButton JBRemover;
     private javax.swing.JButton JBRemoverTudo;
-    private javax.swing.JFormattedTextField JTAdmissao;
     private javax.swing.JFormattedTextField JTCpf;
     private javax.swing.JFormattedTextField JTData;
     private javax.swing.JTextField JTFuncao;
     private javax.swing.JTable JTFuncionarios;
     private javax.swing.JTextField JTNome;
-    private javax.swing.JTextField JTNomeSocial;
+    private javax.swing.JTextField JTSenha;
     private javax.swing.JTextField JTSexo;
+    private javax.swing.JTextField JTUsuario;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;

@@ -184,7 +184,7 @@
             <Component class="javax.swing.JLabel" name="Atendente">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Design/3.1.png"/>
+                  <Image iconType="3" name="/Design/Atendente/3.1.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -214,7 +214,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -263,7 +263,7 @@
                 <Component class="javax.swing.JLabel" name="pc">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Design/1.png"/>
+                      <Image iconType="3" name="/Design/Outros/1.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -425,7 +425,7 @@
         <Component class="javax.swing.JLabel" name="Fundo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Design/2.2.png"/>
+              <Image iconType="3" name="/Design/Atendente/2.2.png"/>
             </Property>
           </Properties>
           <Constraints>
