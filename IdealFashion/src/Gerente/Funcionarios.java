@@ -79,8 +79,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         JTCpf = new javax.swing.JFormattedTextField();
         JTData = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        JTFuncao = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         JBRemoverTudo = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
@@ -201,14 +199,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         });
         jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 200, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Função");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
-
-        JTFuncao.setBackground(new java.awt.Color(51, 51, 51));
-        JTFuncao.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 340, 200, -1));
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Senha");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
@@ -283,17 +273,24 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty()){
+        if (JTNome.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do funcionário");
         }else{
-            if (JCFuncao.getSelectedItem() == "Gerente"){
-                String Nome,Usuario,Senha,CPF,DataNascimento,Funcao,Sexo;
+                if(JCFuncao.getSelectedItem() == "Gerente"){
+                    String Funcao = "Gerente";
+                }
+                if(JCFuncao.getSelectedItem() == "Atendente"){
+                    String Funcao = "Atendente";
+                }if(JCFuncao.getSelectedItem() == "Administrador"){
+                    String Funcao = "Administrador";
+                }
+                
+                String Nome,Usuario,Senha,CPF,DataNascimento,Sexo;
                 Nome = JTNome.getText();
                 Usuario = JTUsuario.getText();
                 Senha = JTSenha.getText();
                 CPF = JTCpf.getText();
                 DataNascimento = JTData.getText();
-                Funcao = JTFuncao.getText();
                 Sexo = JTSexo.getText();
 
                 UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
@@ -315,10 +312,9 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Falha no cadastro");
                 }
                 DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
-                Object[] dados = {JTNome.getText(), JTFuncao.getText(), JTCpf.getText() , JTData.getText() , JTSenha.getText() , JTSexo.getText() , JTSenha.getText() };
+                Object[] dados = {JTNome.getText(), Funcao, JTCpf.getText() , JTData.getText() , JTSenha.getText() , JTSexo.getText() , JTSenha.getText() };
                 modelot.addRow(dados);               
-            }                 
-        }               
+        }                                     
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
@@ -439,7 +435,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> JCFuncao;
     private javax.swing.JFormattedTextField JTCpf;
     private javax.swing.JFormattedTextField JTData;
-    private javax.swing.JTextField JTFuncao;
     private javax.swing.JTable JTFuncionarios;
     private javax.swing.JTextField JTNome;
     private javax.swing.JTextField JTSenha;
@@ -448,7 +443,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
