@@ -3,6 +3,7 @@ package Gerente;
 
 import Administrador.Estoque;
 import Utilitários.ConexaoBD;
+import Utilitários.ConexaoCiFuncionarios;
 import Utilitários.UsuarioDTO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -273,7 +274,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty() || JTSenha.getText().isEmpty()){
+        if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do funcionário");
         }else{
             
@@ -286,18 +287,18 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             Funcao = JTFuncao.getText();
             Sexo = JTSexo.getText();
             
-            UsuarioDTO objusuariodto = new UsuarioDTO();
+            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
 
-            objusuariodto.setNome(Nome);
-            objusuariodto.setUsuario(Usuario);
-            objusuariodto.setSenha(Senha);
-            objusuariodto.setCPF(CPF);
-            objusuariodto.setDataNascimento(DataNascimento);
-            objusuariodto.setFuncao(Funcao);
-            objusuariodto.setSexo(Sexo);
+            ObjusuarioDTO.setNome(Nome);
+            ObjusuarioDTO.setUsuario(Usuario);
+            ObjusuarioDTO.setSenha(Senha);
+            ObjusuarioDTO.setCPF(CPF);
+            ObjusuarioDTO.setDataNascimento(DataNascimento);
+            ObjusuarioDTO.setFuncao(Funcao);
+            ObjusuarioDTO.setSexo(Sexo);
 
-            ConexaoBD objusuariodao = new ConexaoBD();
-            int Resultado = objusuariodao.autenticarUsuario(objusuariodto);
+            ConexaoCiFuncionarios ObjusuarioDAO = new ConexaoCiFuncionarios();
+            int Resultado = ObjusuarioDAO.AutenticarFuncionario(ObjusuarioDTO);
 
             if(Resultado > 0){
                 JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
@@ -355,17 +356,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_LimparActionPerformed
 
-    private void JTFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFuncionariosMouseClicked
-        // TODO add your handling code here:
-        JTNome.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 0).toString());
-        JTUsuario.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 1).toString());
-        JTSenha.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 2).toString());
-        JTCpf.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 3).toString());
-        JTData.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 4).toString());
-        JTFuncao.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 5).toString());
-        JTSexo.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 6).toString());
-    }//GEN-LAST:event_JTFuncionariosMouseClicked
-
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
         // TODO add your handling code here:
         String FilePath = "Coloque aqui o caminho do arquivo Funcionarios da pasta DadosTabelas.";
@@ -414,6 +404,17 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private void JTNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTNomeActionPerformed
+
+    private void JTFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFuncionariosMouseClicked
+        // TODO add your handling code here:
+        JTNome.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 0).toString());
+        JTUsuario.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 1).toString());
+        JTSenha.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 2).toString());
+        JTCpf.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 3).toString());
+        JTData.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 4).toString());
+        JTFuncao.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 5).toString());
+        JTSexo.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 6).toString());
+    }//GEN-LAST:event_JTFuncionariosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

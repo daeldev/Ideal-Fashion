@@ -169,7 +169,8 @@ public class WorkspaceGerente extends javax.swing.JFrame {
 
     private void JBFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFuncionariosActionPerformed
         // TODO add your handling code here: 
-        Funcionarios GerenciarFuncionários = new Funcionarios();
+        Funcionarios GerenciarFuncionários;
+        GerenciarFuncionários = new Funcionarios();
         WorkspaceAtendente.add(GerenciarFuncionários);     
         GerenciarFuncionários.setVisible(true);
         GerenciarFuncionários.setBounds(247, 97, 1035, 620);
