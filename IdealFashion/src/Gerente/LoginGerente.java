@@ -1,6 +1,7 @@
 package Gerente;
 
 
+import Administrador.LoginAdministrador;
 import Administrador.WorkspaceAdministrador;
 import Atendente.Login;
 import Utilitários.UsuarioSenha;
@@ -252,8 +253,10 @@ public class LoginGerente extends javax.swing.JFrame {
     private void JBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoginActionPerformed
         String login = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
-
-        if(login.equals(login_gerente.getLogin()) && senha.equals(login_gerente.getSenha())){       
+        String funcao = "Gerente";
+        
+        if(login.equals(login_gerente.getLogin()) && senha.equals(login_gerente.getSenha())){   
+            
             WorkspaceGerente GerenteDesktop = new WorkspaceGerente();
             this.dispose();
             GerenteDesktop.setVisible(true);    
@@ -322,7 +325,7 @@ public class LoginGerente extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        WorkspaceAdministrador LoginAdministrador = new WorkspaceAdministrador();
+        LoginAdministrador LoginAdministrador = new LoginAdministrador();
         this.dispose();
         LoginAdministrador.setVisible(true);
     }//GEN-LAST:event_jLabel9MouseClicked

@@ -31,7 +31,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
      */
     public Funcionarios() {
         initComponents();
-        String FilePath = "Coloque aqui o caminho do arquivo Funcionarios da pasta DadosTabelas.";
+        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/IdealFashion/src/DadosTabelas/Funcionarios";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -89,6 +89,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         JTNome = new javax.swing.JTextField();
         JTUsuario = new javax.swing.JTextField();
         JTSenha = new javax.swing.JTextField();
+        JCFuncao = new javax.swing.JComboBox<>();
 
         jButton6.setText("jButton6");
 
@@ -202,11 +203,11 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Função");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         JTFuncao.setBackground(new java.awt.Color(51, 51, 51));
         JTFuncao.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 200, -1));
+        jPanel3.add(JTFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 340, 200, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Senha");
@@ -257,7 +258,15 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         JTSenha.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.add(JTSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 200, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 360, 560));
+        JCFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Administrador", "Gerente" }));
+        JCFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCFuncaoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JCFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 320, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,39 +286,39 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         if (JTNome.getText().isEmpty() || JTFuncao.getText().isEmpty() || JTCpf.getText().isEmpty() || JTData.getText().isEmpty() || JTSenha.getText().isEmpty() || JTSexo.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do funcionário");
         }else{
-            
-            String Nome,Usuario,Senha,CPF,DataNascimento,Funcao,Sexo;
-            Nome = JTNome.getText();
-            Usuario = JTUsuario.getText();
-            Senha = JTSenha.getText();
-            CPF = JTCpf.getText();
-            DataNascimento = JTData.getText();
-            Funcao = JTFuncao.getText();
-            Sexo = JTSexo.getText();
-            
-            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
+            if (JCFuncao.getSelectedItem() == "Gerente"){
+                String Nome,Usuario,Senha,CPF,DataNascimento,Funcao,Sexo;
+                Nome = JTNome.getText();
+                Usuario = JTUsuario.getText();
+                Senha = JTSenha.getText();
+                CPF = JTCpf.getText();
+                DataNascimento = JTData.getText();
+                Funcao = JTFuncao.getText();
+                Sexo = JTSexo.getText();
 
-            ObjusuarioDTO.setNome(Nome);
-            ObjusuarioDTO.setUsuario(Usuario);
-            ObjusuarioDTO.setSenha(Senha);
-            ObjusuarioDTO.setCPF(CPF);
-            ObjusuarioDTO.setDataNascimento(DataNascimento);
-            ObjusuarioDTO.setFuncao(Funcao);
-            ObjusuarioDTO.setSexo(Sexo);
+                UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
 
-            ConexaoCiFuncionarios ObjusuarioDAO = new ConexaoCiFuncionarios();
-            int Resultado = ObjusuarioDAO.AutenticarFuncionario(ObjusuarioDTO);
+                ObjusuarioDTO.setNome(Nome);
+                ObjusuarioDTO.setUsuario(Usuario);
+                ObjusuarioDTO.setSenha(Senha);
+                ObjusuarioDTO.setCPF(CPF);
+                ObjusuarioDTO.setDataNascimento(DataNascimento);
+                ObjusuarioDTO.setFuncao(Funcao);
+                ObjusuarioDTO.setSexo(Sexo);
 
-            if(Resultado > 0){
-                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
-            }else{
-                JOptionPane.showMessageDialog(null, "Falha no cadastro");
-            }
-        
-            DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
-            Object[] dados = {JTNome.getText(), JTFuncao.getText(), JTCpf.getText() , JTData.getText() , JTSenha.getText() , JTSexo.getText() , JTSenha.getText() };
-            modelot.addRow(dados);
-        }      
+                ConexaoCiFuncionarios ObjusuarioDAO = new ConexaoCiFuncionarios();
+                int Resultado = ObjusuarioDAO.AutenticarFuncionario(ObjusuarioDTO);
+
+                if(Resultado > 0){
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Falha no cadastro");
+                }
+                DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
+                Object[] dados = {JTNome.getText(), JTFuncao.getText(), JTCpf.getText() , JTData.getText() , JTSenha.getText() , JTSexo.getText() , JTSenha.getText() };
+                modelot.addRow(dados);               
+            }                 
+        }               
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
@@ -358,7 +367,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
     private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
         // TODO add your handling code here:
-        String FilePath = "Coloque aqui o caminho do arquivo Funcionarios da pasta DadosTabelas.";
+        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/IdealFashion/src/DadosTabelas/Funcionarios";
              File file = new File(FilePath) ;
         try {
             FileWriter fwe = new FileWriter(file);
@@ -416,6 +425,10 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         JTSexo.setText(JTFuncionarios.getValueAt(JTFuncionarios.getSelectedRow(), 6).toString());
     }//GEN-LAST:event_JTFuncionariosMouseClicked
 
+    private void JCFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JCFuncaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAdicionar;
@@ -423,6 +436,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBExportar;
     private javax.swing.JButton JBRemover;
     private javax.swing.JButton JBRemoverTudo;
+    private javax.swing.JComboBox<String> JCFuncao;
     private javax.swing.JFormattedTextField JTCpf;
     private javax.swing.JFormattedTextField JTData;
     private javax.swing.JTextField JTFuncao;
