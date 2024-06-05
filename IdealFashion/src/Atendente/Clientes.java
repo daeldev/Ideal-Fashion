@@ -65,12 +65,12 @@ public class Clientes extends javax.swing.JInternalFrame {
         JTTelefone = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        JTResidencia = new javax.swing.JTextField();
         JBExportar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        JTCEP = new javax.swing.JFormattedTextField();
 
         Limpar.setText("Limpar");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,10 +212,6 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel5.setText("CPF");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
-        JTResidencia.setBackground(new java.awt.Color(51, 51, 51));
-        JTResidencia.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(JTResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 220, -1));
-
         JBExportar.setBackground(new java.awt.Color(51, 102, 255));
         JBExportar.setForeground(new java.awt.Color(255, 255, 255));
         JBExportar.setText("EXPORTAR");
@@ -235,7 +231,20 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel3.setText("Email");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Residência");
+        jLabel6.setText("CEP");
+
+        JTCEP.setBackground(new java.awt.Color(51, 51, 51));
+        JTCEP.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            JTCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        JTCEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTCEPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -245,13 +254,17 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel3))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel2))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 80, Short.MAX_VALUE)
+                .addComponent(JTCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,9 +273,11 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addGap(53, 53, 53)
                 .addComponent(jLabel3)
-                .addGap(123, 123, 123)
+                .addGap(115, 115, 115)
                 .addComponent(jLabel6)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JTCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 370, 510));
@@ -282,11 +297,11 @@ public class Clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        if(JTNome.getText().equals("") || JTCpf.getText().equals("") || JTEmail.getText().equals("") || JTResidencia.getText().equals("") || JTTelefone.getText().equals("")){
+        if(JTNome.getText().equals("") || JTCpf.getText().equals("") || JTEmail.getText().equals("") || JTCEP.getText().equals("") || JTTelefone.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados do cliente.");
         }else{
             DefaultTableModel modelo = (DefaultTableModel) JTTabela.getModel();
-            Object[] dados = {JTNome.getText(), JTTelefone.getText(), JTEmail.getText(), JTCpf.getText(), JTResidencia.getText()};
+            Object[] dados = {JTNome.getText(), JTTelefone.getText(), JTEmail.getText(), JTCpf.getText(), JTCEP.getText()};
             modelo.addRow(dados);
         }
     }//GEN-LAST:event_JBAdicionarActionPerformed
@@ -320,7 +335,7 @@ public class Clientes extends javax.swing.JInternalFrame {
              JTTelefone.setText(JTTabela.getValueAt(JTTabela.getSelectedRow(), 1).toString());
              JTEmail.setText(JTTabela.getValueAt(JTTabela.getSelectedRow(), 2).toString());
              JTCpf.setText(JTTabela.getValueAt(JTTabela.getSelectedRow(), 3).toString());
-             JTResidencia.setText(JTTabela.getValueAt(JTTabela.getSelectedRow(), 4).toString());
+             JTCEP.setText(JTTabela.getValueAt(JTTabela.getSelectedRow(), 4).toString());
          }
 
     }//GEN-LAST:event_JTTabelaMouseClicked
@@ -338,7 +353,7 @@ public class Clientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTabelaKeyReleased
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
-        if(JTNome.getText().equals("") || JTCpf.getText().equals("   .   .   -  ") || JTEmail.getText().equals("") || JTResidencia.getText().equals("") || JTTelefone.getText().equals("")){
+        if(JTNome.getText().equals("") || JTCpf.getText().equals("   .   .   -  ") || JTEmail.getText().equals("") || JTCEP.getText().equals("") || JTTelefone.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados do cliente para atualizar.");
         }else{
             if(JTTabela.getSelectedRow() != -1){
@@ -347,7 +362,7 @@ public class Clientes extends javax.swing.JInternalFrame {
              JTTabela.setValueAt(JTTelefone.getText(), JTTabela.getSelectedRow(), 1);
              JTTabela.setValueAt(JTEmail.getText(), JTTabela.getSelectedRow(), 2);
              JTTabela.setValueAt(JTCpf.getText(), JTTabela.getSelectedRow(), 3);
-             JTTabela.setValueAt(JTResidencia.getText(), JTTabela.getSelectedRow(), 4);
+             JTTabela.setValueAt(JTCEP.getText(), JTTabela.getSelectedRow(), 4);
          }
         }    
     }//GEN-LAST:event_JBAtualizarActionPerformed
@@ -438,6 +453,10 @@ public class Clientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTNomeActionPerformed
 
+    private void JTCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCEPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTCEPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAdicionar;
@@ -445,10 +464,10 @@ public class Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBExportar;
     private javax.swing.JButton JBRemover;
     private javax.swing.JButton JBRemoverTudo;
+    private javax.swing.JFormattedTextField JTCEP;
     private javax.swing.JFormattedTextField JTCpf;
     private javax.swing.JTextField JTEmail;
     private javax.swing.JTextField JTNome;
-    private javax.swing.JTextField JTResidencia;
     private static javax.swing.JTable JTTabela;
     private javax.swing.JFormattedTextField JTTelefone;
     private javax.swing.JMenuItem Limpar;

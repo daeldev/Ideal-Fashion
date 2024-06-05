@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class ConexaoCiFuncionarios {
+public class ConexaoCi {
     Connection conn;
     
     public int AutenticarFuncionario(UsuarioDTO objusdto){
@@ -19,7 +19,7 @@ public class ConexaoCiFuncionarios {
             String sql = "Insert into Funcionarios (CPF, Nome, Usuario, Senha, DataNascimento, Funcao, Sexo) Values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, objusdto.getCPF());
-            pstm.setString(2, objusdto.getNome());
+            pstm.setString(2, objusdto.getNomeFuncionario());
             pstm.setString(3, objusdto.getUsuario());
             pstm.setString(4, objusdto.getSenha());
             pstm.setString(5, objusdto.getFuncao());
@@ -29,8 +29,27 @@ public class ConexaoCiFuncionarios {
             int rs = pstm.executeUpdate();
             return rs;
         }catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "UsuarioConexaoci : " + erro);
-            return 1;
+            JOptionPane.showMessageDialog(null, "Usuário já cadastrado.");
+            return -1;
+        }
+    }
+    
+    public int AutenticarEstoque(UsuarioDTO objusdto){
+        conn = new ConexaoBD().ConectaBD();
+        try{
+            String sql = "Insert into Estoque (Codigo, Tamanho, Quantidade, Preco, Nome) Values (?, ?, ?, ?, ?)";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, objusdto.getCodigo());
+            pstm.setString(2, objusdto.getTamanho());
+            pstm.setInt(3, objusdto.getQuantidade());
+            pstm.setDouble(4, objusdto.getPreco());
+            pstm.setString(5, objusdto.getNomeProduto());
+            
+            int rs = pstm.executeUpdate();
+            return rs;
+        }catch (SQLException erro){
+            JOptionPane.showMessageDialog(null, "Produto já cadastrado.");     
+            return -1;
         }
     }
 }
