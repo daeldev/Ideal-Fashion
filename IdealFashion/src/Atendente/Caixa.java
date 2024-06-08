@@ -1,7 +1,4 @@
 package Atendente;
-
-
-import Atendente.Pagamento;
 import Administrador.Estoque;
 import Utilitários.TipoPagamento;
 import java.io.BufferedReader;
@@ -11,15 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Vendas extends javax.swing.JInternalFrame {
+public class Caixa extends javax.swing.JInternalFrame {
    
-    public Vendas() {
+    public Caixa() {
         initComponents();  
         String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
         File file = new File(FilePath) ;      
@@ -91,11 +86,6 @@ public class Vendas extends javax.swing.JInternalFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         JTEstoque = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        JTQuantidadeProduto = new javax.swing.JTextField();
-        JBAtualizar = new javax.swing.JButton();
-        JBExportar = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
 
         jPanel4.setBackground(new java.awt.Color(246, 242, 242));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,6 +169,7 @@ public class Vendas extends javax.swing.JInternalFrame {
         JTSenha.setForeground(new java.awt.Color(204, 204, 204));
         JTSenha.setText("@abcdefghijk");
         JTSenha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        JTSenha.setEchoChar('\u25cf');
         JTSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 JTSenhaMousePressed(evt);
@@ -243,7 +234,7 @@ public class Vendas extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
 
-        jLabel5.setText("Nome");
+        jLabel5.setText("Produto");
 
         JTNome.setBackground(new java.awt.Color(51, 51, 51));
         JTNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,17 +295,17 @@ public class Vendas extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(12, 12, 12)
-                        .addComponent(JTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
-                        .addGap(35, 35, 35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(JTPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -322,7 +313,7 @@ public class Vendas extends javax.swing.JInternalFrame {
                                 .addGap(41, 41, 41))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(34, 34, 34)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JTTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -362,7 +353,7 @@ public class Vendas extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 230));
@@ -373,7 +364,7 @@ public class Vendas extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "Tamanho", "Quantidade", "Preço", "Código", "Subtotal"
+                "Produto", "Tamanho", "Quantidade", "Preço", "Código", "Subtotal"
             }
         ));
         JTVendas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,50 +471,7 @@ public class Vendas extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(JTEstoque);
 
-        jPanel8.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 10, 564, 565));
-
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setText("Quantidade");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
-
-        JTQuantidadeProduto.setBackground(new java.awt.Color(51, 51, 51));
-        JTQuantidadeProduto.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel8.add(JTQuantidadeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 255, -1));
-
-        JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
-        JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAtualizar.setText("ATUALIZAR");
-        JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBAtualizarActionPerformed(evt);
-            }
-        });
-        jPanel8.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 100, 40));
-
-        JBExportar.setBackground(new java.awt.Color(51, 102, 255));
-        JBExportar.setForeground(new java.awt.Color(255, 255, 255));
-        JBExportar.setText("EXPORTAR");
-        JBExportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBExportarActionPerformed(evt);
-            }
-        });
-        jPanel8.add(JBExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 100, 40));
-
-        jPanel6.setBackground(new java.awt.Color(246, 242, 242));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 310, 180));
+        jPanel8.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 10, 950, 565));
 
         jTabbedPane1.addTab("Estoque", jPanel8);
 
@@ -565,13 +513,11 @@ public class Vendas extends javax.swing.JInternalFrame {
 
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
         if(JTTotal.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.")
-            ;
+            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.");
         }else{
             TipoPagamento TP = new TipoPagamento();
             TP.setPagamento(JTTotal.getText());
             Pagamento FP = new Pagamento();
-            FP.PegarPagamento(TP);
             FP.setVisible(true);
             WorkspaceAtendente.WorkspaceAtendente.add(FP);
             FP.toFront();
@@ -674,51 +620,8 @@ public class Vendas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTCodigoActionPerformed
 
-    private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
-        if(JTEstoque.getSelectedRow() != -1){
-            try{
-                int quantidade = Integer.parseInt(JTQuantidadeProduto.getText());
-                JTEstoque.setValueAt(quantidade, JTEstoque.getSelectedRow(), 2);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Verifique a quantidade");
-            }    
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");
-        }
-    }//GEN-LAST:event_JBAtualizarActionPerformed
-
-    private void JBExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExportarActionPerformed
-
-        String FilePath = "Coloque aqui o caminho do arquivo Estoque da pasta DadosTabelas.";
-             File file = new File(FilePath) ;
-        try {
-            FileWriter fwe = new FileWriter(file);
-            BufferedWriter bwe = new BufferedWriter(fwe);
-            
-            for (int i = 0; i < JTEstoque.getRowCount(); i ++){ // rows
-                for(int j = 0; j <  JTEstoque.getColumnCount(); j ++){ // colunas
-                    bwe.write(JTEstoque.getValueAt (i, j).toString() + " ");
-                    
-                }
-           bwe.newLine();
-           
-            }            
-            
-            bwe.close();
-            fwe.close();
-            
-            
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_JBExportarActionPerformed
-
     private void JTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEstoqueMouseClicked
-        // TODO add your handling code here:
-        if(JTEstoque.getSelectedRow() != -1){            
-             JTQuantidadeProduto.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 2).toString());
-         }
+
     }//GEN-LAST:event_JTEstoqueMouseClicked
 
     private void JTVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTVendasMouseClicked
@@ -743,9 +646,7 @@ public class Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField CorrigeOTracoNoInicio;
     private javax.swing.JLabel Fundo;
     private javax.swing.JButton JBAdicionar;
-    private javax.swing.JButton JBAtualizar;
     private javax.swing.JButton JBCancelar;
-    private javax.swing.JButton JBExportar;
     private javax.swing.JButton JBLimpar;
     private javax.swing.JButton JBPagar;
     private javax.swing.JCheckBox JCMostrarSenha;
@@ -754,12 +655,11 @@ public class Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JTNome;
     private javax.swing.JTextField JTPreco;
     private javax.swing.JTextField JTQuantidade;
-    private javax.swing.JTextField JTQuantidadeProduto;
     private javax.swing.JPasswordField JTSenha;
     private javax.swing.JTextField JTTamanho;
     private javax.swing.JTextField JTTotal;
     private javax.swing.JTextField JTUsuario;
-    private javax.swing.JTable JTVendas;
+    public javax.swing.JTable JTVendas;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
@@ -769,7 +669,6 @@ public class Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -780,7 +679,6 @@ public class Vendas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;

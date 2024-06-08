@@ -1,7 +1,8 @@
 package Atendente;
-
-
+import Utilitários.ConexaoCi;
 import Utilitários.TipoPagamento;
+import Utilitários.UsuarioDTO;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 
@@ -236,135 +237,138 @@ public class Pagamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JRVistaActionPerformed
 
     private void JRCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRCartaoActionPerformed
-    
-    jbgAVista.clearSelection();
-    JTVista.setText("");
-    JTTroco.setText("");
+        jbgAVista.clearSelection();
+        JTVista.setText("");
+        JTTroco.setText("");
 
     }//GEN-LAST:event_JRCartaoActionPerformed
 
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
-
-          try {
-            
-              if(JRVista.isSelected ()){
-         Double dinheiroDoCliente = Double.valueOf(JTVista.getText());
-         Double total = Double.valueOf(JTSubtotal.getText());
-         Double troco = dinheiroDoCliente - total;
-         
-
+        try{    
+            if(JRVista.isSelected ()){
+                Double dinheiroDoCliente = Double.valueOf(JTVista.getText());
+                Double total = Double.valueOf(JTSubtotal.getText());
+                Double troco = dinheiroDoCliente - total;
                 if(dinheiroDoCliente < 0 || troco < 0){
-                JOptionPane.showMessageDialog(null, "Valor Inválido! Tente Novamente.");
-                JTVista.setText("");
-                JTTroco.setText("");
-            }   
-                else{
-                JTTroco.setText(""+troco);    
-                JOptionPane.showMessageDialog(null, "Venda Confirmada");
-                JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");  
+                    JOptionPane.showMessageDialog(null, "Valor Inválido! Tente Novamente.");
+                    JTVista.setText("");
+                    JTTroco.setText("");
+                }else{
+                    JTTroco.setText(""+troco);    
+                    JOptionPane.showMessageDialog(null, "Venda Confirmada");
+                    JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
+                    JOptionPane.showMessageDialog(null, "Venda Finalizada!");  
                 }
-         }
-         
-         if(JRCartao.isSelected()){
-         jTextField1.setText(JCCartao.getSelectedItem().toString());
-         Double totalReal = Double.valueOf(JTSubtotal.getText());//.replaceAll(",", "."));
-         String parcelas = String.valueOf((String) JCCartao.getSelectedItem());
-      
-               switch (parcelas) {
-                 case "1x Sem Juros" -> {
-                     Double calculo = totalReal / 1;
-                     JTParcelas.setText(String.format("1x de R$ %.2f Sem Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                 }
-                 case "2x Sem Juros" -> {
-                     Double calculo = totalReal / 2;
-                     JTParcelas.setText(String.format("2x de R$ %.2f Sem Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "3x Sem Juros" -> {
-                     Double calculo = totalReal / 3;
-                     JTParcelas.setText(String.format("3x de R$ %.2f Sem Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "4x Sem Juros" -> {
-                     Double calculo = totalReal / 4;
-                     JTParcelas.setText(String.format("4x de R$ %.2f Sem Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                 }
-                 case "5x Sem Juros" -> {
-                     Double calculo = totalReal / 5;
-                     JTParcelas.setText(String.format("5x de R$ %.2f Sem Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                 }
-                 case "6x Com Juros 5,00" -> {
-                     Double juros = totalReal * 0.05;
-                     Double jurosSoma = totalReal + juros;
-                     Double calculo = jurosSoma / 6;
-                     JTParcelas.setText(String.format("6x de R$ %.2f Com Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "7x Com Juros 5,00" -> {
-                     Double juros = totalReal * 0.05;
-                     Double jurosSoma = totalReal + juros;
-                     Double calculo = jurosSoma / 7;
-                     JTParcelas.setText(String.format("7x de R$ %.2f Com Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "8x Com Juros 7,00" -> {
-                     Double juros = totalReal * 0.07;
-                     Double jurosSoma = totalReal + juros;
-                     Double calculo = jurosSoma / 8;
-                     JTParcelas.setText(String.format("8x de R$ %.2f Com Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "9x Com Juros 7,50" -> {
-                     Double juros = totalReal * 0.075;
-                     Double jurosSoma = totalReal + juros;
-                     Double calculo = jurosSoma / 9;
-                     JTParcelas.setText(String.format("9x de R$ %.2f Com Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 case "10x Com Juros 9,00" -> {
-                     Double juros = totalReal * 0.09;
-                     Double jurosSoma = totalReal + juros;
-                     Double calculo = jurosSoma / 10;
-                     JTParcelas.setText(String.format("10x de R$ %.2f Com Juros",calculo));
-                     JOptionPane.showMessageDialog(null, "Venda Confirmada!");
-                     JOptionPane.showMessageDialog(null, "Imprimindo Nota Fiscal...");
-                     JOptionPane.showMessageDialog(null, "Venda Finalizada!");
-                     }
-                 default -> {
-                 }
-               }
-         }
-        } catch (Exception e) {
-                    
+            }
+
+            if(JRCartao.isSelected()){
+                jTextField1.setText(JCCartao.getSelectedItem().toString());
+                Double totalReal = Double.valueOf(JTSubtotal.getText());//.replaceAll(",", "."));
+                String parcelas = String.valueOf((String) JCCartao.getSelectedItem());
+
+                switch (parcelas) {
+                    case "1x Sem Juros" -> {
+                        Double calculo = totalReal / 1;
+                        JTParcelas.setText(String.format("1x de R$ %.2f Sem Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "2x Sem Juros" -> {
+                        Double calculo = totalReal / 2;
+                        JTParcelas.setText(String.format("2x de R$ %.2f Sem Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "3x Sem Juros" -> {
+                        Double calculo = totalReal / 3;
+                        JTParcelas.setText(String.format("3x de R$ %.2f Sem Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "4x Sem Juros" -> {
+                        Double calculo = totalReal / 4;
+                        JTParcelas.setText(String.format("4x de R$ %.2f Sem Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "5x Sem Juros" -> {
+                        Double calculo = totalReal / 5;
+                        JTParcelas.setText(String.format("5x de R$ %.2f Sem Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "6x Com Juros 5,00" -> {
+                        Double juros = totalReal * 0.05;
+                        Double jurosSoma = totalReal + juros;
+                        Double calculo = jurosSoma / 6;
+                        JTParcelas.setText(String.format("6x de R$ %.2f Com Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "7x Com Juros 5,00" -> {
+                        Double juros = totalReal * 0.05;
+                        Double jurosSoma = totalReal + juros;
+                        Double calculo = jurosSoma / 7;
+                        JTParcelas.setText(String.format("7x de R$ %.2f Com Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "8x Com Juros 7,00" -> {
+                        Double juros = totalReal * 0.07;
+                        Double jurosSoma = totalReal + juros;
+                        Double calculo = jurosSoma / 8;
+                        JTParcelas.setText(String.format("8x de R$ %.2f Com Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "9x Com Juros 7,50" -> {
+                        Double juros = totalReal * 0.075;
+                        Double jurosSoma = totalReal + juros;
+                        Double calculo = jurosSoma / 9;
+                        JTParcelas.setText(String.format("9x de R$ %.2f Com Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    case "10x Com Juros 9,00" -> {
+                        Double juros = totalReal * 0.09;
+                        Double jurosSoma = totalReal + juros;
+                        Double calculo = jurosSoma / 10;
+                        JTParcelas.setText(String.format("10x de R$ %.2f Com Juros",calculo));
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
+                    }
+                    default -> {
+                    }
+                }
+            }
+            
+            //Adiciona os dados da venda ao banco de dados
+            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
+            String Cliente = ObjusuarioDTO.getCliente();
+            String Telefone = ObjusuarioDTO.getTelefone();
+            String CPFCliente = ObjusuarioDTO.getCPF();    
+            
+            Caixa Carrinho = new Caixa();
+            for (int i = 0; i < Carrinho.JTVendas.getRowCount(); i++) {
+                String Produto = Carrinho.JTVendas.getValueAt(i, 0).toString();
+                String TamanhoProduto = Carrinho.JTVendas.getValueAt(i, 1).toString();
+                int QuantidadeProduto = Integer.parseInt(Carrinho.JTVendas.getValueAt(i, 2).toString());
+                Double Total = Double.valueOf(Carrinho.JTVendas.getValueAt(i, 5).toString());
+                int Codigo = Integer.parseInt(Carrinho.JTVendas.getValueAt(i, 4).toString());
+                
+                ObjusuarioDTO.setCliente(Cliente);
+                ObjusuarioDTO.setTelefone(Telefone);
+                ObjusuarioDTO.setCPFCliente(CPFCliente);
+                ObjusuarioDTO.setProduto(Produto);
+                ObjusuarioDTO.setTamanhoProduto(TamanhoProduto);
+                ObjusuarioDTO.setQuantidadeProduto(QuantidadeProduto);
+                ObjusuarioDTO.setTotal(Total);
+                
+                ConexaoCi ObjusuarioDAO = new ConexaoCi();
+                int Resultado = ObjusuarioDAO.AutenticarRegistro(ObjusuarioDTO);
+
+                if(Resultado != -1){
+                    JOptionPane.showMessageDialog(null, "Venda finalizada");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro na venda.");
+                } 
+            }        
+        }catch (Exception e) {                
             JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
             JTVista.setText("");
             JTTroco.setText("");
             JTParcelas.setText("");
-        }
-          
-        
+        }     
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JCCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCCartaoActionPerformed

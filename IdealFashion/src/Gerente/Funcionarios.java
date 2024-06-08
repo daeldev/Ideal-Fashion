@@ -124,7 +124,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTFuncionarios);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 16, 530, 520));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 530, 520));
 
         jPanel3.setBackground(new java.awt.Color(246, 242, 242));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -314,6 +314,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 }catch (IOException ex) {
                     java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
+            }else{
+                JOptionPane.showMessageDialog(null, "Funcionário já cadastrado.");
             }         
         }                                     
     }//GEN-LAST:event_JBAdicionarActionPerformed

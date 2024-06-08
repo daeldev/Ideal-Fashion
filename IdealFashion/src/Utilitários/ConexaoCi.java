@@ -7,6 +7,7 @@ import Utilitários.UsuarioDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 
@@ -29,7 +30,6 @@ public class ConexaoCi {
             int rs = pstm.executeUpdate();
             return rs;
         }catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "Usuário já cadastrado.");
             return -1;
         }
     }
@@ -47,8 +47,29 @@ public class ConexaoCi {
             
             int rs = pstm.executeUpdate();
             return rs;
-        }catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "Produto já cadastrado.");     
+        }catch (SQLException erro){                
+            return -1;
+        }
+    }
+    
+    public int AutenticarRegistro(UsuarioDTO objusdto){
+        conn = new ConexaoBD().ConectaBD();       
+        try{
+            String sql = "Insert into Registro (Data, Cliente, Telefone, CPF, Produto, Tamanho, Quantidade, Total) Values (?, ?, ?, ?, ?, ?, ?, ?)";
+            LocalDate dataAtual = LocalDate.now();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setObject(1, dataAtual);
+            pstm.setString(2, objusdto.getCliente());
+            pstm.setString(3, objusdto.getTelefone());
+            pstm.setString(4, objusdto.getCPFCliente());
+            pstm.setString(5, objusdto.getProduto());
+            pstm.setString(6, objusdto.getTamanhoProduto());
+            pstm.setInt(7, objusdto.getQuantidadeProduto());
+            pstm.setDouble(8, objusdto.getTotal());
+            
+            int rs = pstm.executeUpdate();
+            return rs;
+        }catch (SQLException erro){    
             return -1;
         }
     }

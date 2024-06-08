@@ -24,6 +24,16 @@ public class UsuarioDTO {
     private int Quantidade;
     private Double Preco;
     private String Tamanho;
+    
+    //Registro
+    private String Cliente;
+    private String Telefone;
+    private String CPFCliente;
+    private String Produto;
+    private String TamanhoProduto;
+    private int QuantidadeProduto;
+    private Double Total;
+    
 
     public String getNomeFuncionario() {
         return NomeFuncionario;
@@ -119,5 +129,61 @@ public class UsuarioDTO {
 
     public void setTamanho(String Tamanho) {
         this.Tamanho = Tamanho;
+    }
+
+    public String getCliente() {
+        return Cliente;
+    }
+
+    public void setCliente(String Cliente) {
+        this.Cliente = Cliente;
+    }
+
+    public String getCPFCliente() {
+        return CPFCliente;
+    }
+
+    public void setCPFCliente(String CPFCliente) {
+        this.CPFCliente = CPFCliente;
+    }
+
+    public String getTelefone() {
+        return Telefone;
+    }
+
+    public void setTelefone(String Telefone) {
+        this.Telefone = Telefone;
+    }
+
+    public String getProduto() {
+        return Produto;
+    }
+
+    public void setProduto(String Produto) {
+        this.Produto = Produto;
+    }
+
+    public String getTamanhoProduto() {
+        return TamanhoProduto;
+    }
+
+    public void setTamanhoProduto(String TamanhoProduto) {
+        this.TamanhoProduto = TamanhoProduto;
+    }
+
+    public int getQuantidadeProduto() {
+        return QuantidadeProduto;
+    }
+
+    public void setQuantidadeProduto(int QuantidadeProduto) {
+        this.QuantidadeProduto = QuantidadeProduto;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
     }
 }
