@@ -9,31 +9,32 @@ package Utilitários;
  * @author Aluno.Tarde
  */
 public class UsuarioDTO {
-    //Funcionários
+    //Cadastrar funcionário
     private String NomeFuncionario;
-    private String Usuario;
-    private String Senha;
-    private String CPF;
-    private String DataNascimento;
-    private String Funcao;
-    private String Sexo;
+    private String UsuarioFuncionario;
+    private String SenhaFuncionario;
+    private String CPFFuncionario;
+    private String DataNascimentoFuncionario;
+    private String FuncaoFuncionario;
+    private String SexoFuncionario;
     
-    //Estoque
-    private String NomeProduto;
-    private int Codigo;
-    private int Quantidade;
-    private Double Preco;
-    private String Tamanho;
+    //Adicionar produto ao estoque
+    private String ProdutoEstoque;
+    private int QuantidadeEstoque;
+    private Double PrecoEstoque;
+    private String TamanhoEstoque;
     
-    //Registro
-    private String Cliente;
-    private String Telefone;
-    private String CPFCliente;
-    private String Produto;
-    private String TamanhoProduto;
-    private int QuantidadeProduto;
-    private Double Total;
+    //Registrar vendas
+    private String ClienteRegistro;
+    private String TelefoneRegistro;
+    private String CPFRegistro;
+    private String ProdutoRegistro;
+    private String TamanhoRegistro;
+    private int QuantidadeRegistro;
+    private Double TotalRegistro;
     
+    //Verificar produto no estoque
+    private int CodigoProduto;
 
     public String getNomeFuncionario() {
         return NomeFuncionario;
@@ -43,147 +44,165 @@ public class UsuarioDTO {
         this.NomeFuncionario = NomeFuncionario;
     }
 
-    public String getUsuario() {
-        return Usuario;
+
+    public String getUsuarioFuncionario() {
+        return UsuarioFuncionario;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setUsuarioFuncionario(String UsuarioFuncionario) {
+        this.UsuarioFuncionario = UsuarioFuncionario;
     }
 
-    public String getSenha() {
-        return Senha;
+
+    public String getSenhaFuncionario() {
+        return SenhaFuncionario;
     }
 
-    public void setSenha(String Senha) {
-        this.Senha = Senha;
+    public void setSenhaFuncionario(String SenhaFuncionario) {
+        this.SenhaFuncionario = SenhaFuncionario;
     }
 
-    public String getCPF() {
-        return CPF;
+
+    public String getCPFFuncionario() {
+        return CPFFuncionario;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCPFFuncionario(String CPFFuncionario) {
+        this.CPFFuncionario = CPFFuncionario;
     }
 
-    public String getDataNascimento() {
-        return DataNascimento;
+
+    public String getDataNascimentoFuncionario() {
+        return DataNascimentoFuncionario;
     }
 
-    public void setDataNascimento(String DataNascimento) {
-        this.DataNascimento = DataNascimento;
+    public void setDataNascimentoFuncionario(String DataNascimentoFuncionario) {
+        this.DataNascimentoFuncionario = DataNascimentoFuncionario;
     }
 
-    public String getFuncao() {
-        return Funcao;
+
+    public String getFuncaoFuncionario() {
+        return FuncaoFuncionario;
     }
 
-    public void setFuncao(String Funcao) {
-        this.Funcao = Funcao;
+    public void setFuncaoFuncionario(String FuncaoFuncionario) {
+        this.FuncaoFuncionario = FuncaoFuncionario;
     }
 
-    public String getSexo() {
-        return Sexo;
+
+    public String getSexoFuncionario() {
+        return SexoFuncionario;
     }
 
-    public void setSexo(String Sexo) {
-        this.Sexo = Sexo;
+    public void setSexoFuncionario(String SexoFuncionario) {
+        this.SexoFuncionario = SexoFuncionario;
     }
 
-    public String getNomeProduto() {
-        return NomeProduto;
+
+    public String getProdutoEstoque() {
+        return ProdutoEstoque;
     }
 
-    public void setNomeProduto(String NomeProduto) {
-        this.NomeProduto = NomeProduto;
+    public void setProdutoEstoque(String ProdutoEstoque) {
+        this.ProdutoEstoque = ProdutoEstoque;
     }
 
-    public int getCodigo() {
-        return Codigo;
+
+    public int getQuantidadeEstoque() {
+        return QuantidadeEstoque;
     }
 
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
+    public void setQuantidadeEstoque(int QuantidadeEstoque) {
+        this.QuantidadeEstoque = QuantidadeEstoque;
     }
 
-    public int getQuantidade() {
-        return Quantidade;
+
+    public Double getPrecoEstoque() {
+        return PrecoEstoque;
     }
 
-    public void setQuantidade(int Quantidade) {
-        this.Quantidade = Quantidade;
+    public void setPrecoEstoque(Double PrecoEstoque) {
+        this.PrecoEstoque = PrecoEstoque;
     }
 
-    public Double getPreco() {
-        return Preco;
+
+    public String getTamanhoEstoque() {
+        return TamanhoEstoque;
     }
 
-    public void setPreco(Double Preco) {
-        this.Preco = Preco;
+    public void setTamanhoEstoque(String TamanhoEstoque) {
+        this.TamanhoEstoque = TamanhoEstoque;
     }
 
-    public String getTamanho() {
-        return Tamanho;
+
+    public String getClienteRegistro() {
+        return ClienteRegistro;
     }
 
-    public void setTamanho(String Tamanho) {
-        this.Tamanho = Tamanho;
+    public void setClienteRegistro(String ClienteRegistro) {
+        this.ClienteRegistro = ClienteRegistro;
     }
 
-    public String getCliente() {
-        return Cliente;
+
+    public String getTelefoneRegistro() {
+        return TelefoneRegistro;
     }
 
-    public void setCliente(String Cliente) {
-        this.Cliente = Cliente;
+    public void setTelefoneRegistro(String TelefoneRegistro) {
+        this.TelefoneRegistro = TelefoneRegistro;
     }
 
-    public String getCPFCliente() {
-        return CPFCliente;
+
+    public String getCPFRegistro() {
+        return CPFRegistro;
     }
 
-    public void setCPFCliente(String CPFCliente) {
-        this.CPFCliente = CPFCliente;
+    public void setCPFRegistro(String CPFRegistro) {
+        this.CPFRegistro = CPFRegistro;
     }
 
-    public String getTelefone() {
-        return Telefone;
+
+    public String getProdutoRegistro() {
+        return ProdutoRegistro;
     }
 
-    public void setTelefone(String Telefone) {
-        this.Telefone = Telefone;
+    public void setProdutoRegistro(String ProdutoRegistro) {
+        this.ProdutoRegistro = ProdutoRegistro;
     }
 
-    public String getProduto() {
-        return Produto;
+
+    public String getTamanhoRegistro() {
+        return TamanhoRegistro;
     }
 
-    public void setProduto(String Produto) {
-        this.Produto = Produto;
+    public void setTamanhoRegistro(String TamanhoRegistro) {
+        this.TamanhoRegistro = TamanhoRegistro;
     }
 
-    public String getTamanhoProduto() {
-        return TamanhoProduto;
+
+    public int getQuantidadeRegistro() {
+        return QuantidadeRegistro;
     }
 
-    public void setTamanhoProduto(String TamanhoProduto) {
-        this.TamanhoProduto = TamanhoProduto;
+    public void setQuantidadeRegistro(int QuantidadeRegistro) {
+        this.QuantidadeRegistro = QuantidadeRegistro;
     }
 
-    public int getQuantidadeProduto() {
-        return QuantidadeProduto;
+
+    public Double getTotalRegistro() {
+        return TotalRegistro;
     }
 
-    public void setQuantidadeProduto(int QuantidadeProduto) {
-        this.QuantidadeProduto = QuantidadeProduto;
+    public void setTotalRegistro(Double TotalRegistro) {
+        this.TotalRegistro = TotalRegistro;
     }
 
-    public Double getTotal() {
-        return Total;
+
+    public int getCodigoProduto() {
+        return CodigoProduto;
     }
 
-    public void setTotal(Double Total) {
-        this.Total = Total;
+    public void setCodigoProduto(int CodigoProduto) {
+        this.CodigoProduto = CodigoProduto;
     }
 }

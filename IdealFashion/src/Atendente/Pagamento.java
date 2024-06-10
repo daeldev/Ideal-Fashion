@@ -38,6 +38,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
         JBFinalizar = new javax.swing.JButton();
         JBCancelar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(246, 242, 242));
         setBorder(null);
         setClosable(true);
         setTitle("Pagamento");
@@ -79,9 +80,9 @@ public class Pagamento extends javax.swing.JInternalFrame {
             }
         });
 
-        JCCartao.setBackground(new java.awt.Color(51, 51, 51));
-        JCCartao.setForeground(new java.awt.Color(255, 255, 255));
-        JCCartao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x Sem Juros", "2x Sem Juros", "3x Sem Juros", "4x Sem Juros", "5x Sem Juros", "6x Com Juros 5,00", "7x Com Juros 5,00", "8x Com Juros 7,00", "9x Com Juros 7,50", "10x Com Juros 9,00" }));
+        JCCartao.setBackground(new java.awt.Color(246, 242, 242));
+        JCCartao.setForeground(new java.awt.Color(51, 51, 51));
+        JCCartao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x", "2x", "3x", "4x", "5x", "6x Com Juros 5,00", "7x Com Juros 5,00", "8x Com Juros 7,00", "9x Com Juros 7,50", "10x Com Juros 9,00" }));
         JCCartao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCCartaoActionPerformed(evt);
@@ -267,65 +268,55 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 String parcelas = String.valueOf((String) JCCartao.getSelectedItem());
 
                 switch (parcelas) {
-                    case "1x Sem Juros" -> {
+                    case "1x" -> {
                         Double calculo = totalReal / 1;
                         JTParcelas.setText(String.format("1x de R$ %.2f Sem Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
-                    case "2x Sem Juros" -> {
+                    case "2x" -> {
                         Double calculo = totalReal / 2;
                         JTParcelas.setText(String.format("2x de R$ %.2f Sem Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
-                    case "3x Sem Juros" -> {
+                    case "3x" -> {
                         Double calculo = totalReal / 3;
                         JTParcelas.setText(String.format("3x de R$ %.2f Sem Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
-                    case "4x Sem Juros" -> {
+                    case "4x" -> {
                         Double calculo = totalReal / 4;
                         JTParcelas.setText(String.format("4x de R$ %.2f Sem Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
-                    case "5x Sem Juros" -> {
+                    case "5x" -> {
                         Double calculo = totalReal / 5;
                         JTParcelas.setText(String.format("5x de R$ %.2f Sem Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     case "6x Com Juros 5,00" -> {
                         Double juros = totalReal * 0.05;
                         Double jurosSoma = totalReal + juros;
                         Double calculo = jurosSoma / 6;
                         JTParcelas.setText(String.format("6x de R$ %.2f Com Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     case "7x Com Juros 5,00" -> {
                         Double juros = totalReal * 0.05;
                         Double jurosSoma = totalReal + juros;
                         Double calculo = jurosSoma / 7;
                         JTParcelas.setText(String.format("7x de R$ %.2f Com Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     case "8x Com Juros 7,00" -> {
                         Double juros = totalReal * 0.07;
                         Double jurosSoma = totalReal + juros;
                         Double calculo = jurosSoma / 8;
                         JTParcelas.setText(String.format("8x de R$ %.2f Com Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     case "9x Com Juros 7,50" -> {
                         Double juros = totalReal * 0.075;
                         Double jurosSoma = totalReal + juros;
                         Double calculo = jurosSoma / 9;
                         JTParcelas.setText(String.format("9x de R$ %.2f Com Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     case "10x Com Juros 9,00" -> {
                         Double juros = totalReal * 0.09;
                         Double jurosSoma = totalReal + juros;
                         Double calculo = jurosSoma / 10;
                         JTParcelas.setText(String.format("10x de R$ %.2f Com Juros",calculo));
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada!");
                     }
                     default -> {
                     }
@@ -334,9 +325,9 @@ public class Pagamento extends javax.swing.JInternalFrame {
             
             //Adiciona os dados da venda ao banco de dados
             UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
-            String Cliente = ObjusuarioDTO.getCliente();
-            String Telefone = ObjusuarioDTO.getTelefone();
-            String CPFCliente = ObjusuarioDTO.getCPF();    
+            String Cliente = ObjusuarioDTO.getClienteRegistro();
+            String Telefone = ObjusuarioDTO.getTelefoneRegistro();
+            String CPFCliente = ObjusuarioDTO.getCPFRegistro();    
             
             Caixa Carrinho = new Caixa();
             for (int i = 0; i < Carrinho.JTVendas.getRowCount(); i++) {
@@ -346,16 +337,16 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 Double Total = Double.valueOf(Carrinho.JTVendas.getValueAt(i, 5).toString());
                 int Codigo = Integer.parseInt(Carrinho.JTVendas.getValueAt(i, 4).toString());
                 
-                ObjusuarioDTO.setCliente(Cliente);
-                ObjusuarioDTO.setTelefone(Telefone);
-                ObjusuarioDTO.setCPFCliente(CPFCliente);
-                ObjusuarioDTO.setProduto(Produto);
-                ObjusuarioDTO.setTamanhoProduto(TamanhoProduto);
-                ObjusuarioDTO.setQuantidadeProduto(QuantidadeProduto);
-                ObjusuarioDTO.setTotal(Total);
+                ObjusuarioDTO.setClienteRegistro(Cliente);
+                ObjusuarioDTO.setTelefoneRegistro(Telefone);
+                ObjusuarioDTO.setCPFRegistro(CPFCliente);
+                ObjusuarioDTO.setProdutoRegistro(Produto);
+                ObjusuarioDTO.setTamanhoRegistro(TamanhoProduto);
+                ObjusuarioDTO.setQuantidadeRegistro(QuantidadeProduto);
+                ObjusuarioDTO.setTotalRegistro(Total);
                 
                 ConexaoCi ObjusuarioDAO = new ConexaoCi();
-                int Resultado = ObjusuarioDAO.AutenticarRegistro(ObjusuarioDTO);
+                int Resultado = ObjusuarioDAO.AdicionarRegistro(ObjusuarioDTO);
 
                 if(Resultado != -1){
                     JOptionPane.showMessageDialog(null, "Venda finalizada");

@@ -278,15 +278,15 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
 
             ObjusuarioDTO.setNomeFuncionario(Nome);
-            ObjusuarioDTO.setUsuario(Usuario);
-            ObjusuarioDTO.setSenha(Senha);
-            ObjusuarioDTO.setCPF(CPF);
-            ObjusuarioDTO.setDataNascimento(DataNascimento);
-            ObjusuarioDTO.setFuncao(Funcao);
-            ObjusuarioDTO.setSexo(Sexo);
+            ObjusuarioDTO.setUsuarioFuncionario(Usuario);
+            ObjusuarioDTO.setSenhaFuncionario(Senha);
+            ObjusuarioDTO.setCPFFuncionario(CPF);
+            ObjusuarioDTO.setDataNascimentoFuncionario(DataNascimento);
+            ObjusuarioDTO.setFuncaoFuncionario(Funcao);
+            ObjusuarioDTO.setSexoFuncionario(Sexo);
 
             ConexaoCi ObjusuarioDAO = new ConexaoCi();
-            int Resultado = ObjusuarioDAO.AutenticarFuncionario(ObjusuarioDTO);
+            int Resultado = ObjusuarioDAO.AdicionarFuncionario(ObjusuarioDTO);
 
             if(Resultado != -1){
                 JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");

@@ -1,6 +1,4 @@
 package Administrador;
-
-
 import Utilitários.ConexaoCi;
 import Utilitários.UsuarioDTO;
 import java.io.BufferedReader;
@@ -73,14 +71,14 @@ public class Estoque extends javax.swing.JInternalFrame {
         JBRemover = new javax.swing.JButton();
         JBRemoverTudo = new javax.swing.JButton();
         JTPreco = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         JTNomeProduto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         JTQuantidade = new javax.swing.JTextField();
-        JTCodigoProduto = new javax.swing.JTextField();
         JCTamanho = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         Limpar.setText("jMenuItem1");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,45 +110,50 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTEstoque);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 25, 564, 540));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 564, 540));
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
         JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAtualizar.setText("ATUALIZAR");
+        JBAtualizar.setText("Atualizar");
         JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAtualizarActionPerformed(evt);
             }
         });
+        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 90, 41));
 
         JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
         JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAdicionar.setText("ADICIONAR");
+        JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAdicionarActionPerformed(evt);
             }
         });
+        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 90, 41));
 
         JBRemover.setBackground(new java.awt.Color(255, 0, 0));
         JBRemover.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemover.setText("REMOVER");
+        JBRemover.setText("Limpar");
         JBRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBRemoverActionPerformed(evt);
             }
         });
+        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 90, 40));
 
         JBRemoverTudo.setBackground(new java.awt.Color(255, 0, 0));
         JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("REMOVER TUDO");
+        JBRemoverTudo.setText("Limpar tudo");
         JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBRemoverTudoActionPerformed(evt);
             }
         });
+        jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 100, 40));
 
         JTPreco.setBackground(new java.awt.Color(51, 51, 51));
         JTPreco.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,146 +162,64 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JTPrecoActionPerformed(evt);
             }
         });
-
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel5.setText("Preço");
+        jPanel2.add(JTPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 82, -1));
 
         JTNomeProduto.setBackground(new java.awt.Color(51, 51, 51));
         JTNomeProduto.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(JTNomeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 203, -1));
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setText("Quantidade");
-
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel1.setText("Produto");
-
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel6.setText("Código");
+        jLabel1.setText("Produto:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         JTQuantidade.setBackground(new java.awt.Color(51, 51, 51));
         JTQuantidade.setForeground(new java.awt.Color(255, 255, 255));
-
-        JTCodigoProduto.setBackground(new java.awt.Color(51, 51, 51));
-        JTCodigoProduto.setForeground(new java.awt.Color(255, 255, 255));
-        JTCodigoProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTCodigoProdutoActionPerformed(evt);
-            }
-        });
+        jPanel2.add(JTQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, -1));
 
         JCTamanho.setBackground(new java.awt.Color(246, 242, 242));
         JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G" }));
+        jPanel2.add(JCTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 43, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JBAdicionar)
-                            .addComponent(JBRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JBAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBRemoverTudo)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 44, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(JTNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JTPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(JTCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JBRemoverTudo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
-        );
+        jLabel2.setText("Tamanho:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 350, 500));
+        jLabel4.setText("Preço:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        jLabel6.setText("Quantidade:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 380, 320));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Dados do Produto");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 1035, 620);
+        setBounds(0, 0, 1036, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
-          if(JTEstoque.getSelectedRow() != -1){             
-             JTEstoque.setValueAt(JTNomeProduto.getText(), JTEstoque.getSelectedRow(), 0);
-             JTEstoque.setValueAt(JCTamanho.getSelectedItem(), JTEstoque.getSelectedRow(), 1);
-             JTEstoque.setValueAt(JTQuantidade.getText(), JTEstoque.getSelectedRow(), 2);
-             JTEstoque.setValueAt(JTPreco.getText(), JTEstoque.getSelectedRow(), 3);
-             JTEstoque.setValueAt(JTCodigoProduto.getText(), JTEstoque.getSelectedRow(), 4);        
-          }else{
-             JOptionPane.showMessageDialog(null, "Selecione uma linha para atualizar");              
-          }   
+        
     }//GEN-LAST:event_JBAtualizarActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
       
-        if (JTNomeProduto.getText().isEmpty() || JTQuantidade.getText().isEmpty() || JTPreco.getText().isEmpty() || JTCodigoProduto.getText().isEmpty()){
+        if (JTNomeProduto.getText().isEmpty() || JTQuantidade.getText().isEmpty() || JTPreco.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do produto");
         }else{
             try{
                 int Quantidade = Integer.parseInt(JTQuantidade.getText());
                 double Preco = Double.valueOf(JTPreco.getText());
-                int Codigo = Integer.parseInt(JTCodigoProduto.getText());
                 String Tamanho = JCTamanho.getSelectedItem().toString();
                 String Nome = JTNomeProduto.getText();
                 
@@ -307,7 +228,6 @@ public class Estoque extends javax.swing.JInternalFrame {
                 ObjusuarioDTO.setNomeProduto(Nome);
                 ObjusuarioDTO.setQuantidade(Quantidade);
                 ObjusuarioDTO.setPreco(Preco);
-                ObjusuarioDTO.setCodigo(Codigo);
                 ObjusuarioDTO.setTamanho(Tamanho);
 
                 ConexaoCi ObjusuarioDAO = new ConexaoCi();
@@ -318,7 +238,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
                     //Adiciona os dados à tabela
                     DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
-                    Object[] dados = {JTNomeProduto.getText(), JCTamanho.getSelectedItem(), JTQuantidade.getText() , JTPreco.getText() , JTCodigoProduto.getText()};
+                    Object[] dados = {JTNomeProduto.getText(), JCTamanho.getSelectedItem(), JTQuantidade.getText() , JTPreco.getText()};
                     modelot.addRow(dados);
 
                     //Salva os dados no arquivo .txt
@@ -395,17 +315,12 @@ public class Estoque extends javax.swing.JInternalFrame {
              JCTamanho.setSelectedItem(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 1).toString());
              JTQuantidade.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 2).toString());
              JTPreco.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 3).toString());
-             JTCodigoProduto.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 4).toString());
          }
     }//GEN-LAST:event_JTEstoqueMouseClicked
 
     private void JTPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTPrecoActionPerformed
-
-    private void JTCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCodigoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTCodigoProdutoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -414,16 +329,16 @@ public class Estoque extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBRemover;
     private javax.swing.JButton JBRemoverTudo;
     private javax.swing.JComboBox<String> JCTamanho;
-    private javax.swing.JTextField JTCodigoProduto;
     private static javax.swing.JTable JTEstoque;
     private javax.swing.JTextField JTNomeProduto;
     private javax.swing.JTextField JTPreco;
     private javax.swing.JTextField JTQuantidade;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu2;

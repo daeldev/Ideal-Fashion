@@ -103,7 +103,7 @@ public class Clientes extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "Telefone", "E-mail", "CPF", "Residência"
+                "Nome", "Telefone", "E-mail", "CPF", "CEP"
             }
         ));
         JTTabela.addMouseListener(new java.awt.event.MouseAdapter() {
