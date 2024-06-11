@@ -4,25 +4,29 @@
  */
 package Utilitários;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno.Tarde
  */
 public class UsuarioDTO {
     //Cadastrar funcionário
+    private String FuncaoFuncionario;
     private String NomeFuncionario;
-    private String UsuarioFuncionario;
-    private String SenhaFuncionario;
     private String CPFFuncionario;
     private String DataNascimentoFuncionario;
-    private String FuncaoFuncionario;
     private String SexoFuncionario;
+    private String UsuarioFuncionario;
+    private String SenhaFuncionario;
     
     //Adicionar produto ao estoque
     private String ProdutoEstoque;
+    private String TamanhoEstoque;
     private int QuantidadeEstoque;
     private Double PrecoEstoque;
-    private String TamanhoEstoque;
     
     //Registrar vendas
     private String ClienteRegistro;
@@ -35,13 +39,19 @@ public class UsuarioDTO {
     
     //Verificar produto no estoque
     private int CodigoProduto;
-
+    private String ProdutoProduto;
+    private Double PrecoProduto;
+    
     public String getNomeFuncionario() {
         return NomeFuncionario;
     }
 
     public void setNomeFuncionario(String NomeFuncionario) {
-        this.NomeFuncionario = NomeFuncionario;
+        if (!NomeFuncionario.isEmpty()){
+            this.NomeFuncionario = NomeFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o nome do funcionário.");
+        }
     }
 
 
@@ -50,7 +60,11 @@ public class UsuarioDTO {
     }
 
     public void setUsuarioFuncionario(String UsuarioFuncionario) {
-        this.UsuarioFuncionario = UsuarioFuncionario;
+        if (!UsuarioFuncionario.isEmpty()){
+            this.UsuarioFuncionario = UsuarioFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o Usuario do funcionário.");
+        }
     }
 
 
@@ -59,7 +73,11 @@ public class UsuarioDTO {
     }
 
     public void setSenhaFuncionario(String SenhaFuncionario) {
-        this.SenhaFuncionario = SenhaFuncionario;
+        if (!SenhaFuncionario.isEmpty()){
+            this.SenhaFuncionario = SenhaFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique a senha do funcionário.");
+        }
     }
 
 
@@ -68,7 +86,11 @@ public class UsuarioDTO {
     }
 
     public void setCPFFuncionario(String CPFFuncionario) {
-        this.CPFFuncionario = CPFFuncionario;
+        if (!CPFFuncionario.equals("   .   .   -  ")){
+            this.CPFFuncionario = CPFFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o Cpf do funcionário.");
+        }
     }
 
 
@@ -77,7 +99,11 @@ public class UsuarioDTO {
     }
 
     public void setDataNascimentoFuncionario(String DataNascimentoFuncionario) {
-        this.DataNascimentoFuncionario = DataNascimentoFuncionario;
+        if (!DataNascimentoFuncionario.equals("  /  /    ")){         
+            this.DataNascimentoFuncionario = DataNascimentoFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique a data de nascimento do funcionário.");
+        }
     }
 
 
@@ -86,7 +112,11 @@ public class UsuarioDTO {
     }
 
     public void setFuncaoFuncionario(String FuncaoFuncionario) {
-        this.FuncaoFuncionario = FuncaoFuncionario;
+        if (!FuncaoFuncionario.isEmpty()){
+            this.FuncaoFuncionario = FuncaoFuncionario;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique a função do funcionário.");
+        }
     }
 
 
@@ -95,7 +125,7 @@ public class UsuarioDTO {
     }
 
     public void setSexoFuncionario(String SexoFuncionario) {
-        this.SexoFuncionario = SexoFuncionario;
+            this.SexoFuncionario = SexoFuncionario;
     }
 
 
@@ -104,7 +134,11 @@ public class UsuarioDTO {
     }
 
     public void setProdutoEstoque(String ProdutoEstoque) {
-        this.ProdutoEstoque = ProdutoEstoque;
+        if (!ProdutoEstoque.isEmpty()){
+            this.ProdutoEstoque = ProdutoEstoque;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o nome do produto.");
+        }
     }
 
 
@@ -113,7 +147,11 @@ public class UsuarioDTO {
     }
 
     public void setQuantidadeEstoque(int QuantidadeEstoque) {
-        this.QuantidadeEstoque = QuantidadeEstoque;
+        if (QuantidadeEstoque > 0){
+            this.QuantidadeEstoque = QuantidadeEstoque;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique a quantidade do produto.");
+        }
     }
 
 
@@ -122,7 +160,11 @@ public class UsuarioDTO {
     }
 
     public void setPrecoEstoque(Double PrecoEstoque) {
-        this.PrecoEstoque = PrecoEstoque;
+        if (PrecoEstoque > 0){
+            this.PrecoEstoque = PrecoEstoque;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o preço do produto.");
+        }
     }
 
 
@@ -204,5 +246,21 @@ public class UsuarioDTO {
 
     public void setCodigoProduto(int CodigoProduto) {
         this.CodigoProduto = CodigoProduto;
+    }
+
+    public String getProdutoProduto() {
+        return ProdutoProduto;
+    }
+
+    public void setProdutoProduto(String ProdutoProduto) {
+        this.ProdutoProduto = ProdutoProduto;
+    }
+
+    public Double getPrecoProduto() {
+        return PrecoProduto;
+    }
+
+    public void setPrecoProduto(Double PrecoProduto) {
+        this.PrecoProduto = PrecoProduto;
     }
 }

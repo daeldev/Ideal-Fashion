@@ -70,14 +70,14 @@ public class Estoque extends javax.swing.JInternalFrame {
         JBAdicionar = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
         JBRemoverTudo = new javax.swing.JButton();
-        JTPreco = new javax.swing.JTextField();
         JTNomeProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        JTQuantidade = new javax.swing.JTextField();
+        JTPreco = new javax.swing.JTextField();
         JCTamanho = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        JTQuantidade = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
         Limpar.setText("jMenuItem1");
@@ -155,15 +155,6 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 100, 40));
 
-        JTPreco.setBackground(new java.awt.Color(51, 51, 51));
-        JTPreco.setForeground(new java.awt.Color(255, 255, 255));
-        JTPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTPrecoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(JTPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 82, -1));
-
         JTNomeProduto.setBackground(new java.awt.Color(51, 51, 51));
         JTNomeProduto.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(JTNomeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 203, -1));
@@ -171,9 +162,9 @@ public class Estoque extends javax.swing.JInternalFrame {
         jLabel1.setText("Produto:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        JTQuantidade.setBackground(new java.awt.Color(51, 51, 51));
-        JTQuantidade.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, -1));
+        JTPreco.setBackground(new java.awt.Color(51, 51, 51));
+        JTPreco.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(JTPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 80, -1));
 
         JCTamanho.setBackground(new java.awt.Color(246, 242, 242));
         JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G" }));
@@ -187,6 +178,10 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Quantidade:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        JTQuantidade.setBackground(new java.awt.Color(51, 51, 51));
+        JTQuantidade.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(JTQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 380, 320));
 
@@ -213,59 +208,23 @@ public class Estoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBAtualizarActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-      
-        if (JTNomeProduto.getText().isEmpty() || JTQuantidade.getText().isEmpty() || JTPreco.getText().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique os dados do produto");
-        }else{
-            try{
-                int Quantidade = Integer.parseInt(JTQuantidade.getText());
-                double Preco = Double.valueOf(JTPreco.getText());
-                String Tamanho = JCTamanho.getSelectedItem().toString();
-                String Nome = JTNomeProduto.getText();
-                
-                UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
-                
-                ObjusuarioDTO.setNomeProduto(Nome);
-                ObjusuarioDTO.setQuantidade(Quantidade);
-                ObjusuarioDTO.setPreco(Preco);
-                ObjusuarioDTO.setTamanho(Tamanho);
+        if (!JTQuantidade.getText().isEmpty() || !JTPreco.getText().isEmpty()){
+            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
 
-                ConexaoCi ObjusuarioDAO = new ConexaoCi();
-                int Resultado = ObjusuarioDAO.AutenticarEstoque(ObjusuarioDTO);
+            ObjusuarioDTO.setProdutoEstoque(JTNomeProduto.getText());
+            ObjusuarioDTO.setTamanhoEstoque(JCTamanho.getSelectedItem().toString());
+            ObjusuarioDTO.setQuantidadeEstoque(Integer.parseInt(JTQuantidade.getText()));
+            ObjusuarioDTO.setPrecoEstoque(Double.valueOf(JTPreco.getText())); 
 
-                if(Resultado != -1){
-                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            ConexaoCi ObjusuarioDAO = new ConexaoCi();
+            int Resultado = ObjusuarioDAO.AdicionarEstoque(ObjusuarioDTO);
 
-                    //Adiciona os dados à tabela
-                    DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
-                    Object[] dados = {JTNomeProduto.getText(), JCTamanho.getSelectedItem(), JTQuantidade.getText() , JTPreco.getText()};
-                    modelot.addRow(dados);
-
-                    //Salva os dados no arquivo .txt
-                    String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Ideal Fashion\\Ideal-Fashion\\IdealFashion\\src\\DadosTabelas\\Estoque";
-                    File file = new File(FilePath) ;
-                    try {
-                        FileWriter fwe = new FileWriter(file);
-                        BufferedWriter bwe = new BufferedWriter(fwe);
-
-                        for (int i = 0; i < JTEstoque.getRowCount(); i ++){ // rows
-                            for(int j = 0; j <  JTEstoque.getColumnCount(); j ++){ // colunas
-                                bwe.write(JTEstoque.getValueAt (i, j).toString() + " ");
-                            }
-                            bwe.newLine();  
-                        }                     
-                        bwe.close();
-                        fwe.close();
-                    }catch (IOException ex) {
-                        java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "Produto já cadastrado.");
-                }       
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique a quantidade, o preço ou o código do produto");
-            }
-        }   
+            if(Resultado != -1){
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso");                
+            }else{
+                JOptionPane.showMessageDialog(null, "Produto já cadastrado ou dados incorretos.");
+            } 
+        }        
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
@@ -317,10 +276,6 @@ public class Estoque extends javax.swing.JInternalFrame {
              JTPreco.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 3).toString());
          }
     }//GEN-LAST:event_JTEstoqueMouseClicked
-
-    private void JTPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTPrecoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

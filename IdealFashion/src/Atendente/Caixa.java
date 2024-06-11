@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Atendente;
-
+import Utilitários.UsuarioDTO;
+import Utilitários.ConexaoCi;
 import Utilitários.TipoPagamento;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -267,34 +268,38 @@ public class Caixa extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o Código, ou quantidade do produto");
         }else{
             try{
-                double preco, quantidade, subtotal, acumulador = 0;
-                preco = Double.parseDouble(JTPreco.getText().replaceAll(",", "."));
-                quantidade = Double.parseDouble(JTQuantidade.getText());
-                subtotal = preco*quantidade;
-                acumulador = 0;
-                Object[] dados = {JTNome.getText(), JTTamanho.getText(), JTQuantidade.getText(), JTPreco.getText(), JTCodigo.getText(), subtotal};
-                for (int i = 0; i < JTVendas.getRowCount(); i++){
-                    acumulador += Double.valueOf(JTVendas.getValueAt(i, 5).toString());
+                UsuarioDTO Dados = new UsuarioDTO();
+                Dados.setCodigoProduto(Integer.parseInt(JTCodigo.getText()));
+            
+                ConexaoCi VerificarProduto = new ConexaoCi();
+                if (VerificarProduto.VerificarEstoque(Dados)){
+                    double Quantidade, Subtotal, Acumulador = 0;
+                    double Preco = Dados.getPrecoProduto();
+                    String Nome = Dados.getProdutoProduto();
+                    Quantidade = Double.parseDouble(JTQuantidade.getText());
+                    Subtotal = Preco*Quantidade;
+                    
+                    Object[] dados = {JCTamanho.getSelectedItem(), JTQuantidade.getText(), JTCodigo.getText(), Subtotal};
+                    for (int i = 0; i < JTVendas.getRowCount(); i++){
+                        Acumulador += Double.valueOf(JTVendas.getValueAt(i, 5).toString());
+                    }
+                    JTTotal.setText(Double.toString(Acumulador+Subtotal));
+                    modelo.addRow(dados);
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Produto inexistente.");
                 }
-                JTTotal.setText(Double.toString(acumulador+subtotal));
-                modelo.addRow(dados);
             }catch(Exception e){
-                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o preço ou a quantidade do produto");
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o tamanho ou o nome do produto");
-        }
+                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o código do produto");
+            }  
     }//GEN-LAST:event_JBAdicionarActionPerformed
-
+    }
     private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
-
         DefaultTableModel modelo = (DefaultTableModel) JTVendas.getModel();
-
         // Verifica se alguma linha está selecionada no carrinho
         if (JTVendas.getSelectedRow() != -1) {
             // Obtém o subtotal do produto selecionado
             double subtotalRemovido = Double.parseDouble(modelo.getValueAt(JTVendas.getSelectedRow(), 5).toString());
-
+            
             // Remove a linha do produto selecionado do modelo da tabela
             modelo.removeRow(JTVendas.getSelectedRow());
 
@@ -340,17 +345,9 @@ public class Caixa extends javax.swing.JInternalFrame {
             DefaultTableModel modelo = (DefaultTableModel) JTVendas.getModel();
             modelo.setNumRows(0);
             JTCodigo.setText("");
-            JTNome.setText("");
-            JTPreco.setText("");
             JTQuantidade.setText("");
             JTTotal.setText("");
-            JTTamanho.setText("");
         }
-
-        else if(q == JOptionPane.NO_OPTION){
-
-        }
-
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEstoqueMouseClicked
