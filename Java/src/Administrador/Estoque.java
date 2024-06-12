@@ -210,7 +210,7 @@ public class Estoque extends javax.swing.JInternalFrame {
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
         if (!JTQuantidade.getText().isEmpty() || !JTPreco.getText().isEmpty()){
             UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
-
+            
             ObjusuarioDTO.setProdutoEstoque(JTNomeProduto.getText());
             ObjusuarioDTO.setTamanhoEstoque(JCTamanho.getSelectedItem().toString());
             ObjusuarioDTO.setQuantidadeEstoque(Integer.parseInt(JTQuantidade.getText()));
