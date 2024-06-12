@@ -1,6 +1,5 @@
 # Ideal-Fashion
 Escola Técnica Estadual Maria Mercedes Mendes Teixeira - FAETEC
-Informática - 221
 
 UI Designer: <a href="https://github.com/daeldev">daeldev</a>
 
