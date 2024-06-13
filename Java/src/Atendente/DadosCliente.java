@@ -1,4 +1,5 @@
 package Atendente;
+import static Atendente.WorkspaceAtendente.WorkspaceAtendente;
 import Utilitários.UsuarioDTO;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -174,14 +175,17 @@ public class DadosCliente extends javax.swing.JInternalFrame {
         if(JTNomeCliente.getText().equals("Insira o nome do cliente") || JTCPF.getText().equals("   .   .   -  ") || JTTelefone.getText().equals("(  )      -    ")){
             JOptionPane.showMessageDialog(rootPane, "ERRO: Insira os dados da venda.");
         }else{
-            Caixa Venda = new Caixa();
+            
             UsuarioDTO Dados = new UsuarioDTO();
             Dados.setClienteRegistro(JTNomeCliente.getText());
             Dados.setCPFRegistro(JTCPF.getText());
             Dados.setTelefoneRegistro(JTTelefone.getText());
-            WorkspaceAtendente.WorkspaceAtendente.add(Venda);
-            Venda.setVisible(true);
-            dispose();
+            
+            Carrinho Carrinho = new Carrinho();
+            WorkspaceAtendente.add(Carrinho);
+            Carrinho.setVisible(true);
+            Carrinho.setBounds(247, 97, 408, 513);
+            dispose();         
         }                      
     }//GEN-LAST:event_JTProsseguirActionPerformed
 

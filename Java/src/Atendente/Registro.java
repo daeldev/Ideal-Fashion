@@ -208,7 +208,7 @@ public class Registro extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBRemover;
     private javax.swing.JButton JBRemoverTudo;
-    private static javax.swing.JTable JTRegistro;
+    public static javax.swing.JTable JTRegistro;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu2;

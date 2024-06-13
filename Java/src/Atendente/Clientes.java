@@ -55,18 +55,20 @@ public class Clientes extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTTabela = new javax.swing.JTable();
-        JBAdicionar = new javax.swing.JButton();
-        JBRemover = new javax.swing.JButton();
-        JBAtualizar = new javax.swing.JButton();
-        JBRemoverTudo = new javax.swing.JButton();
-        JTCpf = new javax.swing.JFormattedTextField();
-        jLabel5 = new javax.swing.JLabel();
-        JBExportar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         JTTelefone = new javax.swing.JFormattedTextField();
         JTNome = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        JTCpf = new javax.swing.JFormattedTextField();
+        JBAdicionar = new javax.swing.JButton();
+        JBAtualizar = new javax.swing.JButton();
+        JBExportar = new javax.swing.JButton();
+        JBRemover = new javax.swing.JButton();
+        JBRemoverTudo = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         Limpar.setText("Limpar");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,80 +127,10 @@ public class Clientes extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTTabela);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 6, 540, 500));
-
-        JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
-        JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAdicionar.setText("ADICIONAR");
-        JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBAdicionarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 100, 41));
-
-        JBRemover.setBackground(new java.awt.Color(255, 0, 51));
-        JBRemover.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemover.setText("REMOVER");
-        JBRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 120, 40));
-
-        JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
-        JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAtualizar.setText("ATUALIZAR");
-        JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBAtualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 100, 41));
-
-        JBRemoverTudo.setBackground(new java.awt.Color(255, 51, 51));
-        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("REMOVER TUDO");
-        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverTudoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 120, 40));
-
-        JTCpf.setBackground(new java.awt.Color(51, 51, 51));
-        JTCpf.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            JTCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        JTCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTCpfActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 220, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("CPF");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
-
-        JBExportar.setBackground(new java.awt.Color(51, 102, 255));
-        JBExportar.setForeground(new java.awt.Color(255, 255, 255));
-        JBExportar.setText("EXPORTAR");
-        JBExportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBExportarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 100, 41));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 510, 430));
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Telefone");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JTTelefone.setBackground(new java.awt.Color(51, 51, 51));
         JTTelefone.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,6 +144,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JTTelefoneActionPerformed(evt);
             }
         });
+        jPanel2.add(JTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 220, -1));
 
         JTNome.setBackground(new java.awt.Color(51, 51, 51));
         JTNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,45 +153,90 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JTNomeActionPerformed(evt);
             }
         });
+        jPanel2.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Nome");
+        jLabel8.setText("Telefone:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(JTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(JTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(299, Short.MAX_VALUE))
-        );
+        jLabel9.setText("CPF:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 370, 510));
+        jLabel10.setText("Nome:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        JTCpf.setBackground(new java.awt.Color(51, 51, 51));
+        JTCpf.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            JTCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        JTCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTCpfActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 220, -1));
+
+        JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
+        JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
+        JBAdicionar.setText("ADICIONAR");
+        JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAdicionarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 100, 41));
+
+        JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
+        JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
+        JBAtualizar.setText("ATUALIZAR");
+        JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 100, 41));
+
+        JBExportar.setBackground(new java.awt.Color(51, 102, 255));
+        JBExportar.setForeground(new java.awt.Color(255, 255, 255));
+        JBExportar.setText("EXPORTAR");
+        JBExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBExportarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 100, 41));
+
+        JBRemover.setBackground(new java.awt.Color(255, 0, 51));
+        JBRemover.setForeground(new java.awt.Color(255, 255, 255));
+        JBRemover.setText("REMOVER");
+        JBRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRemoverActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 120, 40));
+
+        JBRemoverTudo.setBackground(new java.awt.Color(255, 51, 51));
+        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
+        JBRemoverTudo.setText("REMOVER TUDO");
+        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRemoverTudoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 120, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 370, 340));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Clientes");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, 20));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Dados do cliente");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -411,11 +389,6 @@ public class Clientes extends javax.swing.JInternalFrame {
         } catch (IOException ex) {
             Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-        
-        
-        
-        
     }//GEN-LAST:event_JBExportarActionPerformed
 
     private void JTCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCpfActionPerformed
@@ -438,9 +411,11 @@ public class Clientes extends javax.swing.JInternalFrame {
     private static javax.swing.JTable JTTabela;
     private javax.swing.JFormattedTextField JTTelefone;
     private javax.swing.JMenuItem Limpar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu2;

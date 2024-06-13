@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Utilitários;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,12 +18,14 @@ public class UsuarioDTO {
     private String SexoFuncionario;
     private String UsuarioFuncionario;
     private String SenhaFuncionario;
+    private int CodigoFuncionario;
     
     //Adicionar produto ao estoque
     private String ProdutoEstoque;
     private String TamanhoEstoque;
     private int QuantidadeEstoque;
     private Double PrecoEstoque;
+    private int CodigoEstoque;
     
     //Registrar vendas
     private String ClienteRegistro;
@@ -36,11 +35,13 @@ public class UsuarioDTO {
     private String TamanhoRegistro;
     private int QuantidadeRegistro;
     private Double TotalRegistro;
+    private int NotaFiscalRegistro;
     
     //Verificar produto no estoque
     private int CodigoProduto;
     private String ProdutoProduto;
     private Double PrecoProduto;
+    private int QuantidadeProduto;
     
     public String getNomeFuncionario() {
         return NomeFuncionario;
@@ -150,7 +151,7 @@ public class UsuarioDTO {
         if (QuantidadeEstoque > 0){
             this.QuantidadeEstoque = QuantidadeEstoque;
         }else{
-            JOptionPane.showMessageDialog(null, "ERRO: Verifique a quantidade do produto.");
+            JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
         }
     }
 
@@ -163,7 +164,7 @@ public class UsuarioDTO {
         if (PrecoEstoque > 0){
             this.PrecoEstoque = PrecoEstoque;
         }else{
-            JOptionPane.showMessageDialog(null, "ERRO: Verifique o preço do produto.");
+            JOptionPane.showMessageDialog(null, "ERRO: O preço deve ser maior do que zero.");
         }
     }
 
@@ -245,7 +246,12 @@ public class UsuarioDTO {
     }
 
     public void setCodigoProduto(int CodigoProduto) {
-        this.CodigoProduto = CodigoProduto;
+        if (!String.valueOf(CodigoProduto).isEmpty()){
+            this.CodigoProduto = CodigoProduto;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Verifique o código do produto.");
+        }
+     
     }
 
     public String getProdutoProduto() {
@@ -262,5 +268,41 @@ public class UsuarioDTO {
 
     public void setPrecoProduto(Double PrecoProduto) {
         this.PrecoProduto = PrecoProduto;
+    }
+
+    public int getCodigoEstoque() {
+        return CodigoEstoque;
+    }
+
+    public void setCodigoEstoque(int CodigoEstoque) {
+        this.CodigoEstoque = CodigoEstoque;
+    }
+
+    public int getCodigoFuncionario() {
+        return CodigoFuncionario;
+    }
+
+    public void setCodigoFuncionario(int CodigoFuncionario) {
+        this.CodigoFuncionario = CodigoFuncionario;
+    }
+
+    public int getQuantidadeProduto() {
+        return QuantidadeProduto;
+    }
+
+    public void setQuantidadeProduto(int QuantidadeProduto) {
+        if (QuantidadeProduto > 0){
+            this.QuantidadeProduto = QuantidadeProduto;
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
+        }
+    }
+
+    public int getNotaFiscalRegistro() {
+        return NotaFiscalRegistro;
+    }
+
+    public void setNotaFiscalRegistro(int NotaFiscalRegistro) {
+        this.NotaFiscalRegistro = NotaFiscalRegistro;
     }
 }

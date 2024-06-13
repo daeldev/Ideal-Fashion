@@ -3,23 +3,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Atendente;
+import Administrador.Estoque;
 import Utilitários.UsuarioDTO;
 import Utilitários.ConexaoCi;
 import Utilitários.TipoPagamento;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Josiel
  */
-public class Caixa extends javax.swing.JInternalFrame {
+public class Carrinho extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Caixa1
      */
-    public Caixa() {
+    public Carrinho() {
         initComponents();
+        DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
+        JTEstoque.setRowSorter(new TableRowSorter(modelot));
+        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Estoque";
+        File file = new File(FilePath) ;      
+        try {
+            FileReader frE = new FileReader (file);
+            BufferedReader brE = new BufferedReader(frE);
+            
+            DefaultTableModel modelo = ( DefaultTableModel)JTEstoque.getModel();
+            Object [ ] lines = brE.lines().toArray();
+            
+            for (int i = 0 ; i < lines.length; i ++){
+                String [ ] row = lines[i].toString().split(" ");
+                modelo.addRow(row);             
+            }        
+        } catch (FileNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }       
     }
 
     /**
@@ -35,15 +59,15 @@ public class Caixa extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        JTQuantidade = new javax.swing.JTextField();
         JTCodigo = new javax.swing.JFormattedTextField();
         JBAdicionar = new javax.swing.JButton();
         JBLimpar = new javax.swing.JButton();
         JCTamanho = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        JSQuantidade = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTVendas = new javax.swing.JTable();
+        JTCarrinho = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         JTTotal = new javax.swing.JTextField();
@@ -52,8 +76,7 @@ public class Caixa extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         JTEstoque = new javax.swing.JTable();
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,10 +93,6 @@ public class Caixa extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Código:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        JTQuantidade.setBackground(new java.awt.Color(51, 51, 51));
-        JTQuantidade.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 50, 20));
 
         JTCodigo.setBackground(new java.awt.Color(51, 51, 51));
         JTCodigo.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,10 +138,13 @@ public class Caixa extends javax.swing.JInternalFrame {
         jLabel13.setText("Tamanho:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
+        JSQuantidade.setToolTipText("");
+        jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 50, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 370, 130));
 
-        JTVendas.setBackground(new java.awt.Color(246, 242, 242));
-        JTVendas.setModel(new javax.swing.table.DefaultTableModel(
+        JTCarrinho.setBackground(new java.awt.Color(246, 242, 242));
+        JTCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -130,19 +152,19 @@ public class Caixa extends javax.swing.JInternalFrame {
                 "Produto", "Tamanho", "Quantidade", "Preço", "Código", "Subtotal"
             }
         ));
-        JTVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTCarrinho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JTVendasMouseClicked(evt);
+                JTCarrinhoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(JTVendas);
+        jScrollPane1.setViewportView(JTCarrinho);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 540, 460));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 540, 460));
 
         jPanel3.setBackground(new java.awt.Color(246, 242, 242));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel11.setText("TOTAL:");
+        jLabel11.setText("Total:");
 
         JTTotal.setBackground(new java.awt.Color(51, 51, 51));
         JTTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -177,17 +199,18 @@ public class Caixa extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(JBPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(JTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(JTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(JBPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,18 +219,18 @@ public class Caixa extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(JTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 370, 160));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 370, 140));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Carrinho");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, 20));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setText("Dados do Produto");
@@ -219,34 +242,37 @@ public class Caixa extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("Carrinho", jPanel1);
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         JTEstoque.setBackground(new java.awt.Color(246, 242, 242));
         JTEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Tamanho", "Quantidade", "Preço", "Código"
+                "Produto", "Tamanho", "Quantidade", "Preço", "Código"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         JTEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JTEstoqueMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(JTEstoque);
+        jScrollPane2.setViewportView(JTEstoque);
 
-        jPanel8.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 10, 950, 565));
-
-        jTabbedPane1.addTab("Estoque", jPanel8);
+        jTabbedPane1.addTab("Estoque", jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,71 +284,25 @@ public class Caixa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCodigoActionPerformed
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTCodigoActionPerformed
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) JTVendas.getModel();
-        if(JTCodigo.getText().isEmpty() || JTQuantidade.getText().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o Código, ou quantidade do produto");
-        }else{
-            try{
-                UsuarioDTO Dados = new UsuarioDTO();
-                Dados.setCodigoProduto(Integer.parseInt(JTCodigo.getText()));
-            
-                ConexaoCi VerificarProduto = new ConexaoCi();
-                if (VerificarProduto.VerificarEstoque(Dados)){
-                    double Quantidade, Subtotal, Acumulador = 0;
-                    double Preco = Dados.getPrecoProduto();
-                    String Nome = Dados.getProdutoProduto();
-                    Quantidade = Double.parseDouble(JTQuantidade.getText());
-                    Subtotal = Preco*Quantidade;
-                    
-                    Object[] dados = {JCTamanho.getSelectedItem(), JTQuantidade.getText(), JTCodigo.getText(), Subtotal};
-                    for (int i = 0; i < JTVendas.getRowCount(); i++){
-                        Acumulador += Double.valueOf(JTVendas.getValueAt(i, 5).toString());
-                    }
-                    JTTotal.setText(Double.toString(Acumulador+Subtotal));
-                    modelo.addRow(dados);
-                }else{
-                    JOptionPane.showMessageDialog(rootPane, "Produto inexistente.");
-                }
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(rootPane, "ERRO: Verifique o código do produto");
-            }  
-    }//GEN-LAST:event_JBAdicionarActionPerformed
-    }
-    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) JTVendas.getModel();
-        // Verifica se alguma linha está selecionada no carrinho
-        if (JTVendas.getSelectedRow() != -1) {
-            // Obtém o subtotal do produto selecionado
-            double subtotalRemovido = Double.parseDouble(modelo.getValueAt(JTVendas.getSelectedRow(), 5).toString());
-            
-            // Remove a linha do produto selecionado do modelo da tabela
-            modelo.removeRow(JTVendas.getSelectedRow());
+    private void JTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEstoqueMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTEstoqueMouseClicked
 
-            // Recalcula o total acumulado após a remoção do produto
-            double novoTotal = 0;
-            for (int i = 0; i < modelo.getRowCount(); i++) {
-                novoTotal += Double.parseDouble(modelo.getValueAt(i, 5).toString());
-            }
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
 
-            // Atualiza o campo campototal com o novo total acumulado
-            JTTotal.setText(Double.toString(novoTotal));
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
+        if(q == JOptionPane.YES_OPTION){
+            DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
+            modelo.setNumRows(0);
+            JTCodigo.setText("");
+            JSQuantidade.setValue("");
+            JTTotal.setText("");
         }
-    }//GEN-LAST:event_JBLimparActionPerformed
-
-    private void JTVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTVendasMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTVendasMouseClicked
-
-    private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTTotalActionPerformed
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
         if(JTTotal.getText().equals("")){
@@ -338,25 +318,68 @@ public class Caixa extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JBPagarActionPerformed
 
-    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
-
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-        if(q == JOptionPane.YES_OPTION){
-            DefaultTableModel modelo = (DefaultTableModel) JTVendas.getModel();
-            modelo.setNumRows(0);
-            JTCodigo.setText("");
-            JTQuantidade.setText("");
-            JTTotal.setText("");
-        }
-    }//GEN-LAST:event_JBCancelarActionPerformed
-
-    private void JTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEstoqueMouseClicked
-
-    }//GEN-LAST:event_JTEstoqueMouseClicked
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+    private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
+    }//GEN-LAST:event_JTTotalActionPerformed
+
+    private void JTCarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTCarrinhoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTCarrinhoMouseClicked
+
+    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
+        // Verifica se alguma linha está selecionada no carrinho
+        if (JTCarrinho.getSelectedRow() != -1) {
+            // Obtém o subtotal do produto selecionado
+            double subtotalRemovido = Double.parseDouble(modelo.getValueAt(JTCarrinho.getSelectedRow(), 5).toString());
+
+            // Remove a linha do produto selecionado do modelo da tabela
+            modelo.removeRow(JTCarrinho.getSelectedRow());
+
+            // Recalcula o total acumulado após a remoção do produto
+            double novoTotal = 0;
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                novoTotal += Double.parseDouble(modelo.getValueAt(i, 5).toString());
+            }
+
+            // Atualiza o campo campototal com o novo total acumulado
+            JTTotal.setText(Double.toString(novoTotal));
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
+        }
+    }//GEN-LAST:event_JBLimparActionPerformed
+
+    private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
+        UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
+        ObjusuarioDTO.setCodigoProduto(Integer.parseInt(JTCodigo.getText()));
+        ObjusuarioDTO.setQuantidadeProduto(Integer.valueOf(JSQuantidade.getValue().toString()));
+        ConexaoCi Ci = new ConexaoCi();
+
+        if (Ci.VerificarEstoque(ObjusuarioDTO)){
+
+            int Acumulador = 0;
+            double Quantidade, Subtotal;
+            double Preco = ObjusuarioDTO.getPrecoProduto();
+            String Produto = ObjusuarioDTO.getProdutoProduto();
+            Quantidade = Double.parseDouble(JSQuantidade.getValue().toString());
+            Subtotal = Preco*Quantidade;
+
+            DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
+            Object[] dados = {Produto, JCTamanho.getSelectedItem(), JSQuantidade.getValue(), JTCodigo.getText(), Subtotal};
+
+            for (int i = 0; i < JTCarrinho.getRowCount(); i++){
+                Acumulador += Double.valueOf(JTCarrinho.getValueAt(i, 5).toString());
+            }
+            JTTotal.setText(Double.toString(Acumulador+Subtotal));
+            modelo.addRow(dados);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Produto inexistente.");
+        }
+    }//GEN-LAST:event_JBAdicionarActionPerformed
+
+    private void JTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -365,11 +388,11 @@ public class Caixa extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBLimpar;
     private javax.swing.JButton JBPagar;
     private javax.swing.JComboBox<String> JCTamanho;
+    private javax.swing.JSpinner JSQuantidade;
+    public javax.swing.JTable JTCarrinho;
     private javax.swing.JFormattedTextField JTCodigo;
     private static javax.swing.JTable JTEstoque;
-    private javax.swing.JTextField JTQuantidade;
     private javax.swing.JTextField JTTotal;
-    public javax.swing.JTable JTVendas;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -380,9 +403,8 @@ public class Caixa extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
