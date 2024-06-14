@@ -1,6 +1,7 @@
 package Atendente;
 import Administrador.Estoque;
 import Utilitários.ConexaoCi;
+import Utilitários.DTO;
 import Utilitários.TipoPagamento;
 import Utilitários.UsuarioDTO;
 import java.io.BufferedWriter;
@@ -190,8 +191,6 @@ public class Pagamento extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Venda Cancelada");
             dispose();
         }
-        else if(resposta == JOptionPane.NO_OPTION){
-        }
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
@@ -268,51 +267,47 @@ public class Pagamento extends javax.swing.JInternalFrame {
                     }
                 }
             }
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
-            JTVista.setText("");
-            JTParcelas.setText("");
-        }
+            
+            //Adiciona os dados da venda ao banco de dados
+        
 
-        //Adiciona os dados da venda ao banco de dados
-        UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
+        Carrinho carrinho = new Carrinho();
+        for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
+            DTO dto = new DTO();
+            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+            
+            String Nome = carrinho.JTCarrinho.getValueAt(i, 0).toString();
+            String Tamanho = carrinho.JTCarrinho.getValueAt(i, 1).toString();
+            int Quantidade = Integer.parseInt(carrinho.JTCarrinho.getValueAt(i, 2).toString());
+            Double Total = Double.valueOf(carrinho.JTCarrinho.getValueAt(i, 5).toString());
 
-        Carrinho Carrinho = new Carrinho();
-        for (int i = 0; i < Carrinho.JTCarrinho.getRowCount(); i++) {
-            String ProdutoRegistro = Carrinho.JTCarrinho.getValueAt(i, 0).toString();
-            String TamanhoProduto = Carrinho.JTCarrinho.getValueAt(i, 1).toString();
-            int QuantidadeProduto = Integer.parseInt(Carrinho.JTCarrinho.getValueAt(i, 2).toString());
-            Double TotalRegistro = Double.valueOf(Carrinho.JTCarrinho.getValueAt(i, 5).toString());
+            produtoDTO.setNome(Nome);
+            produtoDTO.setTamanho(Tamanho);
+            produtoDTO.setQuantidade(Quantidade);
+            produtoDTO.setTotal(Total);
 
-            ObjusuarioDTO.setProdutoRegistro(ProdutoRegistro);
-            ObjusuarioDTO.setTamanhoRegistro(TamanhoProduto);
-            ObjusuarioDTO.setQuantidadeRegistro(QuantidadeProduto);
-            ObjusuarioDTO.setTotalRegistro(TotalRegistro);
+            ConexaoCi produtoDAO = new ConexaoCi();
+            int Resultado = produtoDAO.AdicionarRegistro(produtoDTO);
 
-            ConexaoCi ObjusuarioDAO = new ConexaoCi();
-            int Resultado = ObjusuarioDAO.AdicionarRegistro(ObjusuarioDTO);
-
-            if(Resultado != -1){
-                
-                LocalDate dataAtual = LocalDate.now();
-                Registro Regs = new Registro();
-                DefaultTableModel modelo = (DefaultTableModel) Regs.JTRegistro.getModel();
-                Object[] dados = {dataAtual, ObjusuarioDTO.getClienteRegistro(), ObjusuarioDTO.getTelefoneRegistro(), ObjusuarioDTO.getCPFRegistro(), ObjusuarioDTO.getProdutoRegistro(), ObjusuarioDTO.getTamanhoRegistro(), 
-                ObjusuarioDTO.getQuantidadeRegistro(), ObjusuarioDTO.getNotaFiscalRegistro(), ObjusuarioDTO.getTotalRegistro()};
-                modelo.addRow(dados);
-                
+            if(Resultado != -1){ 
                 //Salva a tabela
+                LocalDate dataAtual = LocalDate.now();  
                 String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Registro";
                 File file = new File(FilePath) ;
+                
                 try {
                     FileWriter fwe = new FileWriter(file);
                     BufferedWriter bwe = new BufferedWriter(fwe);
-                    for (int i = 0; i < Regs.JTRegistro.getRowCount(); i ++){
-                        for(int j = 0; j <  Regs.JTRegistro.getColumnCount(); j ++){
-                            bwe.write(Regs.JTRegistro.getValueAt (i, j).toString() + " ");
-                        }
-                        bwe.newLine();
-                    }            
+                    bwe.write(dataAtual + " ");
+                    bwe.write(ObjusuarioDTO.getClienteRegistro() + " ");
+                    bwe.write(ObjusuarioDTO.getTelefoneRegistro() + " ");
+                    bwe.write(ObjusuarioDTO.getCPFRegistro() + " ");
+                    bwe.write(ProdutoRegistro + " ");
+                    bwe.write(TamanhoProduto + " "); 
+                    bwe.write(QuantidadeProduto + " ");
+                    bwe.write(ObjusuarioDTO.getNotaFiscalRegistro() + " ");
+                    bwe.write(TotalRegistro + " "); 
+                    bwe.newLine();
                     bwe.close();
                     fwe.close();
                 }catch (IOException ex) {
@@ -320,6 +315,11 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 }
             }
         }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
+            JTVista.setText("");
+            JTParcelas.setText("");
+        }  
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed

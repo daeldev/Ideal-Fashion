@@ -3,21 +3,16 @@ package Gerente;
 
 import Administrador.Estoque;
 import Utilitários.ConexaoCi;
-import Utilitários.UsuarioDTO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Utilitários.ConexaoBD;
+import Utilitários.DTO;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.TableRowSorter;
@@ -290,27 +285,38 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
         
         //Adiciona os dados ao banco de dados
-        UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
         
-        ObjusuarioDTO.setFuncaoFuncionario(JCFuncao.getSelectedItem().toString());
-        ObjusuarioDTO.setNomeFuncionario(JTNome.getText());       
-        ObjusuarioDTO.setCPFFuncionario(JTCpf.getText());
-        ObjusuarioDTO.setDataNascimentoFuncionario(JTData.getText());
-        ObjusuarioDTO.setSexoFuncionario(JCSexo.getSelectedItem().toString());
-        ObjusuarioDTO.setUsuarioFuncionario(JTUsuario.getText());
-        ObjusuarioDTO.setSenhaFuncionario(JTSenha.getText());
+        //Instância a classe DTO
+        DTO dto = new DTO();
+        
+        //Intância a classe FuncionarioDTO de DTO
+        DTO.FuncionarioDTO funcionarioDTO = dto.new FuncionarioDTO();
+        
+        //Seta os dados fornecidos para o FuncionarioDTO
+        funcionarioDTO.setFuncao(JCFuncao.getSelectedItem().toString());
+        funcionarioDTO.setNome(JTNome.getText());       
+        funcionarioDTO.setCPF(JTCpf.getText());
+        funcionarioDTO.setDataNascimento(JTData.getText());
+        funcionarioDTO.setSexo(JCSexo.getSelectedItem().toString());
+        funcionarioDTO.setUsuario(JTUsuario.getText());
+        funcionarioDTO.setSenha(JTSenha.getText());
+        
+        //Instância a classe ConexaoCi
+        ConexaoCi funcionarioDAO = new ConexaoCi();
+        
+        //Executa o insert dos dados setados na classe funcionarioDTO ao banco de dados através do funcionarioDAO
+        int Resultado = funcionarioDAO.AdicionarFuncionario(funcionarioDTO);
 
-        ConexaoCi ObjusuarioDAO = new ConexaoCi();
-        int Resultado = ObjusuarioDAO.AdicionarFuncionario(ObjusuarioDTO);
-
+        //Verifica se o cadastro foi efetuado com sucesso.
         if(Resultado != -1){
-            DefaultTableModel modelo = (DefaultTableModel) JTFuncionarios.getModel();
-            Object[] dados = {ObjusuarioDTO.getFuncaoFuncionario(), ObjusuarioDTO.getNomeFuncionario(), ObjusuarioDTO.getCPFFuncionario(), ObjusuarioDTO.getDataNascimentoFuncionario(), ObjusuarioDTO.getSexoFuncionario(), ObjusuarioDTO.getCodigoFuncionario()};
-            modelo.addRow(dados);
+            //Grava os dados setados na classe funcionarioDTO para a tabela de cadastros através de um vetor
+            DefaultTableModel Tabela = (DefaultTableModel) JTFuncionarios.getModel();
+            Object[] dados = {funcionarioDTO.getFuncao(), funcionarioDTO.getNome(), funcionarioDTO.getCPF(), funcionarioDTO.getDataNascimento(), funcionarioDTO.getSexo(), funcionarioDTO.getCodigo()};
+            Tabela.addRow(dados);
 
             //Salva a tabela
             String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Funcionarios";
-            File file = new File(FilePath) ;
+            File file = new File(FilePath);
             try {
                 FileWriter fwe = new FileWriter(file);
                 BufferedWriter bwe = new BufferedWriter(fwe);

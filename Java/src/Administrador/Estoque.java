@@ -1,6 +1,6 @@
 package Administrador;
 import Utilitários.ConexaoCi;
-import Utilitários.UsuarioDTO;
+import Utilitários.DTO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -225,23 +225,22 @@ public class Estoque extends javax.swing.JInternalFrame {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "ERRO: Valores inválidos.");
         }    
-            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
-            ObjusuarioDTO.setProdutoEstoque(JTNomeProduto.getText());
-            ObjusuarioDTO.setTamanhoEstoque(JCTamanho.getSelectedItem().toString());
+            DTO dto = new DTO();
+            
+            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+            produtoDTO.setNome(JTNomeProduto.getText());
+            produtoDTO.setTamanho(JCTamanho.getSelectedItem().toString());
             if (Integer.parseInt(JSQuantidade.getValue().toString()) > 0){
-                ObjusuarioDTO.setQuantidadeEstoque(Integer.parseInt(JSQuantidade.getValue().toString()));
-            }else{
-                JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
-            }
-            ObjusuarioDTO.setPrecoEstoque(Double.valueOf(JTPreco.getText())); 
+                produtoDTO.setQuantidade(Integer.parseInt(JSQuantidade.getValue().toString()));
+                produtoDTO.setPreco(Double.valueOf(JTPreco.getText())); 
             
             ConexaoCi ObjusuarioDAO = new ConexaoCi();
-            int Resultado = ObjusuarioDAO.AdicionarEstoque(ObjusuarioDTO);  
+            int Resultado = ObjusuarioDAO.AdicionarEstoque(produtoDTO);  
             
             //Adiciona a tabela
             if(Resultado != -1){
                 DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
-                Object[] dados = {ObjusuarioDTO.getProdutoEstoque(), ObjusuarioDTO.getTamanhoEstoque(), ObjusuarioDTO.getQuantidadeEstoque(), ObjusuarioDTO.getPrecoEstoque(), ObjusuarioDTO.getCodigoEstoque()};
+                Object[] dados = {produtoDTO.getNome(), produtoDTO.getTamanho(), produtoDTO.getQuantidade(), produtoDTO.getPreco(), produtoDTO.getCodigo()};
                 modelo.addRow(dados);
                 
                 //Salva a tabela
@@ -261,6 +260,9 @@ public class Estoque extends javax.swing.JInternalFrame {
                 }catch (IOException ex) {
                     Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            }else{
+                JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
             }
     }//GEN-LAST:event_JBAdicionarActionPerformed
 

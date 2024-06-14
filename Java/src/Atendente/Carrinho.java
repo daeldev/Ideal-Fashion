@@ -4,8 +4,8 @@
  */
 package Atendente;
 import Administrador.Estoque;
-import Utilitários.UsuarioDTO;
 import Utilitários.ConexaoCi;
+import Utilitários.DTO;
 import Utilitários.TipoPagamento;
 import java.io.BufferedReader;
 import java.io.File;
@@ -59,13 +59,13 @@ public class Carrinho extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        JTCodigo = new javax.swing.JFormattedTextField();
         JBAdicionar = new javax.swing.JButton();
         JBLimpar = new javax.swing.JButton();
         JCTamanho = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         JSQuantidade = new javax.swing.JSpinner();
+        JTCodigo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTCarrinho = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -93,20 +93,6 @@ public class Carrinho extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Código:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        JTCodigo.setBackground(new java.awt.Color(51, 51, 51));
-        JTCodigo.setForeground(new java.awt.Color(255, 255, 255));
-        try {
-            JTCodigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        JTCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTCodigoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(JTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, 20));
 
         JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
         JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,6 +126,17 @@ public class Carrinho extends javax.swing.JInternalFrame {
 
         JSQuantidade.setToolTipText("");
         jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 50, -1));
+
+        JTCodigo.setBackground(new java.awt.Color(51, 51, 51));
+        JTCodigo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTCodigo.setForeground(new java.awt.Color(255, 255, 255));
+        JTCodigo.setEnabled(false);
+        JTCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTCodigoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 370, 130));
 
@@ -296,11 +293,8 @@ public class Carrinho extends javax.swing.JInternalFrame {
 
         int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
         if(q == JOptionPane.YES_OPTION){
-            DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
-            modelo.setNumRows(0);
-            JTCodigo.setText("");
-            JSQuantidade.setValue("");
-            JTTotal.setText("");
+            JOptionPane.showMessageDialog(null, "Venda Cancelada");
+            dispose();
         }
     }//GEN-LAST:event_JBCancelarActionPerformed
 
@@ -314,7 +308,6 @@ public class Carrinho extends javax.swing.JInternalFrame {
             FP.setVisible(true);
             WorkspaceAtendente.WorkspaceAtendente.add(FP);
             FP.toFront();
-
         }
     }//GEN-LAST:event_JBPagarActionPerformed
 
@@ -350,17 +343,19 @@ public class Carrinho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBLimparActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
-        UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
-        ObjusuarioDTO.setCodigoProduto(Integer.parseInt(JTCodigo.getText()));
-        ObjusuarioDTO.setQuantidadeProduto(Integer.valueOf(JSQuantidade.getValue().toString()));
+        DTO dto = new DTO();
+        DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+        
+        produtoDTO.setCodigo(Integer.parseInt(JTCodigo.getText()));
+        produtoDTO.setQuantidade(Integer.valueOf(JSQuantidade.getValue().toString()));
         ConexaoCi Ci = new ConexaoCi();
 
-        if (Ci.VerificarEstoque(ObjusuarioDTO)){
+        if (Ci.VerificarEstoque(produtoDTO)){
 
             int Acumulador = 0;
             double Quantidade, Subtotal;
-            double Preco = ObjusuarioDTO.getPrecoProduto();
-            String Produto = ObjusuarioDTO.getProdutoProduto();
+            double Preco = produtoDTO.getPreco();
+            String Produto = produtoDTO.getNome();
             Quantidade = Double.parseDouble(JSQuantidade.getValue().toString());
             Subtotal = Preco*Quantidade;
 
@@ -390,7 +385,7 @@ public class Carrinho extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> JCTamanho;
     private javax.swing.JSpinner JSQuantidade;
     public javax.swing.JTable JTCarrinho;
-    private javax.swing.JFormattedTextField JTCodigo;
+    private javax.swing.JTextField JTCodigo;
     private static javax.swing.JTable JTEstoque;
     private javax.swing.JTextField JTTotal;
     private javax.swing.JLabel jLabel10;

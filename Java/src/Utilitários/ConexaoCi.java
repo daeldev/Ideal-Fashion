@@ -1,124 +1,134 @@
 package Utilitários;
-import Administrador.Estoque;
-import Atendente.Registro;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 public class ConexaoCi {
     Connection conn;
     
-    public int AdicionarFuncionario(UsuarioDTO objusdto){
+    public int AdicionarFuncionario(DTO.FuncionarioDTO funcionarioDTO){
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try {
                 String sql = "INSERT INTO Funcionarios (Funcao, Nome, CPF, DataNascimento, Sexo, Usuario, Senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-                pstm.setString(1, objusdto.getFuncaoFuncionario());
-                pstm.setString(2, objusdto.getNomeFuncionario());
-                pstm.setString(3, objusdto.getCPFFuncionario());
-                pstm.setString(4, objusdto.getDataNascimentoFuncionario());
-                pstm.setString(5, objusdto.getSexoFuncionario());
-                pstm.setString(6, objusdto.getUsuarioFuncionario());
-                pstm.setString(7, objusdto.getSenhaFuncionario());
+                pstm.setString(1, funcionarioDTO.getFuncao());
+                pstm.setString(2, funcionarioDTO.getNome());
+                pstm.setString(3, funcionarioDTO.getCPF());
+                pstm.setString(4, funcionarioDTO.getDataNascimento());
+                pstm.setString(5, funcionarioDTO.getSexo());
+                pstm.setString(6, funcionarioDTO.getUsuario());
+                pstm.setString(7, funcionarioDTO.getSenha());
 
                 int rs = pstm.executeUpdate();
 
                 ResultSet generatedKeys = pstm.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    objusdto.setCodigoFuncionario(generatedKey = generatedKeys.getInt(1));
+                    funcionarioDTO.setCodigo(generatedKey = generatedKeys.getInt(1));
                 }
                 return rs;
             } catch (SQLException erro) {
-                //JOptionPane.showMessageDialog(null, erro.getMessage());
+                JOptionPane.showMessageDialog(null, erro.getMessage());
                 return -1;
             }
     }
     
-    public int AdicionarEstoque(UsuarioDTO objusdto){
+    public int AdicionarEstoque(DTO.ProdutoDTO produtoDTO){
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try{
-                String sql = "Insert into Estoque (Produto, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
+                String sql = "Insert into Estoque (Nome, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-                pstm.setString(1, objusdto.getProdutoEstoque());
-                pstm.setString(2, objusdto.getTamanhoEstoque());
-                pstm.setInt(3, objusdto.getQuantidadeEstoque());
-                pstm.setDouble(4, objusdto.getPrecoEstoque());
+                pstm.setString(1, produtoDTO.getNome());
+                pstm.setString(2, produtoDTO.getTamanho());
+                pstm.setInt(3, produtoDTO.getQuantidade());
+                pstm.setDouble(4, produtoDTO.getPreco());
 
                 int rs = pstm.executeUpdate();
                 ResultSet rsa = pstm.getGeneratedKeys();
                 if (rsa.next()) {
-                    objusdto.setCodigoEstoque(generatedKey = rsa.getInt(1));   
+                    produtoDTO.setCodigo(generatedKey = rsa.getInt(1));   
                 }  
                 return rs;
             }catch (SQLException erro){
-                //JOptionPane.showMessageDialog(null, erro.getMessage());
+                JOptionPane.showMessageDialog(null, erro.getMessage());
                 return -1;
             }   
     }
     
-    public int AdicionarRegistro(UsuarioDTO objusdto){
+    public int AdicionarRegistro(DTO.ProdutoDTO produtoDTO, DTO.ClienteDTO clienteDTO){
         conn = new ConexaoBD().ConectaBD();   
         int generatedKey = -1;
         try{
+            //Adiciona os daods ao banco
             String sql = "Insert into Registro (Data, Cliente, Telefone, CPF, Produto, Tamanho, Quantidade, Total) Values (?, ?, ?, ?, ?, ?, ?, ?)";
             LocalDate dataAtual = LocalDate.now();
             PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setObject(1, dataAtual);
-            pstm.setString(2, objusdto.getClienteRegistro());
-            pstm.setString(3, objusdto.getTelefoneRegistro());
-            pstm.setString(4, objusdto.getCPFRegistro());
-            pstm.setString(5, objusdto.getProdutoRegistro());
-            pstm.setString(6, objusdto.getTamanhoRegistro());
-            pstm.setInt(7, objusdto.getQuantidadeRegistro());
-            pstm.setDouble(8, objusdto.getTotalRegistro());
+            pstm.setString(2, clienteDTO.getNome());
+            pstm.setString(3, clienteDTO.getTelefone());
+            pstm.setString(4, clienteDTO.getCPF());
+            pstm.setString(5, produtoDTO.getNome());
+            pstm.setString(6, produtoDTO.getTamanho());
+            pstm.setInt(7, produtoDTO.getQuantidade());
+            pstm.setDouble(8, produtoDTO.getTotal());
             
             int rs = pstm.executeUpdate();
             ResultSet rsa = pstm.getGeneratedKeys();
                 if (rsa.next()) {
-                    objusdto.setNotaFiscalRegistro(generatedKey = rsa.getInt(1));   
-                }  
-                return rs;
+                    DTO dto = new DTO();
+                    DTO.RegistroDTO registroDTO = dto.new RegistroDTO();
+                    registroDTO.setNotaFiscal(generatedKey = rsa.getInt(1));   
+                } 
+            return rs;
 
                 
             }catch (SQLException erro){
-                //JOptionPane.showMessageDialog(null, erro.getMessage());
+                JOptionPane.showMessageDialog(null, erro.getMessage());
                 return -1;
             }  
     }
     
-    public Boolean VerificarEstoque(UsuarioDTO objusdto){
+    public Boolean VerificarEstoque(DTO.ProdutoDTO produtoDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "Select Produto, Preco, Quantidade from Estoque where Codigo = ?)";
+            String sql = "Select Nome, Preco, Quantidade from Estoque where Codigo = ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, objusdto.getCodigoProduto());   
+            pstm.setInt(1, produtoDTO.getCodigo());   
             
             ResultSet rs = pstm.executeQuery();
-            UsuarioDTO ObjusuarioDTO = new UsuarioDTO();
             if (rs.next()){
-                if (rs.getInt("Quantidade") >= ObjusuarioDTO.getQuantidadeProduto()){
-                    ObjusuarioDTO.setProdutoProduto(rs.getString("Produto"));
-                    ObjusuarioDTO.setPrecoProduto(rs.getDouble("Preco"));        
+                if (rs.getInt("Quantidade") >= produtoDTO.getQuantidade()){
+                    produtoDTO.setNome(rs.getString("Produto"));
+                    produtoDTO.setPreco(rs.getDouble("Preco"));        
                     return true; 
                 }else{
                    JOptionPane.showMessageDialog(null, "ERRO: Quantidade indisponível no estoque."); 
                 }   
             }
         }catch (SQLException erro) {
-            //JOptionPane.showMessageDialog(null, erro.getMessage());
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+        return false;
+    }
+    
+    public Boolean VerificarCliente(DTO.ClienteDTO clienteDTO){
+        conn = new ConexaoBD().ConectaBD();       
+        try{
+            String sql = "Select * from Clientes where CPF = ?)";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, clienteDTO.getCPF());   
+            
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()){       
+                return true; 
+            }
+        }catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
         }
         return false;
     }
