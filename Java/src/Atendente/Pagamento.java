@@ -3,7 +3,6 @@ import Administrador.Estoque;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
 import Utilitários.TipoPagamento;
-import Utilitários.UsuarioDTO;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +11,6 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 public class Pagamento extends javax.swing.JInternalFrame {
@@ -194,6 +192,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
+        
         try{
             if(JRVista.isSelected ()){
                 Double dinheiroDoCliente = Double.valueOf(JTVista.getText());
@@ -271,7 +270,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
             //Adiciona os dados da venda ao banco de dados
         
 
-        Carrinho carrinho = new Carrinho();
+        CarrinhoBugado carrinho = new CarrinhoBugado();
         for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
             DTO dto = new DTO();
             DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
@@ -286,8 +285,13 @@ public class Pagamento extends javax.swing.JInternalFrame {
             produtoDTO.setQuantidade(Quantidade);
             produtoDTO.setTotal(Total);
 
+            DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
+            clienteDTO.getCPF();
+            clienteDTO.getNome();
+            clienteDTO.getTelefone();
+            
             ConexaoCi produtoDAO = new ConexaoCi();
-            int Resultado = produtoDAO.AdicionarRegistro(produtoDTO);
+            int Resultado = produtoDAO.AdicionarRegistro(produtoDTO, clienteDTO);
 
             if(Resultado != -1){ 
                 //Salva a tabela
@@ -295,18 +299,19 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Registro";
                 File file = new File(FilePath) ;
                 
+                DTO.RegistroDTO registroDTO = dto.new RegistroDTO();
                 try {
                     FileWriter fwe = new FileWriter(file);
                     BufferedWriter bwe = new BufferedWriter(fwe);
                     bwe.write(dataAtual + " ");
-                    bwe.write(ObjusuarioDTO.getClienteRegistro() + " ");
-                    bwe.write(ObjusuarioDTO.getTelefoneRegistro() + " ");
-                    bwe.write(ObjusuarioDTO.getCPFRegistro() + " ");
-                    bwe.write(ProdutoRegistro + " ");
-                    bwe.write(TamanhoProduto + " "); 
-                    bwe.write(QuantidadeProduto + " ");
-                    bwe.write(ObjusuarioDTO.getNotaFiscalRegistro() + " ");
-                    bwe.write(TotalRegistro + " "); 
+                    bwe.write(clienteDTO.getNome() + " ");
+                    bwe.write(clienteDTO.getTelefone() + " ");
+                    bwe.write(clienteDTO.getCPF() + " ");
+                    bwe.write(Nome + " ");
+                    bwe.write(Tamanho + " "); 
+                    bwe.write(Quantidade + " ");
+                    bwe.write(registroDTO.getNotaFiscal() + " ");
+                    bwe.write(Total + " "); 
                     bwe.newLine();
                     bwe.close();
                     fwe.close();

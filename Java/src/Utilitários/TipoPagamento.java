@@ -13,7 +13,4 @@ public class TipoPagamento {
     public void setPagamento(String pagamento) {
         this.pagamento = pagamento;
     }
-
- 
-   
 }

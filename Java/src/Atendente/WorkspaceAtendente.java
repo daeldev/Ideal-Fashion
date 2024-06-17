@@ -170,7 +170,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         DadosCliente Dados = new DadosCliente();
         WorkspaceAtendente.add(Dados);     
         Dados.setVisible(true);
-        Dados.setBounds(247, 97, 408, 513);
+        Dados.setBounds(450, 100, 408, 513);
     }//GEN-LAST:event_JBVendasActionPerformed
 
     private void JBClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBClientesActionPerformed

@@ -148,22 +148,6 @@ public class DTO {
             }
         }
 
-        public void setPreco(Double Preco) {
-            if (Preco > 0) {
-                this.Preco = Preco;
-            } else {
-                JOptionPane.showMessageDialog(null, "ERRO: O preço deve ser maior do que zero.");
-            }
-        }
-
-        public void setQuantidade(int Quantidade) {
-            if (Quantidade > 0) {
-                this.Quantidade = Quantidade;
-            } else {
-                JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
-            }
-        }
-
         public String getTamanho() {
             return Tamanho;
         }
@@ -174,10 +158,6 @@ public class DTO {
 
         public String getNome() {
             return Nome;
-        }
-
-        public int getQuantidade() {
-            return Quantidade;
         }
 
         public Double getPreco() {
@@ -195,6 +175,25 @@ public class DTO {
         public void setTotal(Double Total) {
             this.Total = Total;
         }
+
+        public void setPreco(Double Preco) {
+            if (Preco > 0) {
+                this.Preco = Preco;
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO: O preço deve ser maior do que zero.");
+            }
+        }
+        public int getQuantidade() {
+            return Quantidade;
+        }
+        
+        public void setQuantidade(int Quantidade) {
+            if (Quantidade > 0) {
+                this.Quantidade = Quantidade;
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
+            }
+        }
     }
 
     public class ClienteDTO {
@@ -208,10 +207,10 @@ public class DTO {
         }
 
         public void setNome(String Nome) {
-            if (!Nome.equals("Insira o nome do cliente")) {
-                this.Nome = Nome;
-            } else {
+            if (Nome.equals("Insira o nome do cliente") || Nome.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "ERRO: Verifique o nome do cliente.");
+            } else {
+                this.Nome = Nome;
             }
         }
 
@@ -220,22 +219,22 @@ public class DTO {
         }
 
         public void setTelefone(String Telefone) {
-            if (!Telefone.equals("(  )      -    ")) {
-                this.Telefone = Telefone;
-            } else {
+            if (Telefone.equals("(  )      -    ")) {
                 JOptionPane.showMessageDialog(null, "ERRO: Verifique o número de telefone do cliente.");
+            } else {
+                this.Telefone = Telefone;
             }
         }
 
-        public String getCPF() {
-            return CPF;
+        public String getCPF() {           
+            return CPF;    
         }
 
         public void setCPF(String CPF) {
-            if (!CPF.equals("(  )      -    ")) {
-                this.CPF = CPF;
-            } else {
+            if (CPF.equals("   .   .   -  ")) {
                 JOptionPane.showMessageDialog(null, "ERRO: Verifique o CPF do cliente.");
+            } else {
+                this.CPF = CPF;
             }
         }
     }

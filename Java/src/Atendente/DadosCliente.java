@@ -31,7 +31,7 @@ public class DadosCliente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         CorrigeBug = new javax.swing.JTextField();
         Atendente = new javax.swing.JLabel();
-        JTCliente = new javax.swing.JTextField();
+        JTNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         JTProsseguir = new javax.swing.JButton();
@@ -62,21 +62,21 @@ public class DadosCliente extends javax.swing.JInternalFrame {
         Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Atendente/3.1.png"))); // NOI18N
         jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        JTCliente.setBackground(new java.awt.Color(246, 242, 242));
-        JTCliente.setForeground(new java.awt.Color(204, 204, 204));
-        JTCliente.setText("Insira o nome do cliente");
-        JTCliente.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
-        JTCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTNome.setBackground(new java.awt.Color(246, 242, 242));
+        JTNome.setForeground(new java.awt.Color(204, 204, 204));
+        JTNome.setText("Insira o nome do cliente");
+        JTNome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 51, 51)));
+        JTNome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                JTClienteMousePressed(evt);
+                JTNomeMousePressed(evt);
             }
         });
-        JTCliente.addActionListener(new java.awt.event.ActionListener() {
+        JTNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTClienteActionPerformed(evt);
+                JTNomeActionPerformed(evt);
             }
         });
-        jPanel1.add(JTCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 330, 30));
+        jPanel1.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -180,61 +180,52 @@ public class DadosCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTProsseguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTProsseguirActionPerformed
-            
-            DTO dto = new DTO();
-            DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
-            clienteDTO.setCPF(JTCPF.getText());
-            
+        DTO dto = new DTO();
+        DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
+        
+        String Nome = JTNome.getText().toString();
+        String Telefone = JTTelefone.getText().toString();
+        String CPF = JTCPF.getText().toString();
+        
+        clienteDTO.setNome(Nome);
+        clienteDTO.setTelefone(Telefone);
+        clienteDTO.setCPF(JTCPF.getText());       
+
+        if (!CPF.equals("   .   .   -  ") && !Telefone.equals("(  )      -    ") && !Nome.equals("Insira o nome do cliente") && !Nome.isEmpty()){
             ConexaoCi clienteDAO = new ConexaoCi();
             
             if (clienteDAO.VerificarCliente(clienteDTO)){
-                clienteDTO.setNome(JTCliente.getText());
-                clienteDTO.setTelefone(JTTelefone.getText());
-                
-                Pagamento pagamento = new Pagamento();
-                pagamento.JBCancelarActionPerformed(clienteDTO);
-                
-                Carrinho Carrinho = new Carrinho();
-                WorkspaceAtendente.add(Carrinho);
-                Carrinho.setVisible(true);
-                Carrinho.setBounds(247, 97, 1036, 657);
-                dispose();
+            Carrinho Carrinho = new Carrinho();
+            WorkspaceAtendente.add(Carrinho);
+            Carrinho.setVisible(true);
+            Carrinho.setBounds(247, 97, 1036, 657);
+            dispose();
             }else{
                 int Option = JOptionPane.showConfirmDialog(null,"Cliente não cadastrado. Deseja cadastra-lo?","Atenção", JOptionPane.YES_NO_OPTION);
                 if(Option == JOptionPane.YES_OPTION){
-                    //Salva a tabela
-                    String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Clientes";
-                    File file = new File(FilePath) ;
-                    try {
-                        FileWriter fwe = new FileWriter(file);
-                        BufferedWriter bwe = new BufferedWriter(fwe);
-                        bwe.newLine();
-                        bwe.write(JTCliente.getText() + " ");
-                        bwe.write(JTTelefone.getText() + " "); 
-                        bwe.write(JTCPF.getText() + " ");           
-                        bwe.close();
-                        fwe.close();
-                    }catch (IOException ex) {
-                        Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }else{
-                    Carrinho Carrinho = new Carrinho();
-                    WorkspaceAtendente.add(Carrinho);
-                    Carrinho.setVisible(true);
-                    Carrinho.setBounds(247, 97, 1036, 657);
+                    Clientes clientes = new Clientes();
+                    WorkspaceAtendente.add(clientes);
+                    clientes.setVisible(true);
+                    clientes.setBounds(247, 97, 1036, 657);
+                    dispose();             
+                }
+
+                if(Option == JOptionPane.NO_OPTION){
+                    Carrinho carrinho = new Carrinho();
+                    WorkspaceAtendente.add(carrinho);
+                    carrinho.setVisible(true);
+                    carrinho.setBounds(247, 97, 1036, 657);
                     dispose();
                 }
-            }
-            
-            
-                     
+            }             
+        }
     }//GEN-LAST:event_JTProsseguirActionPerformed
 
-    private void JTClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTClienteMousePressed
+    private void JTNomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTNomeMousePressed
         // TODO add your handling code here:
-        if (JTCliente.getText().equals("Insira o nome do cliente")){
-            JTCliente.setText("");
-            JTCliente.setForeground(Color.black);
+        if (JTNome.getText().equals("Insira o nome do cliente")){
+            JTNome.setText("");
+            JTNome.setForeground(Color.black);
         }   
         if (JTCPF.getText().isEmpty()){
             JTCPF.setText("   .   .   -  ");
@@ -244,11 +235,11 @@ public class DadosCliente extends javax.swing.JInternalFrame {
             JTTelefone.setText("(  )      -    ");
             JTTelefone.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_JTClienteMousePressed
+    }//GEN-LAST:event_JTNomeMousePressed
 
-    private void JTClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTClienteActionPerformed
+    private void JTNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTClienteActionPerformed
+    }//GEN-LAST:event_JTNomeActionPerformed
 
     private void JTProsseguirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTProsseguirMouseClicked
         // TODO add your handling code here:
@@ -260,9 +251,9 @@ public class DadosCliente extends javax.swing.JInternalFrame {
             JTTelefone.setText("");
             JTTelefone.setForeground(Color.black);
         }   
-        if (JTCliente.getText().isEmpty()){
-            JTCliente.setText("Insira o nome do cliente");
-            JTCliente.setForeground(Color.gray);
+        if (JTNome.getText().isEmpty()){
+            JTNome.setText("Insira o nome do cliente");
+            JTNome.setForeground(Color.gray);
         }
         if (JTCPF.getText().isEmpty()){
             JTCPF.setText("   .   .   -  ");
@@ -289,9 +280,9 @@ public class DadosCliente extends javax.swing.JInternalFrame {
             JTCPF.setText("");
             JTCPF.setForeground(Color.black);
         }   
-        if (JTCliente.getText().isEmpty()){
-            JTCliente.setText("Insira o nome do cliente");
-            JTCliente.setForeground(Color.gray);
+        if (JTNome.getText().isEmpty()){
+            JTNome.setText("Insira o nome do cliente");
+            JTNome.setForeground(Color.gray);
         }
         if (JTTelefone.getText().isEmpty()){
             JTTelefone.setText("(  )      -    ");
@@ -308,7 +299,7 @@ public class DadosCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Atendente;
     private javax.swing.JTextField CorrigeBug;
     private javax.swing.JFormattedTextField JTCPF;
-    private javax.swing.JTextField JTCliente;
+    private javax.swing.JTextField JTNome;
     private javax.swing.JButton JTProsseguir;
     private javax.swing.JFormattedTextField JTTelefone;
     private javax.swing.JLabel jLabel1;

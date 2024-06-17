@@ -38,16 +38,16 @@ public class ConexaoCi {
     }
     
     public int AdicionarEstoque(DTO.ProdutoDTO produtoDTO){
+        if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try{
-                String sql = "Insert into Estoque (Nome, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
+                String sql = "Insert into Estoque (Produto, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, produtoDTO.getNome());
                 pstm.setString(2, produtoDTO.getTamanho());
                 pstm.setInt(3, produtoDTO.getQuantidade());
                 pstm.setDouble(4, produtoDTO.getPreco());
-
                 int rs = pstm.executeUpdate();
                 ResultSet rsa = pstm.getGeneratedKeys();
                 if (rsa.next()) {
@@ -57,7 +57,10 @@ public class ConexaoCi {
             }catch (SQLException erro){
                 JOptionPane.showMessageDialog(null, erro.getMessage());
                 return -1;
-            }   
+            } 
+        }else{
+            return -1;
+        }
     }
     
     public int AdicionarRegistro(DTO.ProdutoDTO produtoDTO, DTO.ClienteDTO clienteDTO){
@@ -74,7 +77,9 @@ public class ConexaoCi {
             pstm.setString(4, clienteDTO.getCPF());
             pstm.setString(5, produtoDTO.getNome());
             pstm.setString(6, produtoDTO.getTamanho());
-            pstm.setInt(7, produtoDTO.getQuantidade());
+            if (produtoDTO.getQuantidade() > 0){
+                pstm.setInt(7, produtoDTO.getQuantidade());
+            }
             pstm.setDouble(8, produtoDTO.getTotal());
             
             int rs = pstm.executeUpdate();
@@ -94,42 +99,52 @@ public class ConexaoCi {
     }
     
     public Boolean VerificarEstoque(DTO.ProdutoDTO produtoDTO){
-        conn = new ConexaoBD().ConectaBD();       
-        try{
-            String sql = "Select Nome, Preco, Quantidade from Estoque where Codigo = ?)";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, produtoDTO.getCodigo());   
-            
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()){
-                if (rs.getInt("Quantidade") >= produtoDTO.getQuantidade()){
-                    produtoDTO.setNome(rs.getString("Produto"));
-                    produtoDTO.setPreco(rs.getDouble("Preco"));        
-                    return true; 
+        if (produtoDTO.getQuantidade() > 0){
+            conn = new ConexaoBD().ConectaBD();       
+            try{
+                String sql = "Select Produto, Tamanho, Quantidade, Preco from Estoque where Codigo = ?";
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                pstm.setInt(1, produtoDTO.getCodigo());   
+
+                ResultSet rs = pstm.executeQuery(); 
+                if (rs.next()){
+                    if (rs.getInt("Quantidade") >= produtoDTO.getQuantidade()){
+                        produtoDTO.setNome(rs.getString("Produto"));
+                        produtoDTO.setTamanho(rs.getString("Tamanho"));
+                        produtoDTO.setPreco(rs.getDouble("Preco"));       
+                        return true;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "ERRO: Quantidade indisponível no estoque."); 
+                        return false;
+                    }
                 }else{
-                   JOptionPane.showMessageDialog(null, "ERRO: Quantidade indisponível no estoque."); 
+                    JOptionPane.showMessageDialog(null, "ERRO: Produto inexistente."); 
+                    return false;
                 }   
-            }
-        }catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
+            }catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, erro.getMessage());
+                return false;
+            }    
+        }else{
+            return false;
         }
-        return false;
     }
     
     public Boolean VerificarCliente(DTO.ClienteDTO clienteDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "Select * from Clientes where CPF = ?)";
+            String sql = "SELECT * FROM Clientes WHERE CPF = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, clienteDTO.getCPF());   
-            
+            pstm.setString(1, clienteDTO.getCPF());  
             ResultSet rs = pstm.executeQuery();
             if (rs.next()){       
-                return true; 
+                return true;   
+            }else{
+                return false; 
             }
         }catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
+            return false;
         }
-        return false;
     }
 }

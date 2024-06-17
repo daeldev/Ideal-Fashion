@@ -70,7 +70,7 @@ public class Estoque extends javax.swing.JInternalFrame {
         JBAdicionar = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
         JBRemoverTudo = new javax.swing.JButton();
-        JTNomeProduto = new javax.swing.JTextField();
+        JTProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         JTPreco = new javax.swing.JTextField();
         JCTamanho = new javax.swing.JComboBox<>();
@@ -164,9 +164,9 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, 40));
 
-        JTNomeProduto.setBackground(new java.awt.Color(51, 51, 51));
-        JTNomeProduto.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTNomeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 203, -1));
+        JTProduto.setBackground(new java.awt.Color(51, 51, 51));
+        JTProduto.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(JTProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 203, -1));
 
         jLabel1.setText("Produto:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
@@ -220,50 +220,46 @@ public class Estoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBAtualizarActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
+        DTO dto = new DTO();
+        DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+        
         try{
             Double Preco = Double.valueOf(JTPreco.getText());
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "ERRO: Valores inválidos.");
-        }    
-            DTO dto = new DTO();
-            
-            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
-            produtoDTO.setNome(JTNomeProduto.getText());
-            produtoDTO.setTamanho(JCTamanho.getSelectedItem().toString());
-            if (Integer.parseInt(JSQuantidade.getValue().toString()) > 0){
-                produtoDTO.setQuantidade(Integer.parseInt(JSQuantidade.getValue().toString()));
-                produtoDTO.setPreco(Double.valueOf(JTPreco.getText())); 
-            
-            ConexaoCi ObjusuarioDAO = new ConexaoCi();
-            int Resultado = ObjusuarioDAO.AdicionarEstoque(produtoDTO);  
-            
-            //Adiciona a tabela
-            if(Resultado != -1){
-                DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
-                Object[] dados = {produtoDTO.getNome(), produtoDTO.getTamanho(), produtoDTO.getQuantidade(), produtoDTO.getPreco(), produtoDTO.getCodigo()};
-                modelo.addRow(dados);
-                
-                //Salva a tabela
-                String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Estoque";
-                File file = new File(FilePath) ;
-                try {
-                    FileWriter fwe = new FileWriter(file);
-                    BufferedWriter bwe = new BufferedWriter(fwe);
-                    for (int i = 0; i < JTEstoque.getRowCount(); i ++){
-                        for(int j = 0; j <  JTEstoque.getColumnCount(); j ++){
-                            bwe.write(JTEstoque.getValueAt (i, j).toString() + " ");
-                        }
-                        bwe.newLine();
-                    }            
-                    bwe.close();
-                    fwe.close();
-                }catch (IOException ex) {
-                    Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+            produtoDTO.setPreco(Preco);         
+        }catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "ERRO: Formato inválido.");
+        }
+        
+        produtoDTO.setQuantidade(Integer.valueOf(JSQuantidade.getValue().toString()));
+        produtoDTO.setNome(JTProduto.getText());
+        produtoDTO.setTamanho(JCTamanho.getSelectedItem().toString());         
+        ConexaoCi conexaoCi = new ConexaoCi();
+        int resultado = conexaoCi.AdicionarEstoque(produtoDTO);
+        if (resultado != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
+            Object[] dados = {
+                produtoDTO.getNome(),
+                produtoDTO.getTamanho(),
+                produtoDTO.getQuantidade(),
+                produtoDTO.getPreco(),
+                produtoDTO.getCodigo()
+            };
+            modelo.addRow(dados);
+
+            // Salva a tabela
+            String filePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Estoque";
+            File file = new File(filePath);
+            try (FileWriter fwe = new FileWriter(file); BufferedWriter bwe = new BufferedWriter(fwe)) {
+                for (int i = 0; i < JTEstoque.getRowCount(); i++) {
+                    for (int j = 0; j < JTEstoque.getColumnCount(); j++) {
+                        bwe.write(JTEstoque.getValueAt(i, j).toString() + " ");
+                    }
+                    bwe.newLine();
                 }
+            } catch (IOException ex) {
+                Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }else{
-                JOptionPane.showMessageDialog(null, "ERRO: A quantidade deve ser maior do que zero.");
-            }
+        }
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
@@ -286,12 +282,6 @@ public class Estoque extends javax.swing.JInternalFrame {
             modelo.setNumRows(0);
             
             }
-            
-            else if(q == JOptionPane.NO_OPTION){
-                
-            }
-        
-
     }//GEN-LAST:event_JBRemoverTudoActionPerformed
 
     private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
@@ -308,7 +298,7 @@ public class Estoque extends javax.swing.JInternalFrame {
     private void JTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEstoqueMouseClicked
         // TODO add your handling code here:
         if(JTEstoque.getSelectedRow() != -1){
-             JTNomeProduto.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 0).toString());
+             JTProduto.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 0).toString());
              JCTamanho.setSelectedItem(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 1).toString());
              JSQuantidade.setValue(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 2).toString());
              JTPreco.setText(JTEstoque.getValueAt(JTEstoque.getSelectedRow(), 3).toString());
@@ -324,8 +314,8 @@ public class Estoque extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> JCTamanho;
     private javax.swing.JSpinner JSQuantidade;
     private static javax.swing.JTable JTEstoque;
-    private javax.swing.JTextField JTNomeProduto;
     private javax.swing.JTextField JTPreco;
+    private javax.swing.JTextField JTProduto;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
