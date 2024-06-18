@@ -2,7 +2,7 @@ package Atendente;
 import Administrador.Estoque;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import Utilitários.TipoPagamento;
+import Utilitários.TotalPagamento;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,9 +18,6 @@ public class Pagamento extends javax.swing.JInternalFrame {
     
     public Pagamento() {
         initComponents();
-    }
-    public void PegarPagamento(TipoPagamento pagamento){
-        JTTotal.setText(pagamento.getPagamento());
     }
     
     @SuppressWarnings("unchecked")
@@ -142,7 +139,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
 
         JCCartao.setBackground(new java.awt.Color(246, 242, 242));
         JCCartao.setForeground(new java.awt.Color(51, 51, 51));
-        JCCartao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x", "2x", "3x", "4x", "5x", "6x Com Juros 5,00", "7x Com Juros 5,00", "8x Com Juros 7,00", "9x Com Juros 7,50", "10x Com Juros 9,00" }));
+        JCCartao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1x", "2x", "3x", "4x", "5x", "6x Juros 5%" }));
         JCCartao.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JCCartaoItemStateChanged(evt);
@@ -319,6 +316,10 @@ public class Pagamento extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JBCancelarActionPerformed
 
+    public Double PegarPagamento(DTO.ProdutoDTO produtoDTO){
+        return produtoDTO.getTotal();
+    }
+    
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
         if(JRVista.isSelected ()){
             try{
@@ -333,75 +334,18 @@ public class Pagamento extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Venda Finalizada.");
                 }
             }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
-            JTVista.setText("");
-            JTParcelas.setText("");
-        }
-
-            if(JRCartao.isSelected()){
-                Double totalReal = Double.valueOf(JTTotal.getText());//.replaceAll(",", "."));
-                String parcelas = String.valueOf((String) JCCartao.getSelectedItem());
-
-                switch (parcelas) {
-                    case "1x" -> {
-                        Double calculo = totalReal / 1;
-                        JTParcelas.setText(String.format("1x de R$ %.2f Sem Juros",calculo));
-                    }
-                    case "2x" -> {
-                        Double calculo = totalReal / 2;
-                        JTParcelas.setText(String.format("2x de R$ %.2f Sem Juros",calculo));
-                    }
-                    case "3x" -> {
-                        Double calculo = totalReal / 3;
-                        JTParcelas.setText(String.format("3x de R$ %.2f Sem Juros",calculo));
-                    }
-                    case "4x" -> {
-                        Double calculo = totalReal / 4;
-                        JTParcelas.setText(String.format("4x de R$ %.2f Sem Juros",calculo));
-                    }
-                    case "5x" -> {
-                        Double calculo = totalReal / 5;
-                        JTParcelas.setText(String.format("5x de R$ %.2f Sem Juros",calculo));
-                    }
-                    case "6x Com Juros 5,00" -> {
-                        Double juros = totalReal * 0.05;
-                        Double jurosSoma = totalReal + juros;
-                        Double calculo = jurosSoma / 6;
-                        JTParcelas.setText(String.format("6x de R$ %.2f Com Juros",calculo));
-                    }
-                    case "7x Com Juros 5,00" -> {
-                        Double juros = totalReal * 0.05;
-                        Double jurosSoma = totalReal + juros;
-                        Double calculo = jurosSoma / 7;
-                        JTParcelas.setText(String.format("7x de R$ %.2f Com Juros",calculo));
-                    }
-                    case "8x Com Juros 7,00" -> {
-                        Double juros = totalReal * 0.07;
-                        Double jurosSoma = totalReal + juros;
-                        Double calculo = jurosSoma / 8;
-                        JTParcelas.setText(String.format("8x de R$ %.2f Com Juros",calculo));
-                    }
-                    case "9x Com Juros 7,50" -> {
-                        Double juros = totalReal * 0.075;
-                        Double jurosSoma = totalReal + juros;
-                        Double calculo = jurosSoma / 9;
-                        JTParcelas.setText(String.format("9x de R$ %.2f Com Juros",calculo));
-                    }
-                    case "10x Com Juros 9,00" -> {
-                        Double juros = totalReal * 0.09;
-                        Double jurosSoma = totalReal + juros;
-                        Double calculo = jurosSoma / 10;
-                        JTParcelas.setText(String.format("10x de R$ %.2f Com Juros",calculo));
-                    }
-                    default -> {
-                    }
-                }
+                JOptionPane.showMessageDialog(null, "Ocorreu algum erro. Digite os valores novamente");
+                JTVista.setText("");
+                JTParcelas.setText("");
             }
+        }
+        if(JRCartao.isSelected()){
+            Double Total = Double.valueOf(JTTotal.getText());
+            String parcelas = String.valueOf(JCCartao.getSelectedItem());
+        }
             
-            //Adiciona os dados da venda ao banco de dados
-        
-
-        CarrinhoBugado carrinho = new CarrinhoBugado();
+        //Adiciona os dados da venda ao banco de dados  
+        Carrinho carrinho = new Carrinho();
         for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
             DTO dto = new DTO();
             DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
@@ -451,7 +395,6 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 }
             }
         }
-            }
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed
@@ -459,7 +402,42 @@ public class Pagamento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTotalActionPerformed
 
     private void JCCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCCartaoActionPerformed
-
+        Double Total = Double.valueOf(JTTotal.getText());
+        String parcelas = String.valueOf(JCCartao.getSelectedItem());
+        Double juros = 0.00;
+        Double jurosSoma = 0.00;
+        Double calculo = 0.00;
+        switch (parcelas) {
+            case "1x" -> {
+                calculo = Total / 1;
+                JOptionPane.showMessageDialog(null, String.format("1x de R$ %.2f sem juros",calculo));
+            }
+            case "2x" -> {
+                calculo = Total / 2;
+                JOptionPane.showMessageDialog(null, String.format("2x de R$ %.2f sem juros",calculo));
+            }
+            case "3x" -> {
+                calculo = Total / 3;
+                JOptionPane.showMessageDialog(null, String.format("3x de R$ %.2f sem juros",calculo));
+            }
+            case "4x" -> {
+                calculo = Total / 4;
+                JOptionPane.showMessageDialog(null, String.format("4x de R$ %.2f sem juros",calculo));
+            }
+            case "5x" -> {
+                calculo = Total / 5;
+                JOptionPane.showMessageDialog(null, String.format("5x de R$ %.2f sem juros",calculo));
+            }
+            case "6x Juros 5%" -> {
+                juros = Total * 0.05;
+                jurosSoma = Total + juros;
+                calculo = jurosSoma / 6;
+                JTTotal.setText(jurosSoma.toString());
+                JOptionPane.showMessageDialog(null, String.format("6x de R$ %.2f Com Juros",calculo));
+            }
+            default -> {
+            }
+        }
     }//GEN-LAST:event_JCCartaoActionPerformed
 
     private void JRVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRVistaActionPerformed

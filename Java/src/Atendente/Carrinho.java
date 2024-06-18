@@ -7,7 +7,7 @@ package Atendente;
 import static Atendente.WorkspaceAtendente.WorkspaceAtendente;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import Utilitários.TipoPagamento;
+import Utilitários.TotalPagamento;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -384,11 +384,16 @@ public class Carrinho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTotalActionPerformed
 
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
+//        TotalPagamento tipoPagamento = new TotalPagamento();
+//        tipoPagamento.setTotal(Double.valueOf(JTTotal.getText()));
+
         DTO dto = new DTO();
         DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();        
         produtoDTO.setTotal(Double.valueOf(JTTotal.getText()));
+        Pagamento pagamento = new Pagamento();
         
-        Pagamento pagamento = new Pagamento();      
+
+        Double Pagamento = pagamento.PegarPagamento(produtoDTO);   
         WorkspaceAtendente.add(pagamento);
         pagamento.setVisible(true);
         pagamento.setBounds(247, 97, 1036, 657);

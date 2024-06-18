@@ -130,7 +130,7 @@ public class DTO {
         private int Quantidade;
         private Double Preco;
         private int Codigo;
-        private Double Total;
+        private static Double Total;
 
         public void setNome(String Nome) {
             if (!Nome.isEmpty()) {
