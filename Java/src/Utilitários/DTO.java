@@ -205,6 +205,9 @@ public class DTO {
         private String Nome;
         private String Telefone;
         private String CPF;
+        private int idCliente;
+        private String data_nascimento;
+        private String Sexo;
 
         public String getNome() {
             return Nome;
@@ -239,6 +242,38 @@ public class DTO {
                 JOptionPane.showMessageDialog(null, "ERRO: Verifique o CPF do cliente.");
             } else {
                 this.CPF = CPF;
+            }
+        }
+
+        public int getIdcliente() {
+            return idCliente;
+        }
+
+        public void setIdcliente(int idCliente) {
+            this.idCliente = idCliente;
+        }
+
+        public String getdata_nascimento() {
+            return data_nascimento;
+        }
+
+        public void setData_nascimento(String data_nascimento) {
+            if (data_nascimento.equals("  /  /  ")) {
+                JOptionPane.showMessageDialog(null, "ERRO: Verifique a data de nascimento do cliente.");
+            } else {
+                this.data_nascimento = data_nascimento;
+            }
+        }
+
+        public String getSexo(){
+            return Sexo;
+        }
+
+        public void setSexo(String Sexo) {
+            if (Sexo.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "ERRO: Verifique o sexo do cliente.");
+            } else {
+                this.Sexo = Sexo;
             }
         }
     }

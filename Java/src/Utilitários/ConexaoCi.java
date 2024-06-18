@@ -37,6 +37,29 @@ public class ConexaoCi {
             }
     }
     
+    public int AdicionarCliente(DTO.ClienteDTO clienteDTO){
+            conn = new ConexaoBD().ConectaBD();
+            int generatedKey = -1;
+            try {
+                String sql = "INSERT INTO cliente (Nome, CPF, Telefone, data_nascimento, Sexo) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                pstm.setString(1, clienteDTO.getNome());
+                pstm.setString(2, clienteDTO.getCPF());
+                pstm.setString(3, clienteDTO.getTelefone());    
+                pstm.setString(4, clienteDTO.getdata_nascimento()); 
+                pstm.setString(5, clienteDTO.getSexo()); 
+                int rs = pstm.executeUpdate();
+                ResultSet rsa = pstm.getGeneratedKeys();
+                if (rsa.next()) {
+                    clienteDTO.setIdcliente(generatedKey = rsa.getInt(1));   
+                }  
+                return rs;
+            }catch (SQLException erro){
+                JOptionPane.showMessageDialog(null, erro.getMessage());
+                return -1;
+            } 
+     }
+    
     public int AdicionarEstoque(DTO.ProdutoDTO produtoDTO){
         if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();
