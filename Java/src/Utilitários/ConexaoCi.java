@@ -42,7 +42,7 @@ public class ConexaoCi {
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try{
-                String sql = "Insert into Estoque (Produto, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
+                String sql = "Insert into estoque (Produto, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, produtoDTO.getNome());
                 pstm.setString(2, produtoDTO.getTamanho());
@@ -102,7 +102,7 @@ public class ConexaoCi {
         if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();       
             try{
-                String sql = "Select Produto, Tamanho, Quantidade, Preco from Estoque where Codigo = ?";
+                String sql = "Select Produto, Tamanho, Quantidade, Preco from estoque where Codigo = ?";
                 PreparedStatement pstm = conn.prepareStatement(sql);
                 pstm.setInt(1, produtoDTO.getCodigo());   
 
