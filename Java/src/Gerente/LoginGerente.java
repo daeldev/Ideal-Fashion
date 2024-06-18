@@ -3,7 +3,7 @@ package Gerente;
 
 import Administrador.LoginAdministrador;
 import Administrador.WorkspaceAdministrador;
-import Atendente.Login;
+import Atendente.LoginAtendente;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
 import Utilitários.UsuarioSenha;
@@ -226,17 +226,17 @@ public class LoginGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_JTUsuarioActionPerformed
 
     private void JBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoginActionPerformed
-        String login = JTUsuario.getText();
+        String usuario = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
         
         DTO dto = new DTO();
         DTO.FuncionarioDTO funcionarioDTO = dto.new FuncionarioDTO();
-        funcionarioDTO.setUsuario(login);
-        funcionarioDTO.setSexo(senha);
+        funcionarioDTO.setUsuario(usuario);
+        funcionarioDTO.setSenha(senha);
         
         ConexaoCi Ci = new ConexaoCi();
-        if(Ci.VerificarGerente(funcionarioDTO)){   
-            
+        
+        if(Ci.VerificarGerente(funcionarioDTO)){             
             WorkspaceGerente GerenteDesktop = new WorkspaceGerente();
             this.dispose();
             GerenteDesktop.setVisible(true);    
@@ -247,7 +247,7 @@ public class LoginGerente extends javax.swing.JFrame {
             JTSenha.setEchoChar('\u25cf');
             JTSenha.setForeground(Color.gray);
             JCMostrarSenha.setSelected(false);           
-        }        
+        }              
     }//GEN-LAST:event_JBLoginActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
@@ -312,7 +312,7 @@ public class LoginGerente extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        Login LoginAtendente = new Login();
+        LoginAtendente LoginAtendente = new LoginAtendente();
         this.dispose();
         LoginAtendente.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -334,14 +334,18 @@ public class LoginGerente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

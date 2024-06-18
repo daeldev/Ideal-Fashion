@@ -3,16 +3,18 @@ package Atendente;
 
 import Administrador.LoginAdministrador;
 import Gerente.LoginGerente;
+import Utilitários.ConexaoCi;
+import Utilitários.DTO;
 import Utilitários.UsuarioSenha;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
-public class Login extends javax.swing.JFrame {
+public class LoginAtendente extends javax.swing.JFrame {
 
    UsuarioSenha login_atendente = new UsuarioSenha("atendente","123");
     
-    public Login() {
+    public LoginAtendente() {
         initComponents();
     }
 
@@ -249,10 +251,17 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_JTUsuarioActionPerformed
 
     private void JBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoginActionPerformed
-        String login = JTUsuario.getText();
+        String usuario = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
-
-        if(login.equals(login_atendente.getLogin()) && senha.equals(login_atendente.getSenha())){       
+        
+        DTO dto = new DTO();
+        DTO.FuncionarioDTO funcionarioDTO = dto.new FuncionarioDTO();
+        funcionarioDTO.setUsuario(usuario);
+        funcionarioDTO.setSenha(senha);
+        
+        ConexaoCi Ci = new ConexaoCi();
+        
+        if(Ci.VerificarAtendente(funcionarioDTO)){        
             WorkspaceAtendente AtendenteDesktop = new WorkspaceAtendente();
             this.dispose();
             AtendenteDesktop.setVisible(true);    
@@ -350,14 +359,18 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -366,7 +379,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginAtendente().setVisible(true);
             }
         });
     }

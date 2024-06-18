@@ -14,7 +14,7 @@ public class ConexaoCi {
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try {
-                String sql = "INSERT INTO Funcionarios (Funcao, Nome, CPF, DataNascimento, Sexo, Usuario, Senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO funcionarios (Funcao, Nome, CPF, DataNascimento, Sexo, Usuario, Senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, funcionarioDTO.getFuncao());
                 pstm.setString(2, funcionarioDTO.getNome());
@@ -133,7 +133,7 @@ public class ConexaoCi {
     public Boolean VerificarCliente(DTO.ClienteDTO clienteDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT * FROM Clientes WHERE CPF = ?";
+            String sql = "SELECT * FROM clientes WHERE CPF = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, clienteDTO.getCPF());  
             ResultSet rs = pstm.executeQuery();
@@ -150,7 +150,7 @@ public class ConexaoCi {
     public Boolean VerificarAtendente(DTO.FuncionarioDTO dadosDTO){
         conn = (Connection) new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT Usuario,Senha, funcao From Funcionarios WHERE funcao = Atendente";
+            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Atendente' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 
@@ -170,12 +170,10 @@ public class ConexaoCi {
     public Boolean VerificarAdministrador(DTO.FuncionarioDTO dadosDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT Usuario, Senha, Funcao From Funcionarios";
+            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Administrador' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 
-//            pstm.setString(2, dadosDTO.getFuncao()); 
-            
             ResultSet rs = pstm.executeQuery();
             if (rs.next()){       
                 return true;   
@@ -191,7 +189,7 @@ public class ConexaoCi {
     public Boolean VerificarGerente(DTO.FuncionarioDTO dadosDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT Usuario, Senha From Funcionarios WHERE funcao = Gerente";
+            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Gerente' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 

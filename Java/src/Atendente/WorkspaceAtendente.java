@@ -167,15 +167,15 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
 
     private void JBVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVendasActionPerformed
         // TODO add your handling code here:       
-//        DadosCliente Dados = new DadosCliente();
-//        WorkspaceAtendente.add(Dados);     
-//        Dados.setVisible(true);
-//        Dados.setBounds(450, 100, 408, 513);
+        DadosCliente Dados = new DadosCliente();
+        WorkspaceAtendente.add(Dados);     
+        Dados.setVisible(true);
+        Dados.setBounds(450, 100, 408, 513);
         
-        Carrinho carrinho = new Carrinho();
-        WorkspaceAtendente.add(carrinho);     
-        carrinho.setVisible(true);
-        carrinho.setBounds(247, 97, 1035, 620);
+//        Carrinho carrinho = new Carrinho();
+//        WorkspaceAtendente.add(carrinho);     
+//        carrinho.setVisible(true);
+//        carrinho.setBounds(247, 97, 1035, 620);
 
 //        Pagamento pagamento = new Pagamento();
 //        WorkspaceAtendente.add(pagamento);     
@@ -200,7 +200,7 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
         // TODO add your handling code here:
         int Option = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
         if(Option == JOptionPane.YES_OPTION){
-            Login Logout = new Login();
+            LoginAtendente Logout = new LoginAtendente();
             this.dispose();
             Logout.setVisible(true);
         }

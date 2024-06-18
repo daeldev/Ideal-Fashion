@@ -1,7 +1,7 @@
 package Gerente;
 
 
-import Atendente.Login;
+import Atendente.LoginAtendente;
 import Atendente.WorkspaceAtendente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -192,7 +192,7 @@ public class WorkspaceGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
         int Option = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
         if(Option == JOptionPane.YES_OPTION){
-            Login Logout = new Login();
+            LoginAtendente Logout = new LoginAtendente();
             this.dispose();
             Logout.setVisible(true);
         }

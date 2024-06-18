@@ -169,7 +169,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JTDataActionPerformed(evt);
             }
         });
-        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 80, -1));
+        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 80, -1));
 
         jLabel6.setText("Função:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
