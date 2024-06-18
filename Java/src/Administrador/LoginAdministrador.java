@@ -3,6 +3,8 @@ package Administrador;
 
 import Gerente.LoginGerente;
 import Atendente.Login;
+import Utilitários.ConexaoCi;
+import Utilitários.DTO;
 import Utilitários.UsuarioSenha;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -251,10 +253,17 @@ public class LoginAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JTUsuarioActionPerformed
 
     private void JBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoginActionPerformed
-        String login = JTUsuario.getText();
+        String usuario = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
-
-        if(login.equals(login_administrador.getLogin()) && senha.equals(login_administrador.getSenha())){       
+        
+        DTO dto = new DTO();
+        DTO.FuncionarioDTO funcionarioDTO = dto.new FuncionarioDTO();
+        funcionarioDTO.setUsuario(usuario);
+        funcionarioDTO.setSexo(senha);
+        
+        ConexaoCi Ci = new ConexaoCi();
+        
+        if(Ci.VerificarAdministrador(funcionarioDTO)){       
             WorkspaceAdministrador AdministradorDesktop = new WorkspaceAdministrador();
             this.dispose();
             AdministradorDesktop.setVisible(true);    

@@ -147,4 +147,64 @@ public class ConexaoCi {
             return false;
         }
     }
+    public Boolean VerificarAtendente(DTO.FuncionarioDTO dadosDTO){
+        conn = (Connection) new ConexaoBD().ConectaBD();       
+        try{
+            String sql = "SELECT Usuario,Senha, funcao From Funcionarios WHERE funcao = Atendente";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, dadosDTO.getUsuario());
+            pstm.setString(2, dadosDTO.getSenha()); 
+            
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()){       
+                return true;   
+            }else{
+                return false; 
+            }
+        }catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+            return false;
+        }
+    }
+
+    public Boolean VerificarAdministrador(DTO.FuncionarioDTO dadosDTO){
+        conn = new ConexaoBD().ConectaBD();       
+        try{
+            String sql = "SELECT Usuario, Senha, Funcao From Funcionarios";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, dadosDTO.getUsuario());
+            pstm.setString(2, dadosDTO.getSenha()); 
+//            pstm.setString(2, dadosDTO.getFuncao()); 
+            
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()){       
+                return true;   
+            }else{
+                return false; 
+            }
+        }catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+            return false;
+        }
+    }
+
+    public Boolean VerificarGerente(DTO.FuncionarioDTO dadosDTO){
+        conn = new ConexaoBD().ConectaBD();       
+        try{
+            String sql = "SELECT Usuario, Senha From Funcionarios WHERE funcao = Gerente";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, dadosDTO.getUsuario());
+            pstm.setString(2, dadosDTO.getSenha()); 
+            
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()){       
+                return true;   
+            }else{
+                return false; 
+            }
+        }catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+            return false;
+        }
+    }
 }

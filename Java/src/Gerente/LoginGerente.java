@@ -4,14 +4,14 @@ package Gerente;
 import Administrador.LoginAdministrador;
 import Administrador.WorkspaceAdministrador;
 import Atendente.Login;
+import Utilitários.ConexaoCi;
+import Utilitários.DTO;
 import Utilitários.UsuarioSenha;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
 public class LoginGerente extends javax.swing.JFrame {
-
-   UsuarioSenha login_gerente = new UsuarioSenha("gerente","123");
     
     public LoginGerente() {
         initComponents();
@@ -228,9 +228,14 @@ public class LoginGerente extends javax.swing.JFrame {
     private void JBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLoginActionPerformed
         String login = JTUsuario.getText();
         String senha = String.valueOf(JTSenha.getPassword());
-        String funcao = "Gerente";
         
-        if(login.equals(login_gerente.getLogin()) && senha.equals(login_gerente.getSenha())){   
+        DTO dto = new DTO();
+        DTO.FuncionarioDTO funcionarioDTO = dto.new FuncionarioDTO();
+        funcionarioDTO.setUsuario(login);
+        funcionarioDTO.setSexo(senha);
+        
+        ConexaoCi Ci = new ConexaoCi();
+        if(Ci.VerificarGerente(funcionarioDTO)){   
             
             WorkspaceGerente GerenteDesktop = new WorkspaceGerente();
             this.dispose();
