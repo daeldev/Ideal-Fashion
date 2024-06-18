@@ -35,7 +35,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         initComponents();
         DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
         JTFuncionarios.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Funcionarios";
+        String FilePath = "/home/Aluno.Tarde/Daniel - 221/Ideal-Fashion/Java/src/DadosTabelas/Funcionarios";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
