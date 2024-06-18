@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS `idealfashion`.`funcionarios` (
   PRIMARY KEY (`codigo`))
 ENGINE = InnoDB;
 
+select * from idealfashion.funcionarios;
+
 
 -- -----------------------------------------------------
 -- Table `idealfashion`.`registro`
