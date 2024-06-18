@@ -186,7 +186,7 @@ public class Carrinho extends javax.swing.JInternalFrame {
 
         JBPagar.setBackground(new java.awt.Color(51, 102, 255));
         JBPagar.setForeground(new java.awt.Color(255, 255, 255));
-        JBPagar.setText("PAGAR");
+        JBPagar.setText("Confirmar");
         JBPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBPagarActionPerformed(evt);
@@ -359,7 +359,9 @@ public class Carrinho extends javax.swing.JInternalFrame {
             }
 
             // Atualiza o campo campototal com o novo total acumulado
-            JTTotal.setText(Double.toString(novoTotal));
+            JTCodigo.setText("");
+            JSQuantidade.setValue(0);
+            JTTotal.setText(Double.toString(novoTotal));  
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
         }
@@ -382,16 +384,15 @@ public class Carrinho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTotalActionPerformed
 
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
-        if(JTTotal.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "ERRO: Total inválido.");
-        }else{
-            TipoPagamento TP = new TipoPagamento();
-            TP.setPagamento(JTTotal.getText());
-            Pagamento FP = new Pagamento();
-            FP.setVisible(true);
-            WorkspaceAtendente.add(FP);
-            FP.toFront();
-        }
+        DTO dto = new DTO();
+        DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();        
+        produtoDTO.setTotal(Double.valueOf(JTTotal.getText()));
+        
+        Pagamento pagamento = new Pagamento();      
+        WorkspaceAtendente.add(pagamento);
+        pagamento.setVisible(true);
+        pagamento.setBounds(247, 97, 1036, 657);
+        dispose();                
     }//GEN-LAST:event_JBPagarActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed

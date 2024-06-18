@@ -167,10 +167,20 @@ public class WorkspaceAtendente extends javax.swing.JFrame {
 
     private void JBVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVendasActionPerformed
         // TODO add your handling code here:       
-        DadosCliente Dados = new DadosCliente();
-        WorkspaceAtendente.add(Dados);     
-        Dados.setVisible(true);
-        Dados.setBounds(450, 100, 408, 513);
+//        DadosCliente Dados = new DadosCliente();
+//        WorkspaceAtendente.add(Dados);     
+//        Dados.setVisible(true);
+//        Dados.setBounds(450, 100, 408, 513);
+        
+//        Carrinho carrinho = new Carrinho();
+//        WorkspaceAtendente.add(carrinho);     
+//        carrinho.setVisible(true);
+//        carrinho.setBounds(450, 100, 1035, 620);
+
+        Pagamento pagamento = new Pagamento();
+        WorkspaceAtendente.add(pagamento);     
+        pagamento.setVisible(true);
+        pagamento.setBounds(450, 100, 357, 503);
     }//GEN-LAST:event_JBVendasActionPerformed
 
     private void JBClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBClientesActionPerformed

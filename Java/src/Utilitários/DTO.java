@@ -173,7 +173,11 @@ public class DTO {
         }
 
         public void setTotal(Double Total) {
-            this.Total = Total;
+            if (Total > 0) {
+                this.Total = Total;
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO: O total deve ser maior do que zero.");
+            }
         }
 
         public void setPreco(Double Preco) {
