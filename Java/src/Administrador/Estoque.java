@@ -33,7 +33,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
         JTEstoque.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Estoque";
+        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Estoque";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -69,7 +69,6 @@ public class Estoque extends javax.swing.JInternalFrame {
         JBAtualizar = new javax.swing.JButton();
         JBAdicionar = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
-        JBRemoverTudo = new javax.swing.JButton();
         JTProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         JTPreco = new javax.swing.JTextField();
@@ -93,7 +92,6 @@ public class Estoque extends javax.swing.JInternalFrame {
         setTitle("Estoque");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JTEstoque.setBackground(new java.awt.Color(246, 242, 242));
         JTEstoque.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,8 +117,6 @@ public class Estoque extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTEstoque);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 564, 470));
-
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -132,7 +128,7 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JBAtualizarActionPerformed(evt);
             }
         });
-        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 90, 41));
+        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 90, 41));
 
         JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
         JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,7 +138,7 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JBAdicionarActionPerformed(evt);
             }
         });
-        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 90, 41));
+        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 90, 41));
 
         JBRemover.setBackground(new java.awt.Color(255, 0, 0));
         JBRemover.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,60 +148,76 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JBRemoverActionPerformed(evt);
             }
         });
-        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 90, 40));
-
-        JBRemoverTudo.setBackground(new java.awt.Color(255, 0, 0));
-        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("Remover Tudo");
-        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverTudoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, 40));
+        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 90, 40));
 
         JTProduto.setBackground(new java.awt.Color(51, 51, 51));
         JTProduto.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 203, -1));
+        jPanel2.add(JTProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 203, -1));
 
         jLabel1.setText("Produto:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         JTPreco.setBackground(new java.awt.Color(51, 51, 51));
         JTPreco.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 80, -1));
+        jPanel2.add(JTPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 80, -1));
 
         JCTamanho.setBackground(new java.awt.Color(246, 242, 242));
         JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G" }));
-        jPanel2.add(JCTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 43, -1));
+        jPanel2.add(JCTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 43, -1));
 
         jLabel2.setText("Tamanho:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
         jLabel4.setText("Preço:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         jLabel6.setText("Quantidade:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         JSQuantidade.setToolTipText("");
-        jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, -1));
+        jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 50, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 380, 320));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel9.setText("Estoque");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setText("Dados do Produto");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jLabel10.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel10.setText("Dados do produto");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jLabel9))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +259,7 @@ public class Estoque extends javax.swing.JInternalFrame {
             modelo.addRow(dados);
 
             // Salva a tabela
-            String filePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Estoque";
+            String filePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Estoque";
             File file = new File(filePath);
             try (FileWriter fwe = new FileWriter(file); BufferedWriter bwe = new BufferedWriter(fwe)) {
                 for (int i = 0; i < JTEstoque.getRowCount(); i++) {
@@ -273,16 +285,6 @@ public class Estoque extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "ERRO: Selecione um produto para excluir.");
         }
     }//GEN-LAST:event_JBRemoverActionPerformed
-
-    private void JBRemoverTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverTudoActionPerformed
-
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-            if(q == JOptionPane.YES_OPTION){   
-            DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
-            modelo.setNumRows(0);
-            
-            }
-    }//GEN-LAST:event_JBRemoverTudoActionPerformed
 
     private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
         // TODO add your handling code here:
@@ -310,7 +312,6 @@ public class Estoque extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBAdicionar;
     private javax.swing.JButton JBAtualizar;
     private javax.swing.JButton JBRemover;
-    private javax.swing.JButton JBRemoverTudo;
     private javax.swing.JComboBox<String> JCTamanho;
     private javax.swing.JSpinner JSQuantidade;
     private static javax.swing.JTable JTEstoque;

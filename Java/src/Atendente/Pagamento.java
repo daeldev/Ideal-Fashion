@@ -303,16 +303,15 @@ public class Pagamento extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JBCancelarActionPerformed
 
-    
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
         
         
-        if(JRCartao.isSelected() || !JRVista.isSelected()){
+        if(JRCartao.isSelected() || JRVista.isSelected()){
             if(JRVista.isSelected ()){
                 try{
                     Double dinheiroCliente = Double.valueOf(JTDinheiro.getText());
                     Double troco = dinheiroCliente - Total;
-                    if(dinheiroCliente <= 0 || troco < 0){
+                    if(dinheiroCliente <= Total || troco < 0){
                         JOptionPane.showMessageDialog(null, "ERRO: Valor Inválido.");
                         JTDinheiro.setText("");
                     }else{
@@ -325,10 +324,11 @@ public class Pagamento extends javax.swing.JInternalFrame {
                     JTDinheiro.setText("");
                 }
             }
-        if(JRCartao.isSelected()){
-            JOptionPane.showMessageDialog(null, "Venda Finalizada.");
-            dispose();
-        }
+            if(JRCartao.isSelected()){
+                JTDinheiro.setText("");
+                JOptionPane.showMessageDialog(null, "Venda Finalizada.");
+                dispose();
+            }
         
         //Adiciona os dados da venda ao banco de dados  
         Carrinho carrinho = new Carrinho();
@@ -357,9 +357,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
 
                 if(Resultado != -1){ 
                     
-                }else{
-                    JOptionPane.showMessageDialog(null, "ERRO: Selecione uma forma de pagamento.");
-                }   
+                }
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ERRO: Dados inválidos.");
             }
@@ -390,8 +388,9 @@ public class Pagamento extends javax.swing.JInternalFrame {
 //                    Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
 //                }     
             }
-        }
-        
+        }else{
+            JOptionPane.showMessageDialog(null, "ERRO: Selecione uma forma de pagamento.");
+        }        
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed

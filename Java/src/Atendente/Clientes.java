@@ -25,7 +25,7 @@ public class Clientes extends javax.swing.JInternalFrame {
      initComponents();
       DefaultTableModel modelot = (DefaultTableModel) JTClientes.getModel();
         JTClientes.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "/home/Aluno.Tarde/Desktop/Alex/Alex 221/LP2/Exercicios em Casa/Ideal-Fashion2/Java/src/DadosTabelas/Clientes";
+        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Clientes";
         File file = new File(FilePath) ;      
         try {
             FileReader frE = new FileReader (file);
@@ -62,13 +62,12 @@ public class Clientes extends javax.swing.JInternalFrame {
         JBAdicionar = new javax.swing.JButton();
         JBAtualizar = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
-        JBRemoverTudo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         JCBSexo = new javax.swing.JComboBox<>();
         JTDataNasc = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         Limpar.setText("Limpar");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,13 +126,11 @@ public class Clientes extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTClientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 550, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 550, 430));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(246, 242, 242));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JTTelefone.setBackground(new java.awt.Color(255, 255, 255));
-        JTTelefone.setForeground(new java.awt.Color(0, 0, 0));
         try {
             JTTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
@@ -144,28 +141,24 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JTTelefoneActionPerformed(evt);
             }
         });
-        jPanel2.add(JTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 200, -1));
+        jPanel2.add(JTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 120, -1));
 
-        JTNome.setBackground(new java.awt.Color(255, 255, 255));
-        JTNome.setForeground(new java.awt.Color(0, 0, 0));
         JTNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTNomeActionPerformed(evt);
             }
         });
-        jPanel2.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 200, -1));
+        jPanel2.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 200, -1));
 
         jLabel8.setText("Telefone:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel9.setText("CPF:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jLabel10.setText("Nome:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        JTCPF.setBackground(new java.awt.Color(255, 255, 255));
-        JTCPF.setForeground(new java.awt.Color(0, 0, 0));
         try {
             JTCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -176,77 +169,63 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JTCPFActionPerformed(evt);
             }
         });
-        jPanel2.add(JTCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 200, -1));
+        jPanel2.add(JTCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 120, -1));
 
         JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
         JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAdicionar.setText("ADICIONAR");
+        JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAdicionarActionPerformed(evt);
             }
         });
-        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 120, 41));
+        jPanel2.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 110, 50));
 
         JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
         JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        JBAtualizar.setText("ATUALIZAR");
+        JBAtualizar.setText("Atualizar");
         JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAtualizarActionPerformed(evt);
             }
         });
-        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 120, 41));
+        jPanel2.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 110, 50));
 
         JBRemover.setBackground(new java.awt.Color(255, 0, 51));
         JBRemover.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemover.setText("REMOVER");
+        JBRemover.setText("Remover");
         JBRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBRemoverActionPerformed(evt);
             }
         });
-        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 120, 40));
+        jPanel2.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 110, 50));
 
-        JBRemoverTudo.setBackground(new java.awt.Color(255, 51, 51));
-        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("REMOVER TUDO");
-        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverTudoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 120, 40));
+        jLabel2.setText("Sexo:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
-        jLabel2.setText("Sexo");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
-
-        JCBSexo.setBackground(new java.awt.Color(255, 255, 255));
-        JCBSexo.setForeground(new java.awt.Color(0, 0, 0));
         JCBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outros" }));
-        jPanel2.add(JCBSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 200, -1));
+        jPanel2.add(JCBSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 100, -1));
 
-        JTDataNasc.setBackground(new java.awt.Color(255, 255, 255));
-        JTDataNasc.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            JTDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            JTDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(JTDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 200, -1));
+        jPanel2.add(JTDataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 90, -1));
 
-        jLabel1.setText("Data de Nascimento");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+        jLabel1.setText("Data de nascimento:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 380, 400));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 410, 360));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel11.setText("Clientes Cadastrados");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, 30));
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel3.setText("Clientes");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel12.setText("Dados do Cliente");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 40));
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setText("Dados do cliente");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -293,7 +272,7 @@ public class Clientes extends javax.swing.JInternalFrame {
             Tabela.addRow(dados);
 
             //Salva a tabela
-            String FilePath = "/home/Aluno.Tarde/Desktop/Alex/Alex 221/LP2/Exercicios em Casa/Ideal-Fashion2/Java/src/DadosTabelas/Clientes";
+            String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Clientes";
             File file = new File(FilePath);
             try {
                 FileWriter fwe = new FileWriter(file);
@@ -351,21 +330,6 @@ if(JTClientes.getSelectedRow() != -1){
           }              
     }//GEN-LAST:event_JBAtualizarActionPerformed
 
-    private void JBRemoverTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverTudoActionPerformed
-
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-        if(q == JOptionPane.YES_OPTION){
-            DefaultTableModel modelo = (DefaultTableModel) JTClientes.getModel();
-            modelo.setNumRows(0);
-
-        }
-
-        else if(q == JOptionPane.NO_OPTION){
-
-        }
-
-    }//GEN-LAST:event_JBRemoverTudoActionPerformed
-
     private void JTClientesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTClientesMouseReleased
         // TODO add your handling code here:
    
@@ -410,7 +374,6 @@ if(JTClientes.getSelectedRow() != -1){
     private javax.swing.JButton JBAdicionar;
     private javax.swing.JButton JBAtualizar;
     private javax.swing.JButton JBRemover;
-    private javax.swing.JButton JBRemoverTudo;
     private javax.swing.JComboBox<String> JCBSexo;
     private javax.swing.JFormattedTextField JTCPF;
     private static javax.swing.JTable JTClientes;
@@ -420,9 +383,9 @@ if(JTClientes.getSelectedRow() != -1){
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

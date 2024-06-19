@@ -75,7 +75,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         JTCpf = new javax.swing.JFormattedTextField();
         JTData = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        JBRemoverTudo = new javax.swing.JButton();
         JBRemover = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -108,7 +107,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         setName("Tela Funcionário"); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JTFuncionarios.setBackground(new java.awt.Color(246, 242, 242));
         JTFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,19 +132,17 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTFuncionarios);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 520, 450));
-
         jPanel3.setBackground(new java.awt.Color(246, 242, 242));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setText("CPF:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel5.setText("Data de Nascimento:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel7.setText("Sexo:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         JTCpf.setBackground(new java.awt.Color(51, 51, 51));
         JTCpf.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,7 +151,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 100, -1));
+        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
 
         JTData.setBackground(new java.awt.Color(51, 51, 51));
         JTData.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,20 +165,10 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JTDataActionPerformed(evt);
             }
         });
-        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 80, -1));
+        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 80, -1));
 
         jLabel6.setText("Função:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        JBRemoverTudo.setBackground(new java.awt.Color(255, 0, 0));
-        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("Remover tudo");
-        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverTudoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 110, 50));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         JBRemover.setBackground(new java.awt.Color(255, 0, 0));
         JBRemover.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,13 +178,13 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JBRemoverActionPerformed(evt);
             }
         });
-        jPanel3.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 80, 50));
+        jPanel3.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 120, 50));
 
         jLabel8.setText("Usuário:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jLabel2.setText("Nome:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         JTNome.setBackground(new java.awt.Color(51, 51, 51));
         JTNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,15 +193,15 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JTNomeActionPerformed(evt);
             }
         });
-        jPanel3.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 260, -1));
+        jPanel3.add(JTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 260, -1));
 
         JTUsuario.setBackground(new java.awt.Color(51, 51, 51));
         JTUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 200, -1));
+        jPanel3.add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, -1));
 
         JTSenha.setBackground(new java.awt.Color(51, 51, 51));
         JTSenha.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(JTSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 200, -1));
+        jPanel3.add(JTSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 200, -1));
 
         JCSexo.setBackground(new java.awt.Color(246, 242, 242));
         JCSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Outro" }));
@@ -224,7 +210,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JCSexoActionPerformed(evt);
             }
         });
-        jPanel3.add(JCSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
+        jPanel3.add(JCSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
 
         JBAtualizar.setBackground(new java.awt.Color(51, 102, 255));
         JBAtualizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,7 +220,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JBAtualizarActionPerformed(evt);
             }
         });
-        jPanel3.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, 50));
+        jPanel3.add(JBAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 120, 50));
 
         JBAdicionar.setBackground(new java.awt.Color(51, 102, 255));
         JBAdicionar.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,7 +230,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JBAdicionarActionPerformed(evt);
             }
         });
-        jPanel3.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, 50));
+        jPanel3.add(JBAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 120, 50));
 
         JCFuncao.setBackground(new java.awt.Color(246, 242, 242));
         JCFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Administrador", "Gerente" }));
@@ -253,20 +239,44 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JCFuncaoActionPerformed(evt);
             }
         });
-        jPanel3.add(JCFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        jPanel3.add(JCFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         jLabel10.setText("Senha:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 350, 460));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel11.setText("Dados do funcionário");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 20));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel12.setText("Funcionários");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, 20));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,7 +325,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             Tabela.addRow(dados);
 
             //Salva a tabela
-            String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Funcionarios";
+            String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Funcionarios";
             File file = new File(FilePath);
             try {
                 FileWriter fwe = new FileWriter(file);
@@ -378,21 +388,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_LimparActionPerformed
 
-    private void JBRemoverTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverTudoActionPerformed
-
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-        if(q == JOptionPane.YES_OPTION){
-            DefaultTableModel modelo = (DefaultTableModel) JTFuncionarios.getModel();
-            modelo.setNumRows(0);
-
-        }
-
-        else if(q == JOptionPane.NO_OPTION){
-
-        }
-
-    }//GEN-LAST:event_JBRemoverTudoActionPerformed
-
     private void JTDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDataActionPerformed
 
     }//GEN-LAST:event_JTDataActionPerformed
@@ -425,7 +420,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton JBAdicionar;
     private javax.swing.JButton JBAtualizar;
     private javax.swing.JButton JBRemover;
-    private javax.swing.JButton JBRemoverTudo;
     private javax.swing.JComboBox<String> JCFuncao;
     private javax.swing.JComboBox<String> JCSexo;
     private javax.swing.JFormattedTextField JTCpf;

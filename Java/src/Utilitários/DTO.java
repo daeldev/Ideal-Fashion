@@ -225,7 +225,7 @@ public class DTO {
             return Telefone;
         }
 
-        public void setTelefone(String Telefone) {
+        public void setTelefone(String Telefone){
             if (Telefone.equals("(  )      -    ")) {
                 JOptionPane.showMessageDialog(null, "ERRO: Verifique o número de telefone do cliente.");
             } else {

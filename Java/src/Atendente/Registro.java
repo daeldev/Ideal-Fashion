@@ -56,7 +56,6 @@ public class Registro extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTRegistro = new javax.swing.JTable();
         JBRemover = new javax.swing.JButton();
-        JBRemoverTudo = new javax.swing.JButton();
 
         Limpar.setText("Limpar");
         Limpar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,17 +124,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 JBRemoverActionPerformed(evt);
             }
         });
-        jPanel1.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 120, 40));
-
-        JBRemoverTudo.setBackground(new java.awt.Color(255, 51, 51));
-        JBRemoverTudo.setForeground(new java.awt.Color(255, 255, 255));
-        JBRemoverTudo.setText("REMOVER TUDO");
-        JBRemoverTudo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBRemoverTudoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(JBRemoverTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 120, 40));
+        jPanel1.add(JBRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,14 +158,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_JTRegistroKeyReleased
 
-    private void JBRemoverTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverTudoActionPerformed
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
-        if(q == JOptionPane.YES_OPTION){   
-            DefaultTableModel modelo = (DefaultTableModel) JTRegistro.getModel();
-            modelo.setNumRows(0);      
-        }
-    }//GEN-LAST:event_JBRemoverTudoActionPerformed
-
     private void JTRegistroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTRegistroMouseReleased
         // TODO add your handling code here:
    
@@ -207,7 +188,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBRemover;
-    private javax.swing.JButton JBRemoverTudo;
     public static javax.swing.JTable JTRegistro;
     private javax.swing.JMenuItem Limpar;
     private javax.swing.JPanel jPanel1;

@@ -41,7 +41,7 @@ public class ConexaoCi {
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try {
-                String sql = "INSERT INTO cliente (Nome, CPF, Telefone, data_nascimento, Sexo) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO clientes (Nome, CPF, Telefone, dataNascimento, Sexo) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, clienteDTO.getNome());
                 pstm.setString(2, clienteDTO.getCPF());
