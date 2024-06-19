@@ -5,11 +5,11 @@ public class TotalPagamento {
     
     private static Double Total;
 
-    public Double getTotal() {
+    public static Double getTotal() {
         return Total;
     }
 
-    public void setTotal(Double Total) {
-        this.Total = Total;
+    public static void setTotal(Double Total) {
+        TotalPagamento.Total = Total;
     }
 }

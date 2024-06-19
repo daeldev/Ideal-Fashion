@@ -384,19 +384,13 @@ public class Carrinho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTotalActionPerformed
 
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
-//        TotalPagamento tipoPagamento = new TotalPagamento();
-//        tipoPagamento.setTotal(Double.valueOf(JTTotal.getText()));
+        TotalPagamento totalPagamento = new TotalPagamento();
+        totalPagamento.setTotal(Double.valueOf(JTTotal.getText()));
 
-        DTO dto = new DTO();
-        DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();        
-        produtoDTO.setTotal(Double.valueOf(JTTotal.getText()));
-        Pagamento pagamento = new Pagamento();
-        
-
-        Double Pagamento = pagamento.PegarPagamento(produtoDTO);   
+        Pagamento pagamento = new Pagamento();      
         WorkspaceAtendente.add(pagamento);
         pagamento.setVisible(true);
-        pagamento.setBounds(247, 97, 1036, 657);
+        pagamento.setBounds(247, 97, 360, 527);
         dispose();                
     }//GEN-LAST:event_JBPagarActionPerformed
 
