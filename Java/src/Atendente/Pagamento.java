@@ -40,7 +40,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         JCCartao = new javax.swing.JComboBox<>();
-        JTVista = new javax.swing.JTextField();
+        JTDinheiro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         JRVista = new javax.swing.JRadioButton();
@@ -68,7 +68,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
 
         JBFinalizar.setBackground(new java.awt.Color(51, 102, 255));
         JBFinalizar.setForeground(new java.awt.Color(255, 255, 255));
-        JBFinalizar.setText("Confirmar");
+        JBFinalizar.setText("Finalizar");
         JBFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBFinalizarActionPerformed(evt);
@@ -144,16 +144,16 @@ public class Pagamento extends javax.swing.JInternalFrame {
             }
         });
 
-        JTVista.setBackground(new java.awt.Color(51, 51, 51));
-        JTVista.setForeground(new java.awt.Color(255, 255, 255));
-        JTVista.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTDinheiro.setBackground(new java.awt.Color(51, 51, 51));
+        JTDinheiro.setForeground(new java.awt.Color(255, 255, 255));
+        JTDinheiro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JTVistaMouseClicked(evt);
+                JTDinheiroMouseClicked(evt);
             }
         });
-        JTVista.addActionListener(new java.awt.event.ActionListener() {
+        JTDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTVistaActionPerformed(evt);
+                JTDinheiroActionPerformed(evt);
             }
         });
 
@@ -228,7 +228,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(JTVista, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JTDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -244,7 +244,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTVista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(32, 32, 32)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,52 +305,67 @@ public class Pagamento extends javax.swing.JInternalFrame {
 
     
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
-        if(JRVista.isSelected ()){
-            try{
-                Double dinheiroCliente = Double.valueOf(JTVista.getText());
-                Double troco = dinheiroCliente - Total;
-                if(dinheiroCliente <= 0 || troco < 0){
-                    JOptionPane.showMessageDialog(null, "ERRO: Valor Inválido.");
-                    JTVista.setText("");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Troco: "+ troco);
-                    JOptionPane.showMessageDialog(null, "Venda Finalizada.");
+        
+        
+        if(JRCartao.isSelected() || !JRVista.isSelected()){
+            if(JRVista.isSelected ()){
+                try{
+                    Double dinheiroCliente = Double.valueOf(JTDinheiro.getText());
+                    Double troco = dinheiroCliente - Total;
+                    if(dinheiroCliente <= 0 || troco < 0){
+                        JOptionPane.showMessageDialog(null, "ERRO: Valor Inválido.");
+                        JTDinheiro.setText("");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Troco: "+ troco);
+                        JOptionPane.showMessageDialog(null, "Venda Finalizada.");
+                        dispose();
+                    }
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "ERRO: Digite os valores novamente.");
+                    JTDinheiro.setText("");
                 }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERRO: Digite os valores novamente.");
-                JTVista.setText("");
             }
-        }
         if(JRCartao.isSelected()){
             JOptionPane.showMessageDialog(null, "Venda Finalizada.");
+            dispose();
         }
-            
+        
         //Adiciona os dados da venda ao banco de dados  
-//        Carrinho carrinho = new Carrinho();
-//        for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
-//            DTO dto = new DTO();
-//            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
-//            
-//            String Nome = carrinho.JTCarrinho.getValueAt(i, 0).toString();
-//            String Tamanho = carrinho.JTCarrinho.getValueAt(i, 1).toString();
-//            int Quantidade = Integer.parseInt(carrinho.JTCarrinho.getValueAt(i, 2).toString());
-//            Double Total = Double.valueOf(carrinho.JTCarrinho.getValueAt(i, 5).toString());
-//
-//            produtoDTO.setNome(Nome);
-//            produtoDTO.setTamanho(Tamanho);
-//            produtoDTO.setQuantidade(Quantidade);
-//            produtoDTO.setTotal(Total);
-//
-//            DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
-//            clienteDTO.getCPF();
-//            clienteDTO.getNome();
-//            clienteDTO.getTelefone();
-//            
-//            ConexaoCi produtoDAO = new ConexaoCi();
-//            int Resultado = produtoDAO.AdicionarRegistro(produtoDTO, clienteDTO);
-//
-//            if(Resultado != -1){ 
-//                //Salva a tabela
+        Carrinho carrinho = new Carrinho();
+        for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
+            DTO dto = new DTO();
+            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+            
+            try{
+                String Nome = carrinho.JTCarrinho.getValueAt(i, 0).toString();
+                String Tamanho = carrinho.JTCarrinho.getValueAt(i, 1).toString();
+                int Quantidade = Integer.parseInt(carrinho.JTCarrinho.getValueAt(i, 2).toString());
+                Double Total = Double.valueOf(carrinho.JTCarrinho.getValueAt(i, 5).toString());
+
+                produtoDTO.setNome(Nome);
+                produtoDTO.setTamanho(Tamanho);
+                produtoDTO.setQuantidade(Quantidade);
+                produtoDTO.setTotal(Total);
+
+                DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
+                clienteDTO.getCPF();
+                clienteDTO.getNome();
+                clienteDTO.getTelefone();
+
+                ConexaoCi produtoDAO = new ConexaoCi();
+                int Resultado = produtoDAO.AdicionarRegistro(produtoDTO, clienteDTO);
+
+                if(Resultado != -1){ 
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERRO: Selecione uma forma de pagamento.");
+                }   
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERRO: Dados inválidos.");
+            }
+            
+            
+                //Salva a tabela
 //                LocalDate dataAtual = LocalDate.now();  
 //                String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Registro";
 //                File file = new File(FilePath) ;
@@ -371,11 +386,12 @@ public class Pagamento extends javax.swing.JInternalFrame {
 //                    bwe.newLine();
 //                    bwe.close();
 //                    fwe.close();
-//                }catch (IOException ex) {
+////              }catch (IOException ex) {
 //                    Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
+//                }     
+            }
+        }
+        
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed
@@ -420,17 +436,17 @@ public class Pagamento extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_JRVistaActionPerformed
 
-    private void JTVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTVistaActionPerformed
+    private void JTDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDinheiroActionPerformed
         if(JRCartao.isSelected() || !JRVista.isSelected()){
-            JTVista.setEditable(false);
+            JTDinheiro.setEditable(false);
         }else{
-            JTVista.setEditable(true);
+            JTDinheiro.setEditable(true);
         }
-    }//GEN-LAST:event_JTVistaActionPerformed
+    }//GEN-LAST:event_JTDinheiroActionPerformed
 
-    private void JTVistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTVistaMouseClicked
+    private void JTDinheiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTDinheiroMouseClicked
 
-    }//GEN-LAST:event_JTVistaMouseClicked
+    }//GEN-LAST:event_JTDinheiroMouseClicked
 
     private void JCCartaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JCCartaoItemStateChanged
 
@@ -447,8 +463,8 @@ public class Pagamento extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> JCCartao;
     private javax.swing.JRadioButton JRCartao;
     private javax.swing.JRadioButton JRVista;
+    private javax.swing.JTextField JTDinheiro;
     private javax.swing.JTextField JTTotal;
-    private javax.swing.JTextField JTVista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

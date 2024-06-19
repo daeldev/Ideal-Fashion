@@ -91,7 +91,7 @@ public class ConexaoCi {
         int generatedKey = -1;
         try{
             //Adiciona os daods ao banco
-            String sql = "Insert into Registro (Data, Cliente, Telefone, CPF, Produto, Tamanho, Quantidade, Total) Values (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "Insert into registro (Data, Cliente, Telefone, CPF, Produto, Tamanho, Quantidade, Total) Values (?, ?, ?, ?, ?, ?, ?, ?)";
             LocalDate dataAtual = LocalDate.now();
             PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setObject(1, dataAtual);
