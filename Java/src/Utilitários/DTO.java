@@ -111,9 +111,22 @@ public class DTO {
         }
     }
 
-    public class RegistroDTO {
+    public class VendaDTO {
+        private Double Total;
         private int NotaFiscal;
 
+        public Double getTotal() {
+            return Total;
+        }
+
+        public void setTotal(Double Total) {
+            if (Total > 0) {
+                this.Total = Total;
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO: O total deve ser maior do que zero.");
+            }
+        }
+        
         public int getNotaFiscal() {
             return NotaFiscal;
         }
@@ -130,7 +143,7 @@ public class DTO {
         private int Quantidade;
         private Double Preco;
         private int Codigo;
-        private static Double Total;
+        
 
         public void setNome(String Nome) {
             if (!Nome.isEmpty()) {
@@ -168,17 +181,7 @@ public class DTO {
             return Codigo;
         }
 
-        public Double getTotal() {
-            return Total;
-        }
-
-        public void setTotal(Double Total) {
-            if (Total > 0) {
-                this.Total = Total;
-            } else {
-                JOptionPane.showMessageDialog(null, "ERRO: O total deve ser maior do que zero.");
-            }
-        }
+        
 
         public void setPreco(Double Preco) {
             if (Preco > 0) {

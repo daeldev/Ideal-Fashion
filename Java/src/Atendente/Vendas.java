@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 
-public class Registro extends javax.swing.JInternalFrame { 
-    public Registro() {
+public class Vendas extends javax.swing.JInternalFrame { 
+    public Vendas() {
         initComponents();
    
     DefaultTableModel modelo = (DefaultTableModel)JTRegistro.getModel();
@@ -40,7 +40,7 @@ public class Registro extends javax.swing.JInternalFrame {
             
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vendas.class.getName()).log(Level.SEVERE, null, ex);
         }
     
        
@@ -137,7 +137,7 @@ public class Registro extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 1035, 620);
+        setBounds(0, 0, 1036, 620);
     }// </editor-fold>//GEN-END:initComponents
   
     

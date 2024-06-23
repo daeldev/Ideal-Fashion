@@ -43,7 +43,7 @@ public class DadosCliente extends javax.swing.JInternalFrame {
         JTCPF = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setBorder(null);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
         setTitle("Dados");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,7 +174,7 @@ public class DadosCliente extends javax.swing.JInternalFrame {
         jLabel5.setText("CPF");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 410, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,13 +195,14 @@ public class DadosCliente extends javax.swing.JInternalFrame {
             ConexaoCi clienteDAO = new ConexaoCi();
             
             if (clienteDAO.VerificarCliente(clienteDTO)){
-            Carrinho Carrinho = new Carrinho();
+            Caixa Carrinho = new Caixa();
             WorkspaceAtendente.add(Carrinho);
             Carrinho.setVisible(true);
             Carrinho.setBounds(247, 97, 1036, 657);
             dispose();
-            }else{
-                int Option = JOptionPane.showConfirmDialog(null,"Cliente não cadastrado. Deseja cadastra-lo?","Atenção", JOptionPane.YES_NO_OPTION);
+            }
+            if (!clienteDAO.VerificarCliente(clienteDTO)){
+                int Option = JOptionPane.showConfirmDialog(null,"Deseja cadastrar o cliente?","Atenção", JOptionPane.YES_NO_OPTION);
                 if(Option == JOptionPane.YES_OPTION){
                     Clientes clientes = new Clientes();
                     WorkspaceAtendente.add(clientes);
@@ -211,7 +212,7 @@ public class DadosCliente extends javax.swing.JInternalFrame {
                 }
 
                 if(Option == JOptionPane.NO_OPTION){
-                    Carrinho carrinho = new Carrinho();
+                    Caixa carrinho = new Caixa();
                     WorkspaceAtendente.add(carrinho);
                     carrinho.setVisible(true);
                     carrinho.setBounds(247, 97, 1036, 657);

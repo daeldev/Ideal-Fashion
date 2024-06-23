@@ -1,5 +1,6 @@
 package Atendente;
 import Administrador.Estoque;
+import static Atendente.WorkspaceAtendente.WorkspaceAtendente;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
 import Utilitários.TotalPagamento;
@@ -11,17 +12,19 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Pagamento extends javax.swing.JInternalFrame {
     
-    Double Total = TotalPagamento.getTotal();
-    public Pagamento() {
+    private DefaultTableModel Carrinho;
+    private Double Total;    
+    public void Pagamento(DTO.VendaDTO vendaDTO, DefaultTableModel Carrinho) {
         initComponents();
-        JTTotal.setText(TotalPagamento.getTotal().toString());
-    }
-    
-    
+        JTTotal.setText(vendaDTO.getTotal().toString());
+        this.Total = vendaDTO.getTotal();
+        this.Carrinho = Carrinho;
+    }  
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,7 +54,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
         jLabel10.setText("Dados do Produto");
 
         setBackground(new java.awt.Color(246, 242, 242));
-        setBorder(null);
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
         setTitle("Pagamento");
 
@@ -109,7 +112,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
                         .addComponent(JBFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +238,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(JCCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,23 +263,23 @@ public class Pagamento extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel12)
                 .addGap(35, 35, 35)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,101 +299,77 @@ public class Pagamento extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja Cancelar a Venda?","Atenção",JOptionPane.YES_NO_OPTION);
-        if(resposta == JOptionPane.YES_NO_OPTION){
-            JOptionPane.showMessageDialog(null, "Venda Cancelada");
-            dispose();
-        }
+        dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFinalizarActionPerformed
-        
-        
         if(JRCartao.isSelected() || JRVista.isSelected()){
             if(JRVista.isSelected ()){
                 try{
                     Double dinheiroCliente = Double.valueOf(JTDinheiro.getText());
                     Double troco = dinheiroCliente - Total;
-                    if(dinheiroCliente <= Total || troco < 0){
+                    if(dinheiroCliente < Total || troco < 0){
                         JOptionPane.showMessageDialog(null, "ERRO: Valor Inválido.");
                         JTDinheiro.setText("");
                     }else{
-                        JOptionPane.showMessageDialog(null, "Troco: "+ troco);
-                        JOptionPane.showMessageDialog(null, "Venda Finalizada.");
-                        dispose();
+                        if(troco > 0){
+                            JOptionPane.showMessageDialog(null, "Troco: "+ troco);
+                        }
                     }
                 }catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "ERRO: Digite os valores novamente.");
                     JTDinheiro.setText("");
+                    return;
                 }
-            }
-            if(JRCartao.isSelected()){
-                JTDinheiro.setText("");
-                JOptionPane.showMessageDialog(null, "Venda Finalizada.");
-                dispose();
-            }
-        
-        //Adiciona os dados da venda ao banco de dados  
-        Carrinho carrinho = new Carrinho();
-        for (int i = 0; i < carrinho.JTCarrinho.getRowCount(); i++) {
-            DTO dto = new DTO();
-            DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+            }                                  
             
-            try{
-                String Nome = carrinho.JTCarrinho.getValueAt(i, 0).toString();
-                String Tamanho = carrinho.JTCarrinho.getValueAt(i, 1).toString();
-                int Quantidade = Integer.parseInt(carrinho.JTCarrinho.getValueAt(i, 2).toString());
-                Double Total = Double.valueOf(carrinho.JTCarrinho.getValueAt(i, 5).toString());
-
-                produtoDTO.setNome(Nome);
-                produtoDTO.setTamanho(Tamanho);
-                produtoDTO.setQuantidade(Quantidade);
-                produtoDTO.setTotal(Total);
-
-                DTO.ClienteDTO clienteDTO = dto.new ClienteDTO();
-                clienteDTO.getCPF();
-                clienteDTO.getNome();
-                clienteDTO.getTelefone();
-
-                ConexaoCi produtoDAO = new ConexaoCi();
-                int Resultado = produtoDAO.AdicionarRegistro(produtoDTO, clienteDTO);
-
+            //Adiciona o total e gera uma nota fiscal
+            try{                   
+                DTO dto = new DTO();
+                DTO.VendaDTO vendaDTO = dto.new VendaDTO();
+                
+                vendaDTO.setTotal(Total);
+                ConexaoCi vendaDAO = new ConexaoCi();
+                int Resultado = vendaDAO.AdicionarVendas(vendaDTO);
+                
                 if(Resultado != -1){ 
+                    //Adiciona e associa todos os produtos do carrinho à nota fiscal criada
+                    DTO.ProdutoDTO produtoDTO = dto.new ProdutoDTO();
+                    int NotaFiscal = Resultado;
                     
+                    for (int i = 0; i < Carrinho.getRowCount(); i++) {
+                        int Quantidade = Integer.parseInt(Carrinho.getValueAt(i, 2).toString());
+                        int Codigo = Integer.parseInt(Carrinho.getValueAt(i, 4).toString());
+
+                        produtoDTO.setQuantidade(Quantidade);
+                        produtoDTO.setCodigo(Codigo);
+
+                        ConexaoCi produtoDAO = new ConexaoCi();
+                        int rs = produtoDAO.AdicionarNotaFiscal(produtoDTO, NotaFiscal);
+
+                        if(rs != -1){ 
+                            JOptionPane.showMessageDialog(null, "Venda Finalizada.");
+
+                            int Option = JOptionPane.showConfirmDialog(null,"Deseja cadastrar o cliente?","Atenção", JOptionPane.YES_NO_OPTION);
+                            if(Option == JOptionPane.YES_OPTION){
+                                dispose(); 
+                                Clientes clientes = new Clientes();
+                                WorkspaceAtendente.add(clientes);
+                                clientes.setVisible(true);
+                                clientes.setBounds(247, 97, 1036, 657);                        
+                            }
+                            else{
+                                this.dispose();
+                            }
+                        }
+                    }
                 }
             }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERRO: Dados inválidos.");
-            }
-            
-            
-                //Salva a tabela
-//                LocalDate dataAtual = LocalDate.now();  
-//                String FilePath = "C:\\Users\\Josiel\\Desktop\\Daniel\\Programação\\Faetec\\Daniel - 221\\Ideal Fashion\\Java\\src\\DadosTabelas\\Registro";
-//                File file = new File(FilePath) ;
-//                
-//                DTO.RegistroDTO registroDTO = dto.new RegistroDTO();
-//                try {
-//                    FileWriter fwe = new FileWriter(file);
-//                    BufferedWriter bwe = new BufferedWriter(fwe);
-//                    bwe.write(dataAtual + " ");
-//                    bwe.write(clienteDTO.getNome() + " ");
-//                    bwe.write(clienteDTO.getTelefone() + " ");
-//                    bwe.write(clienteDTO.getCPF() + " ");
-//                    bwe.write(Nome + " ");
-//                    bwe.write(Tamanho + " "); 
-//                    bwe.write(Quantidade + " ");
-//                    bwe.write(registroDTO.getNotaFiscal() + " ");
-//                    bwe.write(Total + " "); 
-//                    bwe.newLine();
-//                    bwe.close();
-//                    fwe.close();
-////              }catch (IOException ex) {
-//                    Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
-//                }     
+                JOptionPane.showMessageDialog(null, "ERRO: Dados inválidos." + e);
             }
         }else{
             JOptionPane.showMessageDialog(null, "ERRO: Selecione uma forma de pagamento.");
-        }        
+        }
     }//GEN-LAST:event_JBFinalizarActionPerformed
 
     private void JTTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTotalActionPerformed
@@ -432,15 +411,12 @@ public class Pagamento extends javax.swing.JInternalFrame {
     private void JRVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRVistaActionPerformed
         if(JRVista.isSelected()){
             JCCartao.setSelectedItem("1x");
+            JCCartao.setEditable(false);
         }
     }//GEN-LAST:event_JRVistaActionPerformed
 
     private void JTDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDinheiroActionPerformed
-        if(JRCartao.isSelected() || !JRVista.isSelected()){
-            JTDinheiro.setEditable(false);
-        }else{
-            JTDinheiro.setEditable(true);
-        }
+        
     }//GEN-LAST:event_JTDinheiroActionPerformed
 
     private void JTDinheiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTDinheiroMouseClicked
@@ -453,6 +429,10 @@ public class Pagamento extends javax.swing.JInternalFrame {
 
     private void JRCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRCartaoActionPerformed
         // TODO add your handling code here:
+        if(JRCartao.isSelected()){
+            JTDinheiro.setText("");
+            JTDinheiro.setEditable(false);
+        }
     }//GEN-LAST:event_JRCartaoActionPerformed
 
 

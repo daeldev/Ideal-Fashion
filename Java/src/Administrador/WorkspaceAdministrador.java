@@ -3,6 +3,8 @@ package Administrador;
 import Atendente.LoginAtendente;
 import Atendente.Clientes;
 import Atendente.WorkspaceAtendente;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import javax.swing.JOptionPane;
 
 
@@ -22,6 +24,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
      */
     public WorkspaceAdministrador() {
         initComponents();
+        
     }
 
     /**
@@ -64,7 +67,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
                 JBClientesActionPerformed(evt);
             }
         });
-        jPanel1.add(JBClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 190, 50));
+        jPanel1.add(JBClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 190, 50));
 
         JBLogout.setBackground(new java.awt.Color(51, 51, 51));
         JBLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -77,7 +80,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
                 JBLogoutActionPerformed(evt);
             }
         });
-        jPanel1.add(JBLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 190, 50));
+        jPanel1.add(JBLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 190, 50));
 
         JBEstoque.setBackground(new java.awt.Color(51, 51, 51));
         JBEstoque.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -90,7 +93,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
                 JBEstoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(JBEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 190, 50));
+        jPanel1.add(JBEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 190, 50));
 
         JBAjuda.setBackground(new java.awt.Color(51, 51, 51));
         JBAjuda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -103,7 +106,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
                 JBAjudaActionPerformed(evt);
             }
         });
-        jPanel1.add(JBAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 190, 50));
+        jPanel1.add(JBAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 190, 50));
 
         iconeStatus.setBackground(new java.awt.Color(0, 204, 0));
 
@@ -118,27 +121,27 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel1.add(iconeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 10, 10));
+        jPanel1.add(iconeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 10, 10));
 
         Status.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Status.setForeground(new java.awt.Color(255, 255, 255));
         Status.setText("Conectado");
-        jPanel1.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 30));
+        jPanel1.add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, 30));
 
         Atendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Administrador/3.3.png"))); // NOI18N
-        jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        jPanel1.add(Atendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
         Quadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Administrador/4.2.png"))); // NOI18N
-        jPanel1.add(Quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, -1));
+        jPanel1.add(Quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 720));
 
         Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Administrador/5.2.png"))); // NOI18N
-        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 1040, -1));
+        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 1040, 720));
 
         Opções.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Outros/6.1.png"))); // NOI18N
-        jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
+        jPanel1.add(Opções, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/Fundos/9.1.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
 
         WorkspaceAdministrador.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -150,7 +153,9 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
         );
         WorkspaceAdministradorLayout.setVerticalGroup(
             WorkspaceAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkspaceAdministradorLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,7 +214,7 @@ public class WorkspaceAdministrador extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

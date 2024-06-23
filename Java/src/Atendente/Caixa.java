@@ -7,13 +7,6 @@ package Atendente;
 import static Atendente.WorkspaceAtendente.WorkspaceAtendente;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import Utilitários.TotalPagamento;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Josiel
  */
-public class Carrinho extends javax.swing.JInternalFrame {
+public class Caixa extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Carrinho1
      */
-    public Carrinho() {
+    public Caixa() {
         initComponents();
     }
 
@@ -58,6 +51,9 @@ public class Carrinho extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+
+        setBorder(null);
+        setClosable(true);
 
         jPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -126,7 +122,7 @@ public class Carrinho extends javax.swing.JInternalFrame {
                         .addComponent(JBAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +203,7 @@ public class Carrinho extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -247,46 +243,45 @@ public class Carrinho extends javax.swing.JInternalFrame {
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel15)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel14))
-                .addGap(62, 62, 62)
+                .addGap(30, 30, 30)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,35 +306,35 @@ public class Carrinho extends javax.swing.JInternalFrame {
         try{
             int Codigo = Integer.parseInt(JTCodigo.getText().toString());
             produtoDTO.setCodigo(Codigo); 
+            
+            if (VerificarProduto(Integer.parseInt(JTCodigo.getText().toString()))){
+                produtoDTO.setQuantidade(Integer.valueOf(JSQuantidade.getValue().toString()));
+                ConexaoCi Ci = new ConexaoCi();
+                if (Ci.VerificarEstoque(produtoDTO)){
+                    int Acumulador = 0;
+                    double Preco = produtoDTO.getPreco();
+                    int Quantidade = Integer.parseInt(JSQuantidade.getValue().toString());
+                    double Subtotal = Preco*Quantidade;
+                    String Produto = produtoDTO.getNome();
+
+                    DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
+                    Object[] dados = {Produto, produtoDTO.getTamanho(), Quantidade, Preco, produtoDTO.getCodigo(), Subtotal};
+
+                    for (int i = 0; i < JTCarrinho.getRowCount(); i++){
+                        Acumulador += Double.valueOf(JTCarrinho.getValueAt(i, 5).toString());
+                    }
+                    JTTotal.setText(Double.toString(Acumulador+Subtotal));
+                    modelo.addRow(dados);
+
+                    JTCodigo.setText("");
+                    JSQuantidade.setValue(0);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "ERRO: Produto já adicionado.");
+            }  
         }catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "ERRO: Verifique o código.");
-        }
-        
-        if (VerificarProduto(Integer.parseInt(JTCodigo.getText().toString()))){
-            produtoDTO.setQuantidade(Integer.valueOf(JSQuantidade.getValue().toString()));
-            ConexaoCi Ci = new ConexaoCi();
-            if (Ci.VerificarEstoque(produtoDTO)){
-                int Acumulador = 0;
-                double Preco = produtoDTO.getPreco();
-                double Quantidade = Double.parseDouble(JSQuantidade.getValue().toString());
-                double Subtotal = Preco*Quantidade;
-                String Produto = produtoDTO.getNome();
-                
-                DefaultTableModel modelo = (DefaultTableModel) JTCarrinho.getModel();
-                Object[] dados = {Produto, produtoDTO.getTamanho(), Quantidade, Preco, produtoDTO.getCodigo(), Subtotal};
-
-                for (int i = 0; i < JTCarrinho.getRowCount(); i++){
-                    Acumulador += Double.valueOf(JTCarrinho.getValueAt(i, 5).toString());
-                }
-                JTTotal.setText(Double.toString(Acumulador+Subtotal));
-                modelo.addRow(dados);
-                
-                JTCodigo.setText("");
-                JSQuantidade.setValue(0);
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "ERRO: Produto já adicionado.");
-        }  
+        } 
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
@@ -384,22 +379,29 @@ public class Carrinho extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTTotalActionPerformed
     
     private void JBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPagarActionPerformed
-        TotalPagamento totalPagamento = new TotalPagamento();
-        totalPagamento.setTotal(Double.valueOf(JTTotal.getText()));
+        DTO dto = new DTO();
+        DTO.VendaDTO vendaDTO = dto.new VendaDTO();
         
+        try{
+            vendaDTO.setTotal(Double.valueOf(JTTotal.getText()));
+            DefaultTableModel Carrinho = (DefaultTableModel) JTCarrinho.getModel();
 
-        Pagamento pagamento = new Pagamento();      
-        WorkspaceAtendente.add(pagamento);
-        pagamento.setVisible(true);
-        pagamento.setBounds(247, 97, 360, 500);
-        dispose();                
+            Pagamento pagamento = new Pagamento();  
+            pagamento.Pagamento(vendaDTO, Carrinho);
+
+            WorkspaceAtendente.add(pagamento);
+            pagamento.setVisible(true);
+            pagamento.setBounds(450, 100, 379, 527);      
+        }catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "ERRO: Preencha o carrinho.");
+        } 
+            
     }//GEN-LAST:event_JBPagarActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
 
-        int q = JOptionPane.showConfirmDialog(null,"Você tem Certeza?","Atenção", JOptionPane.YES_NO_OPTION);
+        int q = JOptionPane.showConfirmDialog(null,"Deseja cancelar a venda?","Atenção", JOptionPane.YES_NO_OPTION);
         if(q == JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(null, "Venda Cancelada");
             dispose();
         }
     }//GEN-LAST:event_JBCancelarActionPerformed

@@ -28,6 +28,7 @@ public class Estoque extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaEstoque
      */
+    
     public Estoque() {
         initComponents();
 
@@ -246,7 +247,7 @@ public class Estoque extends javax.swing.JInternalFrame {
         produtoDTO.setNome(JTProduto.getText());
         produtoDTO.setTamanho(JCTamanho.getSelectedItem().toString());         
         ConexaoCi conexaoCi = new ConexaoCi();
-        int resultado = conexaoCi.AdicionarEstoque(produtoDTO);
+        int resultado = conexaoCi.AdicionarProduto(produtoDTO);
         if (resultado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
             Object[] dados = {

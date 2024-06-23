@@ -47,8 +47,6 @@ public class Clientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu2 = new javax.swing.JPopupMenu();
-        Limpar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTClientes = new javax.swing.JTable();
@@ -69,19 +67,15 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        Limpar.setText("Limpar");
-        Limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimparActionPerformed(evt);
-            }
-        });
-        jPopupMenu2.add(Limpar);
-
         setBorder(null);
         setClosable(true);
         setTitle("Cadastro");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1030, 670));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1030, 670));
+        jPanel1.setPreferredSize(new java.awt.Dimension(10, 670));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jPanel1MouseReleased(evt);
@@ -126,7 +120,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(JTClientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 550, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 570, 530));
 
         jPanel2.setBackground(new java.awt.Color(246, 242, 242));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,28 +211,28 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel1.setText("Data de nascimento:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 410, 360));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 410, 360));
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel3.setText("Clientes");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel4.setText("Dados do cliente");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 1035, 620);
+        setBounds(0, 0, 1036, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
@@ -350,17 +344,6 @@ if(JTClientes.getSelectedRow() != -1){
         // TODO add your handling code here:
     }//GEN-LAST:event_JTTelefoneActionPerformed
 
-    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
-//        // TODO add your handling code here:
-//        if(JTTabela.getSelectedRow() != -1){
-//        
-//        DefaultTableModel modelo = (DefaultTableModel) JTTabela.getModel();
-//        modelo.removeRow(JTTabela.getSelectedRow());     
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir!");
-//        }
-    }//GEN-LAST:event_LimparActionPerformed
-
     private void JTCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTCPFActionPerformed
@@ -380,7 +363,6 @@ if(JTClientes.getSelectedRow() != -1){
     private javax.swing.JFormattedTextField JTDataNasc;
     private javax.swing.JTextField JTNome;
     private javax.swing.JFormattedTextField JTTelefone;
-    private javax.swing.JMenuItem Limpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -390,7 +372,6 @@ if(JTClientes.getSelectedRow() != -1){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,7 +14,7 @@ public class ConexaoCi {
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try {
-                String sql = "INSERT INTO funcionarios (Funcao, Nome, CPF, DataNascimento, Sexo, Usuario, Senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO funcionario (Funcao, Nome, CPF, DataNascimento, Sexo, Usuario, Senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, funcionarioDTO.getFuncao());
                 pstm.setString(2, funcionarioDTO.getNome());
@@ -41,7 +41,7 @@ public class ConexaoCi {
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try {
-                String sql = "INSERT INTO clientes (Nome, CPF, Telefone, dataNascimento, Sexo) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO cliente (Nome, CPF, Telefone, dataNascimento, Sexo) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, clienteDTO.getNome());
                 pstm.setString(2, clienteDTO.getCPF());
@@ -60,12 +60,12 @@ public class ConexaoCi {
             } 
      }
     
-    public int AdicionarEstoque(DTO.ProdutoDTO produtoDTO){
+    public int AdicionarProduto(DTO.ProdutoDTO produtoDTO){
         if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
             try{
-                String sql = "Insert into estoque (Produto, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
+                String sql = "Insert into estoque (nome, Tamanho, Quantidade, Preco) Values (?, ?, ?, ?)";
                 PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 pstm.setString(1, produtoDTO.getNome());
                 pstm.setString(2, produtoDTO.getTamanho());
@@ -86,35 +86,53 @@ public class ConexaoCi {
         }
     }
     
-    public int AdicionarRegistro(DTO.ProdutoDTO produtoDTO, DTO.ClienteDTO clienteDTO){
+    public int AdicionarVendas(DTO.VendaDTO vendaDTO){
         conn = new ConexaoBD().ConectaBD();   
+        
         int generatedKey = -1;
         try{
             //Adiciona os daods ao banco
-            String sql = "Insert into registro (Data, Cliente, Telefone, CPF, Produto, Tamanho, Quantidade, Total) Values (?, ?, ?, ?, ?, ?, ?, ?)";
-            LocalDate dataAtual = LocalDate.now();
-            PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            pstm.setObject(1, dataAtual);
-            pstm.setString(2, clienteDTO.getNome());
-            pstm.setString(3, clienteDTO.getTelefone());
-            pstm.setString(4, clienteDTO.getCPF());
-            pstm.setString(5, produtoDTO.getNome());
-            pstm.setString(6, produtoDTO.getTamanho());
-            if (produtoDTO.getQuantidade() > 0){
-                pstm.setInt(7, produtoDTO.getQuantidade());
-            }
-            pstm.setDouble(8, produtoDTO.getTotal());
             
-            int rs = pstm.executeUpdate();
+            String sql = "Insert into venda (Data, total) Values (?, ?)";
+            PreparedStatement pstm = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            LocalDate dataAtual = LocalDate.now();
+            pstm.setObject(1, dataAtual);
+            pstm.setDouble(2, vendaDTO.getTotal());
+            
+            int vendas = pstm.executeUpdate();
+            
+            int notaFiscal = -1;
             ResultSet rsa = pstm.getGeneratedKeys();
                 if (rsa.next()) {
-                    DTO dto = new DTO();
-                    DTO.RegistroDTO registroDTO = dto.new RegistroDTO();
-                    registroDTO.setNotaFiscal(generatedKey = rsa.getInt(1));   
-                } 
-            return rs;
-
+                    vendaDTO.setNotaFiscal(generatedKey = rsa.getInt(1));   
+                }
                 
+            return vendaDTO.getNotaFiscal(); 
+            }catch (SQLException erro){
+                JOptionPane.showMessageDialog(null, erro.getMessage());
+                return -1;
+            }  
+    }
+    
+    public int AdicionarNotaFiscal(DTO.ProdutoDTO produtoDTO, int NotaFiscal){
+        conn = new ConexaoBD().ConectaBD();   
+        DTO dto = new DTO();
+        DTO.VendaDTO vendaDTO = dto.new VendaDTO();
+        int generatedKey = -1;
+        try{
+            //Adiciona os dados ao banco 
+            String sqlnotaFiscal = "Insert into notafiscal (quantidade, Venda_notaFiscal, estoque_Codigo) Values (?, ?, ?)";
+            PreparedStatement pstmnotaFiscal = conn.prepareStatement(sqlnotaFiscal);
+            
+            if (produtoDTO.getQuantidade() > 0){
+                pstmnotaFiscal.setInt(1, produtoDTO.getQuantidade());
+            }
+            pstmnotaFiscal.setInt(2, NotaFiscal);
+            pstmnotaFiscal.setInt(3, produtoDTO.getCodigo());
+            
+            int notaFiscal = pstmnotaFiscal.executeUpdate();
+            
+            return notaFiscal; 
             }catch (SQLException erro){
                 JOptionPane.showMessageDialog(null, erro.getMessage());
                 return -1;
@@ -125,14 +143,14 @@ public class ConexaoCi {
         if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();       
             try{
-                String sql = "Select Produto, Tamanho, Quantidade, Preco from estoque where Codigo = ?";
+                String sql = "Select nome, Tamanho, Quantidade, Preco from estoque where Codigo = ?";
                 PreparedStatement pstm = conn.prepareStatement(sql);
                 pstm.setInt(1, produtoDTO.getCodigo());   
 
                 ResultSet rs = pstm.executeQuery(); 
                 if (rs.next()){
                     if (rs.getInt("Quantidade") >= produtoDTO.getQuantidade()){
-                        produtoDTO.setNome(rs.getString("Produto"));
+                        produtoDTO.setNome(rs.getString("nome"));
                         produtoDTO.setTamanho(rs.getString("Tamanho"));
                         produtoDTO.setPreco(rs.getDouble("Preco"));       
                         return true;
@@ -156,7 +174,7 @@ public class ConexaoCi {
     public Boolean VerificarCliente(DTO.ClienteDTO clienteDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT * FROM clientes WHERE CPF = ?";
+            String sql = "SELECT * FROM cliente WHERE CPF = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, clienteDTO.getCPF());  
             ResultSet rs = pstm.executeQuery();
@@ -173,7 +191,7 @@ public class ConexaoCi {
     public Boolean VerificarAtendente(DTO.FuncionarioDTO dadosDTO){
         conn = (Connection) new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Atendente' and usuario =? and senha =?";
+            String sql = "SELECT usuario, senha FROM funcionario WHERE funcao =  'Atendente' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 
@@ -193,7 +211,7 @@ public class ConexaoCi {
     public Boolean VerificarAdministrador(DTO.FuncionarioDTO dadosDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Administrador' and usuario =? and senha =?";
+            String sql = "SELECT usuario, senha FROM funcionario WHERE funcao =  'Administrador' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 
@@ -212,7 +230,7 @@ public class ConexaoCi {
     public Boolean VerificarGerente(DTO.FuncionarioDTO dadosDTO){
         conn = new ConexaoBD().ConectaBD();       
         try{
-            String sql = "SELECT usuario, senha FROM funcionarios WHERE funcao =  'Gerente' and usuario =? and senha =?";
+            String sql = "SELECT usuario, senha FROM funcionario WHERE funcao =  'Gerente' and usuario =? and senha =?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, dadosDTO.getUsuario());
             pstm.setString(2, dadosDTO.getSenha()); 
