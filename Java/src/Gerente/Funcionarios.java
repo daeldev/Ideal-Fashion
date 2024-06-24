@@ -10,12 +10,6 @@ import java.io.FileReader;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Utilitários.DTO;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -33,24 +27,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
      */
     public Funcionarios() {
         initComponents();
-        DefaultTableModel modelot = (DefaultTableModel) JTFuncionarios.getModel();
-        JTFuncionarios.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "/home/Aluno.Tarde/Daniel - 221/Ideal-Fashion/Java/src/DadosTabelas/Funcionarios";
-        File file = new File(FilePath) ;      
-        try {
-            FileReader frE = new FileReader (file);
-            BufferedReader brE = new BufferedReader(frE);
-            
-            DefaultTableModel modelo = ( DefaultTableModel)JTFuncionarios.getModel();
-            Object [ ] lines = brE.lines().toArray();
-            
-            for (int i = 0 ; i < lines.length; i ++){
-                String [ ] row = lines[i].toString().split(" ");
-                modelo.addRow(row);             
-            }        
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }       
+  
     }
 
     /**
@@ -138,7 +115,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jLabel9.setText("CPF:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jLabel5.setText("Data de Nascimento:");
+        jLabel5.setText("Data de nascimento:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel7.setText("Sexo:");
@@ -151,7 +128,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
+        jPanel3.add(JTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 120, -1));
 
         JTData.setBackground(new java.awt.Color(51, 51, 51));
         JTData.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +142,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 JTDataActionPerformed(evt);
             }
         });
-        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 80, -1));
+        jPanel3.add(JTData, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 90, -1));
 
         jLabel6.setText("Função:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
@@ -263,7 +240,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,24 +300,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             DefaultTableModel Tabela = (DefaultTableModel) JTFuncionarios.getModel();
             Object[] dados = {funcionarioDTO.getFuncao(), funcionarioDTO.getNome(), funcionarioDTO.getCPF(), funcionarioDTO.getDataNascimento(), funcionarioDTO.getSexo(), funcionarioDTO.getCodigo()};
             Tabela.addRow(dados);
-
-            //Salva a tabela
-            String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Funcionarios";
-            File file = new File(FilePath);
-            try {
-                FileWriter fwe = new FileWriter(file);
-                BufferedWriter bwe = new BufferedWriter(fwe);
-                for (int i = 0; i < JTFuncionarios.getRowCount(); i ++){
-                    for(int j = 0; j <  JTFuncionarios.getColumnCount(); j ++){
-                        bwe.write(JTFuncionarios.getValueAt (i, j).toString() + " ");
-                    }
-                    bwe.newLine();
-                }            
-                bwe.close();
-                fwe.close();
-            }catch (IOException ex) {
-                Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }                                             
     }//GEN-LAST:event_JBAdicionarActionPerformed
 

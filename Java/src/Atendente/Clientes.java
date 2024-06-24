@@ -3,18 +3,8 @@ package Atendente;
 
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 
 public class Clientes extends javax.swing.JInternalFrame { 
@@ -23,25 +13,7 @@ public class Clientes extends javax.swing.JInternalFrame {
     public Clientes() { 
      
      initComponents();
-      DefaultTableModel modelot = (DefaultTableModel) JTClientes.getModel();
-        JTClientes.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Clientes";
-        File file = new File(FilePath) ;      
-        try {
-            FileReader frE = new FileReader (file);
-            BufferedReader brE = new BufferedReader(frE);
-            
-            DefaultTableModel modelo = ( DefaultTableModel)JTClientes.getModel();
-            Object [ ] lines = brE.lines().toArray();
-            
-            for (int i = 0 ; i < lines.length; i ++){
-                String [ ] row = lines[i].toString().split(" ");
-                modelo.addRow(row);             
-            }        
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }       
-    
+     
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -264,24 +236,6 @@ public class Clientes extends javax.swing.JInternalFrame {
             DefaultTableModel Tabela = (DefaultTableModel) JTClientes.getModel();
             Object[] dados = {clienteDTO.getIdcliente(), clienteDTO.getNome(), clienteDTO.getCPF(), clienteDTO.getTelefone(), clienteDTO.getdata_nascimento(), clienteDTO.getSexo()};
             Tabela.addRow(dados);
-
-            //Salva a tabela
-            String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Clientes";
-            File file = new File(FilePath);
-            try {
-                FileWriter fwe = new FileWriter(file);
-                BufferedWriter bwe = new BufferedWriter(fwe);
-                for (int i = 0; i < JTClientes.getRowCount(); i ++){
-                    for(int j = 0; j <  JTClientes.getColumnCount(); j ++){
-                        bwe.write(JTClientes.getValueAt (i, j).toString() + " ");
-                    }
-                    bwe.newLine();
-                }            
-                bwe.close();
-                fwe.close();
-            }catch (IOException ex) {
-                Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }                                             
     }//GEN-LAST:event_JBAdicionarActionPerformed
 

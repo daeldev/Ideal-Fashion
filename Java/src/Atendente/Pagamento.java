@@ -1,16 +1,7 @@
 package Atendente;
-import Administrador.Estoque;
 import static Atendente.WorkspaceAtendente.WorkspaceAtendente;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import Utilitários.TotalPagamento;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -345,7 +336,7 @@ public class Pagamento extends javax.swing.JInternalFrame {
                         produtoDTO.setCodigo(Codigo);
 
                         ConexaoCi produtoDAO = new ConexaoCi();
-                        int rs = produtoDAO.AdicionarNotaFiscal(produtoDTO, NotaFiscal);
+                        int rs = produtoDAO.AdicionarItens(produtoDTO, NotaFiscal);
 
                         if(rs != -1){ 
                             JOptionPane.showMessageDialog(null, "Venda Finalizada.");

@@ -1,18 +1,14 @@
 package Administrador;
 import Utilitários.ConexaoCi;
 import Utilitários.DTO;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,25 +27,7 @@ public class Estoque extends javax.swing.JInternalFrame {
     
     public Estoque() {
         initComponents();
-
-        DefaultTableModel modelot = (DefaultTableModel) JTEstoque.getModel();
-        JTEstoque.setRowSorter(new TableRowSorter(modelot));
-        String FilePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Estoque";
-        File file = new File(FilePath) ;      
-        try {
-            FileReader frE = new FileReader (file);
-            BufferedReader brE = new BufferedReader(frE);
-            
-            DefaultTableModel modelo = ( DefaultTableModel)JTEstoque.getModel();
-            Object [ ] lines = brE.lines().toArray();
-            
-            for (int i = 0 ; i < lines.length; i ++){
-                String [ ] row = lines[i].toString().split(" ");
-                modelo.addRow(row);             
-            }        
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }       
+        
     }
 
     /**
@@ -153,7 +131,7 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         JTProduto.setBackground(new java.awt.Color(51, 51, 51));
         JTProduto.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(JTProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 203, -1));
+        jPanel2.add(JTProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 203, -1));
 
         jLabel1.setText("Produto:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
@@ -164,10 +142,10 @@ public class Estoque extends javax.swing.JInternalFrame {
 
         JCTamanho.setBackground(new java.awt.Color(246, 242, 242));
         JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G" }));
-        jPanel2.add(JCTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 43, -1));
+        jPanel2.add(JCTamanho, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 43, -1));
 
         jLabel2.setText("Tamanho:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
         jLabel4.setText("Preço:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
@@ -176,7 +154,7 @@ public class Estoque extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         JSQuantidade.setToolTipText("");
-        jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 50, -1));
+        jPanel2.add(JSQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 50, -1));
 
         jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel9.setText("Estoque");
@@ -247,7 +225,7 @@ public class Estoque extends javax.swing.JInternalFrame {
         produtoDTO.setNome(JTProduto.getText());
         produtoDTO.setTamanho(JCTamanho.getSelectedItem().toString());         
         ConexaoCi conexaoCi = new ConexaoCi();
-        int resultado = conexaoCi.AdicionarProduto(produtoDTO);
+        int resultado = conexaoCi.AdicionarEstoque(produtoDTO);
         if (resultado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) JTEstoque.getModel();
             Object[] dados = {
@@ -258,20 +236,6 @@ public class Estoque extends javax.swing.JInternalFrame {
                 produtoDTO.getCodigo()
             };
             modelo.addRow(dados);
-
-            // Salva a tabela
-            String filePath = "/home/Aluno.Tarde/Daniel - 221/IdealFashion/Ideal-Fashion/Java/src/DadosTabelas/Estoque";
-            File file = new File(filePath);
-            try (FileWriter fwe = new FileWriter(file); BufferedWriter bwe = new BufferedWriter(fwe)) {
-                for (int i = 0; i < JTEstoque.getRowCount(); i++) {
-                    for (int j = 0; j < JTEstoque.getColumnCount(); j++) {
-                        bwe.write(JTEstoque.getValueAt(i, j).toString() + " ");
-                    }
-                    bwe.newLine();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_JBAdicionarActionPerformed
 

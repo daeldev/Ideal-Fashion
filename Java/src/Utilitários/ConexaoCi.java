@@ -60,7 +60,7 @@ public class ConexaoCi {
             } 
      }
     
-    public int AdicionarProduto(DTO.ProdutoDTO produtoDTO){
+    public int AdicionarEstoque(DTO.ProdutoDTO produtoDTO){
         if (produtoDTO.getQuantidade() > 0){
             conn = new ConexaoBD().ConectaBD();
             int generatedKey = -1;
@@ -114,14 +114,14 @@ public class ConexaoCi {
             }  
     }
     
-    public int AdicionarNotaFiscal(DTO.ProdutoDTO produtoDTO, int NotaFiscal){
+    public int AdicionarItens(DTO.ProdutoDTO produtoDTO, int NotaFiscal){
         conn = new ConexaoBD().ConectaBD();   
         DTO dto = new DTO();
         DTO.VendaDTO vendaDTO = dto.new VendaDTO();
         int generatedKey = -1;
         try{
             //Adiciona os dados ao banco 
-            String sqlnotaFiscal = "Insert into notafiscal (quantidade, Venda_notaFiscal, estoque_Codigo) Values (?, ?, ?)";
+            String sqlnotaFiscal = "Insert into itens (quantidade, Venda_notaFiscal, estoque_Codigo) Values (?, ?, ?)";
             PreparedStatement pstmnotaFiscal = conn.prepareStatement(sqlnotaFiscal);
             
             if (produtoDTO.getQuantidade() > 0){
